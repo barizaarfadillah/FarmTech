@@ -25,7 +25,7 @@
                         <!-- echo $msg; ?> -->
                         <form action="" method="post">
                             <input type="text" class="name" name="name" placeholder="Nama" required>
-                            <input type="text" class="name" name="namepertenakan" placeholder="Nama Peternakan" required>
+                            <input type="text" class="name" name="name" placeholder="Nama Peternakan" required>
                             <input type="email" class="email" name="email" placeholder="Email" required>
                             <input type="password" class="password" name="password" placeholder="Password" required>
                             <input type="cpassword" class="cpassword" name="cpassword" placeholder="Confirm Password" required>
