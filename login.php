@@ -13,7 +13,7 @@
 <body>
     <div class="wrapper">
         <div class="container main">
-            <div class="row">
+            <div class="row" style="box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2); background: #fff; border-radius: 10px; height: 580px; width: 900px;">
                 <div class="col-md-5 side-image d-flex align-items-center justify-content-center">
                     <!-------Image-------->
                     <img src="img/bro.png" alt="">
