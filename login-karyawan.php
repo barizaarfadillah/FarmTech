@@ -16,25 +16,19 @@
             <div class="row" style="box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2); background: #fff; border-radius: 10px; height: 580px; width: 900px;">
                 <div class="col-md-5 side-image d-flex align-items-center justify-content-center">
                     <!-------Image-------->
-                    <img src="img/bro3.png" alt="">
+                    <img src="img/bro.png" alt="">
                 </div>
                 <div class="col-md-7 right ">
                      <div class="input-box">
-                        <header>Register</header>
-                        <p>Silahkan lengkapi untuk melakukan registrasi</p>
+                        <header>Login</header>
+                        <p>Masukkan email dan password anda</p>
                         <!-- echo $msg; ?> -->
                         <form action="" method="post">
-                            <input type="text" class="name" name="name" placeholder="Nama" required>
-                            <input type="text" class="name" name="name" placeholder="Nama Peternakan" required>
                             <input type="email" class="email" name="email" placeholder="Email" required>
-                            <input type="password" class="password" name="password" placeholder="Password" required>
-                            <input type="cpassword" class="cpassword" name="cpassword" placeholder="Confirm Password" required>
-                        
-                            <button name="submit" name="submit" class="btn" type="submit">Register</button>
+                            <input type="password" class="password" name="password" placeholder="Password" style="margin-bottom: 2px;" required>
+                            <p class="d-flex justify-content-end"><a href="forgot-password.php" style="margin-bottom: -5px; display: block; text-align: right;">Forgot Password?</a></p>
+                            <button name="submit" name="submit" class="btn" type="submit">Login</button>
                         </form>
-                        <div class="social-icons text-center">
-                            <p>Punya akun? <a href="login.php">Login</a>.</p>
-                        </div>
                      </div>
                 </div>
             </div>

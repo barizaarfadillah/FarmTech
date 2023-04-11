@@ -48,8 +48,8 @@
                 <div class="carousel-caption">
                     <h5>FarmTech</h5>
                     <p>Sistem Monitoring Peternakan Berbasis Website</p>
-                    <p><a href="#" class="btn btn-success mt-3">Login Pemilik</a>
-                        <a href="#" class="btn btn-success mt-3">Login Karyawan</a>
+                    <p><a href="login-pemilik.php" class="btn btn-success mt-3">Login Pemilik</a>
+                        <a href="login-karyawan.php" class="btn btn-success mt-3">Login Karyawan</a>
                     </p>
                 </div>
             </div>
