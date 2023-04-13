@@ -130,7 +130,7 @@
                     <img src="img/image1.jpg" alt="">
                 </div>
                 <span class="garis"></span>
-                <a onclick="return confirm('Apakah anda yakin akan logout?')" class="btn-logout" href="landing-page.php">Logout</a>
+                <a onclick="return confirm('Apakah anda yakin akan logout?')" class="btn-logout" href="index.php">Logout</a>
             </div>
         </header>
         <main>
