@@ -15,7 +15,7 @@
     <!-- Box Icons  -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Styles  -->
-    <link rel="stylesheet" href="css/dashboard_style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -58,7 +58,9 @@
             <li>
                 <div class="title">
                     <a href="#" class="link">
-                        <i class='bx bx-folder'></i>
+                        <i>
+                            <img src="img/cow.svg" alt="">
+                        </i>
                         <span class="name">Data Ternak</span>
                     </a>
                     <!-- <i class='bx bxs-chevron-down'></i> -->

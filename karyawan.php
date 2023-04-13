@@ -10,7 +10,7 @@
     <!-- Box Icons  -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Styles  -->
-    <link rel="stylesheet" href="css/dashboard_style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
             <li>
                 <div class="title">
                     <a href="#" class="link">
-                        <i class='bx bx-folder'></i>
+                        <i><img src="img/cow.svg" alt=""></i>
                         <span class="name">Data Ternak</span>
                     </a>
                     <!-- <i class='bx bxs-chevron-down'></i> -->
@@ -117,10 +117,10 @@
         </header>
         <main>
             <h2 class="dash-title">Dashboard</h2>
-            <div class="dash-cards">
+            <div class="dash-cardss">
                 <div class="card-single">
                     <div class="card-body">
-                        <span class="bx bx-folder"></span>
+                        <span><img src="img/cow.svg" alt=""></span>
                         <div>
                             <h5>Data Ternak</h5>
                             <h4>150</h4>
@@ -144,7 +144,7 @@
                 </div>
                 <div class="card-single">
                     <div class="card-body">
-                        <span class="bx bx-box"></span>
+                        <span><img src="img/milk-bottle.svg" alt=""></span>
                         <div>
                             <h5>Produksi</h5>
                             <h4>50 Produk</h4>

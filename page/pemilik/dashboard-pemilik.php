@@ -14,7 +14,9 @@
                 </div>
                 <div class="card-single">
                     <div class="card-body">
-                        <span class="bx bx-folder"></span>
+                        <span>
+                            <img src="img/cow.svg" alt="">
+                        </span>
                         <div>
                             <h5>Data Ternak</h5>
                             <h4>150</h4>
@@ -38,7 +40,9 @@
                 </div>
                 <div class="card-single">
                     <div class="card-body">
-                        <span class="bx bx-box"></span>
+                        <span>
+                            <img src="img/milk-bottle.svg" alt="">
+                        </span>
                         <div>
                             <h5>Produksi</h5>
                             <h4>50 Produk</h4>
