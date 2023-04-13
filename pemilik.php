@@ -137,7 +137,7 @@
             <?php
                 if ($_GET['page'] == "dasboard") {
                     if ($_GET['aksi'] == "") {
-                        include "dashboard-pemilik.php";
+                        include "page/pemilik/dashboard-pemilik.php";
                     }
                 }
             ?>
