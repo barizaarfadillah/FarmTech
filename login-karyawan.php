@@ -27,7 +27,7 @@
                             <input type="email" class="email" name="email" placeholder="Email" required>
                             <input type="password" class="password" name="password" placeholder="Password" style="margin-bottom: 2px;" required>
                             <p class="d-flex justify-content-end"><a href="forgot-password.php" style="margin-bottom: -5px; display: block; text-align: right;">Forgot Password?</a></p>
-                            <button name="submit" name="submit" class="btn" type="submit">Login</button>
+                            <button name="submit" name="submit" class="btn" type="submit"><a href="dashboard-karyawan.php">Login</a></button>
                         </form>
                      </div>
                 </div>
