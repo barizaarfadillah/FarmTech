@@ -16,6 +16,10 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Styles  -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 </head>
 
 <body>
@@ -44,14 +48,14 @@
             </li>
             <li>
                 <div class="title">
-                    <a href="#" class="link">
+                    <a href="?page=karyawan" class="link">
                         <i class='bx bx-user'></i>
                         <span class="name">Karyawan</span>
                     </a>
                     <!-- <i class='bx bxs-chevron-down'></i> -->
                 </div>
                 <div class="submenu">
-                    <a href="#" class="link submenu-title">Karyawan</a>
+                    <a href="?page=karyawan" class="link submenu-title">Karyawan</a>
                     <!-- submenu links here  -->
                 </div>
             </li>
@@ -129,17 +133,38 @@
             <div class="social-icons">
                 <span class="bx bx-bell"></span>
                 <div>
-                    <img src="img/image1.jpg" alt="">
+                    <a href="?page=profil">
+                        <img src="img/image1.jpg" alt="">
+                    </a>
                 </div>
                 <span class="garis"></span>
                 <a onclick="return confirm('Apakah anda yakin akan logout?')" class="btn-logout" href="index.php">Logout</a>
             </div>
         </header>
-        <main>
+        <main>            
             <?php
                 if ($_GET['page'] == "dasboard") {
                     if ($_GET['aksi'] == "") {
                         include "page/pemilik/dashboard-pemilik.php";
+                    }
+                }
+                if ($_GET['page'] == "profil") {
+                    if ($_GET['aksi'] == "") {
+                        include "page/pemilik/profil/profil-pemilik.php";
+                    }
+                    if ($_GET['aksi'] == "edit") {
+                        include "page/pemilik/profil/edit-profil.php";
+                    }
+                }
+                if ($_GET['page'] == "karyawan") {
+                    if ($_GET['aksi'] == "") {
+                        include "page/pemilik/karyawan/karyawan.php";
+                    }
+                    if ($_GET['aksi'] == "tambah") {
+                        include "page/pemilik/karyawan/tambah.php";
+                    }
+                    if ($_GET['aksi'] == "hapus") {
+                        include "page/pemilik/karyawan/hapus.php";
                     }
                 }
             ?>
@@ -148,6 +173,11 @@
 
     <!-- Link JS -->
     <script src="js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 </body>
 
 </html>

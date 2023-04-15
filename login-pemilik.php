@@ -1,3 +1,32 @@
+<?php
+	session_start();
+	require "koneksi.php";
+
+	$errors = array();
+	
+	if(isset($_POST['login'])){
+		$email = mysqli_real_escape_string($koneksi, $_POST['email']);
+		$password = mysqli_real_escape_string($koneksi, $_POST['password']);
+		$check= "SELECT * FROM pemilik WHERE email = '$email'";
+		$res = mysqli_query($koneksi, $check);
+		if(mysqli_num_rows($res) > 0){
+			$fetch = mysqli_fetch_assoc($res);
+			$fetch_pass = $fetch['password'];
+			if($fetch_pass){
+				$_SESSION['pemilik'] = $fetch['nama'];
+				$_SESSION['login'] = true;
+				header('location: pemilik.php');
+				exit;
+			}else{
+				$errors['pemilik'] = "Incorrect username or password!";
+			}
+		}else{
+			$errors['pemilik'] = "It's look like you're not yet a member! Click on the bottom link to signup.";
+		}
+	}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +34,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FarmTech</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/auth_style.css" rel="stylesheet">
 </head>
@@ -21,13 +48,26 @@
                 <div class="col-md-7 right ">
                      <div class="input-box">
                         <header>Login</header>
+                        <?php
+               		if(count($errors) > 0){
+                  		?>
+                  		<div class="alert alert-danger text-center">
+                    		<?php
+                     		foreach($errors as $showerror){
+                        		echo $showerror;
+                     		}
+                    		?>
+                  		</div>
+                  		<?php
+               		}
+               		?>	
                         <p>Masukkan email dan password anda</p>
                         <!-- echo $msg; ?> -->
                         <form action="" method="post">
                             <input type="email" class="email" name="email" placeholder="Email" required>
                             <input type="password" class="password" name="password" placeholder="Password" style="margin-bottom: 2px;" required>
                             <p class="d-flex justify-content-end"><a href="forgot-password.php" style="margin-bottom: -5px; display: block; text-align: right;">Forgot Password?</a></p>
-                            <button name="submit" name="submit" class="btn" type="submit"><a href="pemilik.php">Login</a></button>
+                            <button name="login" name="login" class="btn" type="login">Login</button>
                         </form>
                         <div class="social-icons text-center">
                             <p>Buat akun! <a href="register.php">Register</a>.</p>
@@ -37,9 +77,6 @@
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootsrap.bundle.js"></script>
 </body>
 </html>
