@@ -39,28 +39,28 @@ class Register {
 
         // validasi first name
         if (empty($nama)) {
-            $errors = "Data wajib diisi";
+            $errors[] = "Data wajib diisi";
         }
 
         // validasi last name
         if (empty($namapeternakan)) {
-            $errors = "Data wajib diisi";
+            $errors[] = "Data wajib diisi";
         }
 
         // validasi email
         if (empty($email)) {
-            $errors = "Data wajib diisi";
+            $errors[] = "Data wajib diisi";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors = "Invalid email format";
+            $errors[] = "Invalid email format";
         } elseif ($this->registerModel->cekEmail($email)) {
-            $errors = "Email sudah terdaftar";
+            $errors[] = "Email sudah terdaftar";
         }
 
         // validasi password
         if (empty($password)) {
-            $errors = "Data wajib diisi";
+            $errors[] = "Data wajib diisi";
         } elseif ($password != $cpassword) {
-            $errors = "Passwords tidak cocok";
+            $errors[] = "Passwords tidak cocok";
         }
 
         return $errors;
