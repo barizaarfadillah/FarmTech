@@ -143,28 +143,28 @@
         </header>
         <main>            
             <?php
-                if ($_GET['page'] == "dasboard") {
+                if ($_GET['page'] == "") {
                     if ($_GET['aksi'] == "") {
-                        include "page/pemilik/dashboard-pemilik.php";
+                        include "views/pemilik/dashboard-pemilik.php";
                     }
                 }
                 if ($_GET['page'] == "profil") {
                     if ($_GET['aksi'] == "") {
-                        include "page/pemilik/profil/profil-pemilik.php";
+                        include "views/pemilik/profil/profil-pemilik.php";
                     }
                     if ($_GET['aksi'] == "edit") {
-                        include "page/pemilik/profil/edit-profil.php";
+                        include "views/pemilik/profil/edit-profil.php";
                     }
                 }
                 if ($_GET['page'] == "karyawan") {
                     if ($_GET['aksi'] == "") {
-                        include "page/pemilik/karyawan/karyawan.php";
+                        include "views/pemilik/karyawan/karyawan.php";
                     }
                     if ($_GET['aksi'] == "tambah") {
-                        include "page/pemilik/karyawan/tambah.php";
+                        include "views/pemilik/karyawan/tambah.php";
                     }
                     if ($_GET['aksi'] == "hapus") {
-                        include "page/pemilik/karyawan/hapus.php";
+                        include "views/pemilik/karyawan/hapus.php";
                     }
                 }
             ?>
@@ -173,6 +173,7 @@
 
     <!-- Link JS -->
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function () {
             $('#example').DataTable();

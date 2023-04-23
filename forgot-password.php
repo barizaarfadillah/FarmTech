@@ -33,7 +33,6 @@
             </div>
         </div>
     </div>
-
     <script src="js/bootsrap.bundle.js"></script>
 </body>
 </html>
