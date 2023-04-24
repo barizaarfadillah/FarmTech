@@ -1,24 +1,38 @@
+<?php
+require_once 'controllers/C_Karyawan-Pemilik.php';
+$Karyawan = new Karyawan();
+
+?>
 <div class="dash-cardsss">
                 <div class="card-singles">
                     <h2 class="dash-title" style="margin-top: 2rem; margin-left: 2rem;">Tambah Karyawan</h2>
                     <div class="card-bodys">
                         <div class="profile">
-                            <div class="info-profile">
-                                <label for="">Nama Lengkap</label></br>
-                                <input type="text"/>
-                            </div>
-                            <div class="info-profile">
-                                <label for="">Email</label></br>
-                                <input type="text"/>
-                            </div>
-                            <div class="info-profile">
-                                <label for="">Password</label></br>
-                                <input type="password"/>
-                            </div>
-                            <div class="edit-profile">
-                                <a class="btn-add" href="#">Tambah</a>
-                            </div>
+                                <form action="" method="post">
+                                <div class="info-profile">
+                                    <label for="">Nama Lengkap</label></br>
+                                    <input name='nama'type="text"/>
+                                </div>
+                                <div class="info-profile">
+                                    <label for="">Email</label></br>
+                                    <input name='email' type="text"/>
+                                </div>
+                                <div class="info-profile">
+                                    <label for="">Password</label></br>
+                                    <input name='password' type="password"/>
+                                </div>
+                                <div class="edit-profile">
+                                    <button name='tambah' class="btn-add" href="#" style="border-style: none;">Tambah</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+<?php
+if(isset($_POST["tambah"])) {
+    $Karyawan->addData();?>
+    <script>
+    window.location.href="?page=karyawan";
+    </script>
+<?php }?>

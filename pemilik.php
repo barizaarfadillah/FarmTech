@@ -1,4 +1,15 @@
 <?php
+    session_start();
+    require_once 'controllers/C_Dashboard-Pemilik.php';
+
+    $Dasboard = new Dashboard();
+
+    if(empty($_SESSION['pemilik'])){
+        header("location:index.php");
+    }
+
+    $data = $Dasboard->getData();
+
     mysqli_report (MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 	error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 ?>
@@ -15,7 +26,7 @@
     <!-- Box Icons  -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Styles  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -35,14 +46,14 @@
             <!-- -------- Non Dropdown List Item ------- -->
             <li>
                 <div class="title">
-                    <a href="?page=dasboard" class="link">
+                    <a href="?" class="link">
                         <i class='bx bx-grid-alt'></i>
                         <span class="name">Dashboard</span>
                     </a>
                     <!-- <i class='bx bxs-chevron-down'></i> -->
                 </div>
                 <div class="submenu">
-                    <a href="?page=dasboard" class="link submenu-title">Dashboard</a>
+                    <a href="?" class="link submenu-title">Dashboard</a>
                     <!-- submenu links here  -->
                 </div>
             </li>
@@ -63,7 +74,7 @@
                 <div class="title">
                     <a href="#" class="link">
                         <i>
-                            <img src="img/cow.svg" alt="">
+                            <img src="assets/img/cow.svg" alt="">
                         </i>
                         <span class="name">Data Ternak</span>
                     </a>
@@ -128,24 +139,24 @@
     <section class="home">
         <header>
             <div class="toggle-sidebar">
-                <div class="text">Nama Peternakan</div>
+                <div class="text"><?php echo $data['nama'] ;?></div>
             </div>
             <div class="social-icons">
                 <span class="bx bx-bell"></span>
                 <div>
                     <a href="?page=profil">
-                        <img src="img/image1.jpg" alt="">
+                        <img src="assets/img/avatar/<?php echo $data['profil'] ;?>" alt="">
                     </a>
                 </div>
                 <span class="garis"></span>
-                <a onclick="return confirm('Apakah anda yakin akan logout?')" class="btn-logout" href="index.php">Logout</a>
+                <a onclick="return confirm('Apakah anda yakin akan logout?')" class="btn-logout" href="logout.php">Logout</a>
             </div>
         </header>
         <main>            
             <?php
                 if ($_GET['page'] == "") {
                     if ($_GET['aksi'] == "") {
-                        include "views/pemilik/dashboard-pemilik.php";
+                        include "views/pemilik/dashboard.php";
                     }
                 }
                 if ($_GET['page'] == "profil") {
@@ -172,7 +183,7 @@
     </section>
 
     <!-- Link JS -->
-    <script src="js/main.js"></script>
+    <script src="assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function () {

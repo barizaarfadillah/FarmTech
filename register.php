@@ -7,13 +7,6 @@ if(isset($_POST["signup"])) {
   $Register->register();
 }
 
-
-
-
-// jika form register di-submit
-
-
-
 mysqli_report (MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 
@@ -41,7 +34,6 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
                   <div class="col-md-7 right ">
                       <div class="input-box">
                           <header>Register</header>
-                          
                           <p>Silahkan lengkapi untuk melakukan registrasi</p>
                           <form action="" method="post">
                               <input type="text" class="nama" name="nama" placeholder="Nama" required>
@@ -64,16 +56,6 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="assets/js/bootsrap.bundle.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-	<?php if(isset($errors)) { ?>
-		<script>
-			swal({
-				title: "Error!",
-				text: "<?php echo $errors ?>",
-				icon: "error",
-			});
-		</script>
-	<?php } ?>
 </body>
 </html>
           

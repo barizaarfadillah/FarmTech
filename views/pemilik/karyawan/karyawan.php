@@ -1,3 +1,9 @@
+<?php
+require_once 'controllers/C_Karyawan-Pemilik.php';
+$Karyawan = new Karyawan();
+$result = $Karyawan->getData();
+?>
+
 <h2 class="dash-title">Data Karyawan</h2>
             <div class="dash-cardsss">
                 <div class="card-singless">
@@ -15,46 +21,22 @@
                                 </tr>
                             </thead>
                             <tbody style="background-color:#D7FBE8; font-weight:500;">
+                                <?php
+                                    if ($result->num_rows>0) {
+                                        $no = 0; 
+                                        while ($row = $result->fetch_assoc()){
+                                            $no += 1;
+                                ?>
                                 <tr>
-                                    <td style="text-align: center; font-size: .9rem;">1</td>
-                                    <td style="font-size: .9rem;">Malik Rahmat</td>
-                                    <td style="font-size: .9rem;">Jember</td>
-                                    <td style="font-size: .9rem;">Malik@mail.com</td>
-                                    <td style="font-size: .9rem;">081122334455</td>
-                                    <td style="text-align: center;"><a class="btn-delete" href="#">Pecat</a></td>
+                                    <td style="text-align: center; font-size: .9rem;"><?php echo $no?></td>
+                                    <td style="font-size: .9rem;"><?php echo $row['nama'] ;?></td>
+                                    <td style="font-size: .9rem;"><?php echo $row['alamat'] ;?></td>
+                                    <td style="font-size: .9rem;"><?php echo $row['email'] ;?></td>
+                                    <td style="font-size: .9rem;"><?php echo $row['no_hp'] ;?></td>
+                                    <td style="text-align: center;"><a onclick="return confirm('Apakah anda yakin akan memecat karyawan ini?')" class="btn-delete" href="?page=karyawan&aksi=hapus&id=<?php echo $row['id_karyawan'] ?>">Pecat</a></td>
                                 </tr>
-                                <tr>
-                                    <td style="text-align: center; font-size: .9rem;">1</td>
-                                    <td style="font-size: .9rem;">Malik Rahmat</td>
-                                    <td style="font-size: .9rem;">Jember</td>
-                                    <td style="font-size: .9rem;">Malik@mail.com</td>
-                                    <td style="font-size: .9rem;">081122334455</td>
-                                    <td style="text-align: center;"><a class="btn-delete" href="#">Pecat</a></td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: center; font-size: .9rem;">1</td>
-                                    <td style="font-size: .9rem;">Malik Rahmat</td>
-                                    <td style="font-size: .9rem;">Jember</td>
-                                    <td style="font-size: .9rem;">Malik@mail.com</td>
-                                    <td style="font-size: .9rem;">081122334455</td>
-                                    <td style="text-align: center;"><a class="btn-delete" href="#">Pecat</a></td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: center; font-size: .9rem;">1</td>
-                                    <td style="font-size: .9rem;">Malik Rahmat</td>
-                                    <td style="font-size: .9rem;">Jember</td>
-                                    <td style="font-size: .9rem;">Malik@mail.com</td>
-                                    <td style="font-size: .9rem;">081122334455</td>
-                                    <td style="text-align: center;"><a class="btn-delete" href="#">Pecat</a></td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: center; font-size: .9rem;">1</td>
-                                    <td style="font-size: .9rem;">Malik Rahmat</td>
-                                    <td style="font-size: .9rem;">Jember</td>
-                                    <td style="font-size: .9rem;">Malik@mail.com</td>
-                                    <td style="font-size: .9rem;">081122334455</td>
-                                    <td style="text-align: center;"><a class="btn-delete" href="#">Pecat</a></td>
-                                </tr>
+                                <?php }}?>
+                                
                             </tbody>
                         </table>
                     </div>

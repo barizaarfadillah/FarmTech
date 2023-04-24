@@ -2,23 +2,31 @@
 require_once 'koneksi.php';
 
 class RegisterModel {
-    private $db;
+    private $conn;
 
+    
     public function __construct() {
-        $this->db = new Database();
+        $db = new Connection();
+        $this->conn = $db->connection;
     }
 
-    public function register($nama, $email, $password, $namapeternakan) {
-        $sql = "INSERT INTO pemilik (nama, email, password, nama_peternakan, alamat_peternakan, foto_profil) VALUES (?, ?, ?, ?, ' ', 'default.svg')";
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $params = array($nama, $email, $hashedPassword, $namapeternakan);
-        $this->db->execute($sql, $params);
+    public function register($nama, $email, $password, $namapeternakan, $alamat, $profil) {
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $this->conn->prepare("INSERT INTO pemilik (nama, email, password, nama_peternakan, alamat_peternakan, foto_profil) VALUES ('$nama', '$email', '$password', '$namapeternakan', '$alamat', '$profil')");
+        $stmt->execute();
+        $stmt->close();
     }
 
     public function cekEmail($email) {
-        $sql = "SELECT * FROM pemilik WHERE email = ?";
-        $params = array($email);
-        $result = $this->db->query($sql, $params);
-        return count($result) > 0;
+        $stmt = $this->conn->prepare("SELECT * FROM pemilik WHERE email = '$email'");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+    
+        if($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

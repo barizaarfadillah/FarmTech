@@ -1,33 +1,16 @@
 <?php
-class Database {
-    private $host = 'localhost';
-    private $user = 'root';
-    private $password = '';
-    private $dbname = 'farmtech';
-
+class Connection {
+    private $host = "localhost";
+    private $user = "root";
+    private $password = "";
+    private $database = "farmtech";
     private $conn;
 
     public function __construct() {
-        $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
-        $options = array(
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-        );
+        $this->connection = new mysqli($this->host, $this->user, $this->password, $this->database);
 
-        try {
-            $this->conn = new PDO($dsn, $this->user, $this->password, $options);
-        } catch (PDOException $e) {
-            echo 'Connection failed: ' . $e->getMessage();
+        if($this->connection->connect_error) {
+            die("Koneksi gagal: " . $this->connection->connect_error);
         }
-    }
-
-    public function query($sql, $params = array()) {
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute($params);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public function execute($sql, $params = array()) {
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute($params);
     }
 }

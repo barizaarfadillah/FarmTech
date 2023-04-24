@@ -1,22 +1,9 @@
+
 <h2 class="dash-title">Dashboard</h2>
-            <div class="dash-cards">
+            <div class="dash-cardss">
                 <div class="card-single">
                     <div class="card-body">
-                        <span class="bx bx-user"></span>
-                        <div>
-                            <h5>Karyawan</h5>
-                            <h4>10</h4>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
-                <div class="card-single">
-                    <div class="card-body">
-                        <span>
-                            <img src="img/cow.svg" alt="">
-                        </span>
+                        <span><img src="assets/img/cow.svg" alt=""></span>
                         <div>
                             <h5>Data Ternak</h5>
                             <h4>150</h4>
@@ -40,9 +27,7 @@
                 </div>
                 <div class="card-single">
                     <div class="card-body">
-                        <span>
-                            <img src="img/milk-bottle.svg" alt="">
-                        </span>
+                        <span><img src="assets/img/milk-bottle.svg" alt=""></span>
                         <div>
                             <h5>Produksi</h5>
                             <h4>50 Produk</h4>

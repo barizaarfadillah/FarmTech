@@ -1,3 +1,18 @@
+<?php
+    session_start();
+    require_once 'controllers/C_Dashboard-Karyawan.php';
+
+    $Dasboard = new Dashboard();
+
+    if(empty($_SESSION['karyawan'])){
+        header("location:index.php");
+    }
+
+    $data = $Dasboard->getData();
+
+    mysqli_report (MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+	error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +25,7 @@
     <!-- Box Icons  -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Styles  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -26,21 +41,21 @@
             <!-- -------- Non Dropdown List Item ------- -->
             <li>
                 <div class="title">
-                    <a href="#" class="link">
+                    <a href="?" class="link">
                         <i class='bx bx-grid-alt'></i>
                         <span class="name">Dashboard</span>
                     </a>
                     <!-- <i class='bx bxs-chevron-down'></i> -->
                 </div>
                 <div class="submenu">
-                    <a href="#" class="link submenu-title">Dashboard</a>
+                    <a href="?" class="link submenu-title">Dashboard</a>
                     <!-- submenu links here  -->
                 </div>
             </li>
             <li>
                 <div class="title">
                     <a href="#" class="link">
-                        <i><img src="img/cow.svg" alt=""></i>
+                        <i><img src="assets/img/cow.svg" alt=""></i>
                         <span class="name">Data Ternak</span>
                     </a>
                     <!-- <i class='bx bxs-chevron-down'></i> -->
@@ -104,104 +119,41 @@
     <section class="home">
         <header>
             <div class="toggle-sidebar">
-                <div class="text">Nama Peternakan</div>
+                <div class="text"><?php echo $data['nama'];?></div>
             </div>
             <div class="social-icons">
                 <span class="bx bx-bell"></span>
                 <div>
-                    <img src="img/image1.jpg" alt="">
+                    <a href="?page=profil">
+                        <img src="assets/img/avatar/<?php echo $data['foto_profile'] ;?>" alt="">
+                    </a>
                 </div>
                 <span class="garis"></span>
                 <a onclick="return confirm('Apakah anda yakin akan logout?')" class="btn-logout" href="index.php">Logout</a>
             </div>
         </header>
         <main>
-            <h2 class="dash-title">Dashboard</h2>
-            <div class="dash-cardss">
-                <div class="card-single">
-                    <div class="card-body">
-                        <span><img src="img/cow.svg" alt=""></span>
-                        <div>
-                            <h5>Data Ternak</h5>
-                            <h4>150</h4>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
-                <div class="card-single">
-                    <div class="card-body">
-                        <span class="bx bx-money"></span>
-                        <div>
-                            <h5>Penjualan</h5>
-                            <h4>Rp 100.012.040</h4>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
-                <div class="card-single">
-                    <div class="card-body">
-                        <span><img src="img/milk-bottle.svg" alt=""></span>
-                        <div>
-                            <h5>Produksi</h5>
-                            <h4>50 Produk</h4>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
-            </div>
-            <section class="recent">
-                <div class="activity-grid">
-
-                    <div class="summary">
-                        <div class="summary-card">
-
-                        </div>
-                    </div>
-                    <div class="activity-card">
-                        <h3>Jadwal Hari Ini</h3>
-                        <div class="table-responsive">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Uraian</th>
-                                        <th>Tanggal</th>
-                                        <th>Jam</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Pemberian Pakan</td>
-                                        <td>11 April 2023</td>
-                                        <td>03:00 WIB</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Pemberian Pakan</td>
-                                        <td>11 April 2023</td>
-                                        <td>15:00 WIB</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Memerah Susu</td>
-                                        <td>11 April 2023</td>
-                                        <td>20:00 WIB</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <?php
+                if ($_GET['page'] == "") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/karyawan/dashboard.php";
+                    }
+                }
+                if ($_GET['page'] == "profil") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/karyawan/profil/profil-karyawan.php";
+                    }
+                    if ($_GET['aksi'] == "edit") {
+                        include "views/karyawan/profil/edit-profil.php";
+                    }
+                }
+            ?>
         </main>
     </section>
 
     <!-- Link JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
