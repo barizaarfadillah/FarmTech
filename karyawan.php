@@ -26,6 +26,11 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Styles  -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -54,14 +59,14 @@
             </li>
             <li>
                 <div class="title">
-                    <a href="#" class="link">
+                    <a href="?page=ternak" class="link">
                         <i><img src="assets/img/cow.svg" alt=""></i>
                         <span class="name">Data Ternak</span>
                     </a>
                     <!-- <i class='bx bxs-chevron-down'></i> -->
                 </div>
                 <div class="submenu">
-                    <a href="#" class="link submenu-title">Data Ternak</a>
+                    <a href="?page=ternak" class="link submenu-title">Data Ternak</a>
                     <!-- submenu links here  -->
                 </div>
             </li>
@@ -147,13 +152,31 @@
                         include "views/karyawan/profil/edit-profil.php";
                     }
                 }
+                if ($_GET['page'] == "ternak") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/karyawan/ternak/ternak.php";
+                    }
+                    if ($_GET['aksi'] == "edit") {
+                        include "views/karyawan/ternak/edit.php";
+                    }
+                    if ($_GET['aksi'] == "tambah") {
+                        include "views/karyawan/ternak/tambah.php";
+                    }
+                    if ($_GET['aksi'] == "hapus") {
+                        include "views/karyawan/ternak/hapus.php";
+                    }
+                }
             ?>
         </main>
     </section>
 
     <!-- Link JS -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 </body>
 
 </html>

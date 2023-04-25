@@ -1,4 +1,9 @@
-
+<?php
+require_once 'controllers/C_Ternak-Karyawan.php';
+$Ternak = new Ternak();
+$row = $Ternak->jumlahData();
+$totalTernak = $row['total']
+?>
 <h2 class="dash-title">Dashboard</h2>
             <div class="dash-cardss">
                 <div class="card-single">
@@ -6,11 +11,11 @@
                         <span><img src="assets/img/cow.svg" alt=""></span>
                         <div>
                             <h5>Data Ternak</h5>
-                            <h4>150</h4>
+                            <h4><?php echo $totalTernak;?></h4>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="">View all</a>
+                        <a href="?page=ternak">View all</a>
                     </div>
                 </div>
                 <div class="card-single">

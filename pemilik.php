@@ -72,7 +72,7 @@
             </li>
             <li>
                 <div class="title">
-                    <a href="#" class="link">
+                    <a href="?page=ternak" class="link">
                         <i>
                             <img src="assets/img/cow.svg" alt="">
                         </i>
@@ -81,7 +81,7 @@
                     <!-- <i class='bx bxs-chevron-down'></i> -->
                 </div>
                 <div class="submenu">
-                    <a href="#" class="link submenu-title">Data Ternak</a>
+                    <a href="?page=ternak" class="link submenu-title">Data Ternak</a>
                     <!-- submenu links here  -->
                 </div>
             </li>
@@ -176,6 +176,20 @@
                     }
                     if ($_GET['aksi'] == "hapus") {
                         include "views/pemilik/karyawan/hapus.php";
+                    }
+                }
+                if ($_GET['page'] == "ternak") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/pemilik/ternak/ternak.php";
+                    }
+                    if ($_GET['aksi'] == "tambah") {
+                        include "views/pemilik/ternak/tambah.php";
+                    }
+                    if ($_GET['aksi'] == "hapus") {
+                        include "views/pemilik/ternak/hapus.php";
+                    }
+                    if ($_GET['aksi'] == "edit") {
+                        include "views/pemilik/ternak/edit.php";
                     }
                 }
             ?>

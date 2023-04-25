@@ -274,7 +274,7 @@ header {
 }
 
 .btn-delete {
-    padding: 5px;
+    padding: 10px;
     background-color: #dc3545;
     color: #efefef;
     margin: 1rem;
@@ -385,7 +385,8 @@ main {
 }
 
 
-.card-bodys .profile .info-profile input {
+.card-bodys .profile .info-profile input,
+select {
     display: block;
     width: 100%;
     height: calc(1.5em + 0.75rem + 2px);

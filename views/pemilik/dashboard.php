@@ -1,8 +1,15 @@
 <?php
 require_once 'controllers/C_Karyawan-Pemilik.php';
+require_once 'controllers/C_Ternak-Pemilik.php';
+
 $Karyawan = new Karyawan();
 $row = $Karyawan->jumlahData();
-$total = $row['total']
+$totalKaryawan = $row['total'];
+
+$Ternak = new Ternak();
+$row = $Ternak->jumlahData();
+$totalTernak = $row['total']
+
 ?>
 <h2 class="dash-title">Dashboard</h2>
             <div class="dash-cards">
@@ -11,7 +18,7 @@ $total = $row['total']
                         <span class="bx bx-user"></span>
                         <div>
                             <h5>Karyawan</h5>
-                            <h4><?php echo $total;?></h4>
+                            <h4><?php echo $totalKaryawan;?></h4>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -25,11 +32,11 @@ $total = $row['total']
                         </span>
                         <div>
                             <h5>Data Ternak</h5>
-                            <h4>150</h4>
+                            <h4><?php echo $totalTernak;?></h4>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="">View all</a>
+                        <a href="?page=ternak">View all</a>
                     </div>
                 </div>
                 <div class="card-single">

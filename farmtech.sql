@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Apr 2023 pada 19.17
+-- Waktu pembuatan: 25 Apr 2023 pada 19.10
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -45,10 +45,24 @@ CREATE TABLE `formulasi` (
 CREATE TABLE `hewan_ternak` (
   `id_ternak` int(11) NOT NULL,
   `jenis` varchar(50) NOT NULL,
-  `tanggal_pendataan` datetime NOT NULL,
+  `tanggal_pendataan` date NOT NULL,
   `status` varchar(50) NOT NULL,
   `karyawan_id_karyawan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `hewan_ternak`
+--
+
+INSERT INTO `hewan_ternak` (`id_ternak`, `jenis`, `tanggal_pendataan`, `status`, `karyawan_id_karyawan`) VALUES
+(2, 'Kambing', '2023-04-01', 'sehat', 3),
+(3, 'Kambing Etawa', '2023-04-01', 'sehat', 3),
+(4, 'Kambing Etawa', '2023-04-01', 'sehat', 3),
+(5, 'Kambing Etawa', '2023-04-25', 'sakit', 3),
+(6, 'Kambing Etawa', '2023-04-25', 'sakit', 3),
+(7, 'Kambing Etawa', '2023-04-25', 'mati', 3),
+(8, 'Kambing Etawa', '2023-04-25', 'mati', 3),
+(9, 'kambing', '2023-04-25', 'Sehat', 6);
 
 -- --------------------------------------------------------
 
@@ -68,6 +82,16 @@ CREATE TABLE `karyawan` (
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `karyawan`
+--
+
+INSERT INTO `karyawan` (`id_karyawan`, `nama`, `email`, `password`, `alamat`, `no_hp`, `foto_profile`, `pemilik_id_pemilik`, `status`) VALUES
+(2, 'Malik', 'malik@gmail.com', '$2y$10$CJnzBp.ExVkoFlaRogv8OuBcGufoqzcb2IPtArQ.419', ' Jember', ' 081233445577', 'default.svg', 1, 0),
+(3, 'Ali', 'ali@gmail.com', '$2y$10$NuogtjgjZjgckSqLC.RG6.4GKDsS0GLR0Qzoj3gbQpU', ' ', ' ', 'default.svg', 1, 1),
+(4, 'Ibnu', 'ibnu@gmail.com', '$2y$10$rJa/Kduz2mTjiq4FrYNOgO/eZNrVl50OWvKvph49ILV', ' ', ' ', 'default.svg', 1, 1),
+(6, 'Mahmud', 'mahmud@gmail.com', '123', 'jember', '081122334455', 'default.svg', 2, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -84,6 +108,13 @@ CREATE TABLE `pemilik` (
   `foto_profil` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `pemilik`
+--
+
+INSERT INTO `pemilik` (`id_pemilik`, `nama`, `email`, `password`, `nama_peternakan`, `alamat_peternakan`, `foto_profil`) VALUES
+(1, 'Bariza Arfadillah Abqariy', 'arfadillah.abqariy@gmail.com', '$2y$10$fS0wfDKkSZtAiBh2/XwUEuynZVhfyNPkvaOoKiJAuqT', 'Farmtech', 'Situbondo', 'default.svg'),
+(2, 'Muhammad', 'muhammad@gmail.com', '$2y$10$NcG3nG8zuM8GjfjVws.R6ecnwa5GNvQ0JZ/ASc01xbf', 'AlFarm', ' ', 'default.svg');
 
 -- --------------------------------------------------------
 
@@ -151,7 +182,6 @@ ALTER TABLE `hewan_ternak`
 --
 ALTER TABLE `karyawan`
   ADD PRIMARY KEY (`id_karyawan`),
-  ADD UNIQUE KEY `no_hp` (`no_hp`),
   ADD KEY `karyawan_pemilik_FK` (`pemilik_id_pemilik`);
 
 --
@@ -196,19 +226,19 @@ ALTER TABLE `formulasi`
 -- AUTO_INCREMENT untuk tabel `hewan_ternak`
 --
 ALTER TABLE `hewan_ternak`
-  MODIFY `id_ternak` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ternak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemilik`
 --
 ALTER TABLE `pemilik`
-  MODIFY `id_pemilik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pemilik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjadwalan`

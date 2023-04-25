@@ -1,0 +1,44 @@
+<?php
+require_once 'controllers/C_Ternak-Karyawan.php';
+$Ternak = new Ternak();
+
+?>
+<div class="dash-cardsss">
+                <div class="card-singles">
+                    <h2 class="dash-title" style="margin-top: 2rem; margin-left: 2rem;">Tambah Data Ternak</h2>
+                    <div class="card-bodys">
+                        <div class="profile">
+                                <form action="" method="post">
+                                <div class="info-profile">
+                                    <label for="">Jenis Ternak</label></br>
+                                    <input name='jenis'type="text"/>
+                                </div>
+                                <div class="info-profile">
+                                    <label for="">Tanggal Pendataan</label></br>
+                                    <input name='tanggal' type="date"/>
+                                </div>
+                                <div class="info-profile">
+                                    <label for="">Status</label></br>
+                                    <select name="status" id="status">
+                                        <option value="">--- Pilih Status ---</option>
+                                        <option value="sehat">Sehat</option>
+                                        <option value="sakit">Sakit</option>
+                                        <option value="mati">Mati</option>
+                                    </select>
+                                </div>
+                                <div class="edit-profile">
+                                    <button name='tambah' class="btn-add" href="#" style="border-style: none;">Tambah</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<?php
+if(isset($_POST["tambah"])) {
+    $Ternak->addData();?>
+    <script>
+        alert("Data berhasi ditambah")
+        window.location.href="?page=ternak";
+    </script>
+<?php }?>
