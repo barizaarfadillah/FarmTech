@@ -82,9 +82,9 @@
                 </div>
                 <div class="submenu">
                     <a href="#" class="link submenu-title">Jadwal</a>
-                    <a href="#" class="link">Pakan</a>
-                    <a href="#" class="link">Vitamin</a>
-                    <a href="#" class="link">Perah</a>
+                    <a href="?page=jadwalpakan" class="link">Pakan</a>
+                    <a href="?page=jadwalvitamin" class="link">Vitamin</a>
+                    <a href="?page=jadwalperah" class="link">Perah</a>
                 </div>
             </li>
             <!-- -------- Non Dropdown List Item ------- -->
@@ -164,6 +164,48 @@
                     }
                     if ($_GET['aksi'] == "hapus") {
                         include "views/karyawan/ternak/hapus.php";
+                    }
+                }
+                if ($_GET['page'] == "jadwalpakan") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/karyawan/jadwal/pakan/jadwal.php";
+                    }
+                    if ($_GET['aksi'] == "edit") {
+                        include "views/karyawan/jadwal/pakan/edit.php";
+                    }
+                    if ($_GET['aksi'] == "tambah") {
+                        include "views/karyawan/jadwal/pakan/tambah.php";
+                    }
+                    if ($_GET['aksi'] == "hapus") {
+                        include "views/karyawan/jadwal/pakan/hapus.php";
+                    }
+                }
+                if ($_GET['page'] == "jadwalvitamin") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/karyawan/jadwal/vitamin/jadwal.php";
+                    }
+                    if ($_GET['aksi'] == "edit") {
+                        include "views/karyawan/jadwal/vitamin/edit.php";
+                    }
+                    if ($_GET['aksi'] == "tambah") {
+                        include "views/karyawan/jadwal/vitamin/tambah.php";
+                    }
+                    if ($_GET['aksi'] == "hapus") {
+                        include "views/karyawan/jadwal/vitamin/hapus.php";
+                    }
+                }
+                if ($_GET['page'] == "jadwalperah") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/karyawan/jadwal/perah/jadwal.php";
+                    }
+                    if ($_GET['aksi'] == "edit") {
+                        include "views/karyawan/jadwal/perah/edit.php";
+                    }
+                    if ($_GET['aksi'] == "tambah") {
+                        include "views/karyawan/jadwal/perah/tambah.php";
+                    }
+                    if ($_GET['aksi'] == "hapus") {
+                        include "views/karyawan/jadwal/perah/hapus.php";
                     }
                 }
             ?>

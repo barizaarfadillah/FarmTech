@@ -97,9 +97,9 @@
                 </div>
                 <div class="submenu">
                     <a href="#" class="link submenu-title">Jadwal</a>
-                    <a href="#" class="link">Pakan</a>
-                    <a href="#" class="link">Vitamin</a>
-                    <a href="#" class="link">Perah</a>
+                    <a href="?page=jadwalpakan" class="link">Pakan</a>
+                    <a href="?page=jadwalvitamin" class="link">Vitamin</a>
+                    <a href="?page=jadwalperah" class="link">Perah</a>
                 </div>
             </li>
             <!-- -------- Non Dropdown List Item ------- -->
@@ -182,14 +182,20 @@
                     if ($_GET['aksi'] == "") {
                         include "views/pemilik/ternak/ternak.php";
                     }
-                    if ($_GET['aksi'] == "tambah") {
-                        include "views/pemilik/ternak/tambah.php";
+                }
+                if ($_GET['page'] == "jadwalpakan") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/pemilik/jadwal/pakan/jadwal.php";
                     }
-                    if ($_GET['aksi'] == "hapus") {
-                        include "views/pemilik/ternak/hapus.php";
+                }
+                if ($_GET['page'] == "jadwalvitamin") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/pemilik/jadwal/vitamin/jadwal.php";
                     }
-                    if ($_GET['aksi'] == "edit") {
-                        include "views/pemilik/ternak/edit.php";
+                }
+                if ($_GET['page'] == "jadwalperah") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/pemilik/jadwal/perah/jadwal.php";
                     }
                 }
             ?>

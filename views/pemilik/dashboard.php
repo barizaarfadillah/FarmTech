@@ -1,6 +1,7 @@
 <?php
 require_once 'controllers/C_Karyawan-Pemilik.php';
 require_once 'controllers/C_Ternak-Pemilik.php';
+require_once 'controllers/C_Jadwal-Pemilik.php';
 
 $Karyawan = new Karyawan();
 $row = $Karyawan->jumlahData();
@@ -8,8 +9,10 @@ $totalKaryawan = $row['total'];
 
 $Ternak = new Ternak();
 $row = $Ternak->jumlahData();
-$totalTernak = $row['total']
+$totalTernak = $row['total'];
 
+$Jadwal = new Jadwal();
+$result = $Jadwal->getData();
 ?>
 <h2 class="dash-title">Dashboard</h2>
             <div class="dash-cards">
@@ -86,21 +89,20 @@ $totalTernak = $row['total']
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                        if ($result->num_rows>0) {
+                                            $no = 0; 
+                                            while ($row = $result->fetch_assoc()){
+                                                $no += 1;
+                                    ?>
                                     <tr>
-                                        <td>Pemberian Pakan</td>
-                                        <td>11 April 2023</td>
-                                        <td>03:00 WIB</td>
+                                        <td><?php echo $row['jenis'] ;?></td>
+                                        <td><?php echo $row['tanggal'] ;?></td>
+                                        <td><?php echo $row['jam'] ;?></td>
                                     </tr>
-                                    <tr>
-                                        <td>Pemberian Pakan</td>
-                                        <td>11 April 2023</td>
-                                        <td>15:00 WIB</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Memerah Susu</td>
-                                        <td>11 April 2023</td>
-                                        <td>20:00 WIB</td>
-                                    </tr>
+                                    <?php
+                                    }}
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
