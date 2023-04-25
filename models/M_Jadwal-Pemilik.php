@@ -27,7 +27,7 @@ class JadwalModel {
         $pemilik = $this->getPemilik();
         $objDateTime = date_create("now", new DateTimeZone("Asia/Jakarta"));
         $tanggal = $objDateTime->format("Y-m-d");
-        $stmt = $this->conn->prepare("SELECT penjadwalan.id_jadwal, penjadwalan.jenis, penjadwalan.jam, penjadwalan.tanggal FROM karyawan JOIN penjadwalan ON karyawan.id_karyawan = penjadwalan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' AND penjadwalan.tanggal = '$tanggal'");
+        $stmt = $this->conn->prepare("SELECT penjadwalan.id_jadwal, penjadwalan.jenis, penjadwalan.jam, penjadwalan.tanggal FROM karyawan JOIN penjadwalan ON karyawan.id_karyawan = penjadwalan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' AND penjadwalan.tanggal = '$tanggal' ORDER BY penjadwalan.jam");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result;
