@@ -3,6 +3,7 @@
 require_once 'controllers/C_Ternak-Karyawan.php';
 require_once 'controllers/C_Jadwal-Karyawan.php';
 require_once 'controllers/C_Penjualan-Karyawan.php';
+require_once 'controllers/C_Produksi-Karyawan.php';
 
 $Penjualan = new Penjualan();
 $result = $Penjualan->getData();
