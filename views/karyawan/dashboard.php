@@ -81,7 +81,14 @@ $result = $Jadwal->getData();
                                         <td><?php echo $row['jam'] ;?></td>
                                     </tr>
                                     <?php
-                                    }}
+                                    } }else {
+                                    ?>
+                                    <tr><td></td></tr>
+                                    <tr>
+                                        <td colspan="3" style="text-align: center; font-size: 1.3rem;"><h3>Tidak Ada Jadwal Hari Ini</h3></td>
+                                    </tr>
+                                    <?php
+                                    }
                                     ?>
                                 </tbody>
                             </table>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Apr 2023 pada 19.10
+-- Waktu pembuatan: 26 Apr 2023 pada 14.41
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -36,6 +36,16 @@ CREATE TABLE `formulasi` (
   `karyawan_id_karyawan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `formulasi`
+--
+
+INSERT INTO `formulasi` (`id`, `rentang_berat`, `nama_pakan`, `berat_pakan`, `jangka_waktu`, `karyawan_id_karyawan`) VALUES
+(1, '10 - 20', 'Rumput', 2, 'Sehari dua kali', 2),
+(2, '20 - 30', 'Rumput', 3, 'Sehari dua kali', 2),
+(3, '30 - 40', 'Rumput', 4, 'Sehari dua kali', 2),
+(4, '40 - 50', 'Rumput', 5, 'Sehari dua kali', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -55,14 +65,14 @@ CREATE TABLE `hewan_ternak` (
 --
 
 INSERT INTO `hewan_ternak` (`id_ternak`, `jenis`, `tanggal_pendataan`, `status`, `karyawan_id_karyawan`) VALUES
-(2, 'Kambing', '2023-04-01', 'sehat', 3),
+(2, 'Kambing', '2023-04-26', 'sehat', 3),
 (3, 'Kambing Etawa', '2023-04-01', 'sehat', 3),
 (4, 'Kambing Etawa', '2023-04-01', 'sehat', 3),
 (5, 'Kambing Etawa', '2023-04-25', 'sakit', 3),
 (6, 'Kambing Etawa', '2023-04-25', 'sakit', 3),
 (7, 'Kambing Etawa', '2023-04-25', 'mati', 3),
 (8, 'Kambing Etawa', '2023-04-25', 'mati', 3),
-(9, 'kambing', '2023-04-25', 'Sehat', 6);
+(11, 'Kambing', '2023-04-26', 'sehat', 2);
 
 -- --------------------------------------------------------
 
@@ -87,10 +97,10 @@ CREATE TABLE `karyawan` (
 --
 
 INSERT INTO `karyawan` (`id_karyawan`, `nama`, `email`, `password`, `alamat`, `no_hp`, `foto_profile`, `pemilik_id_pemilik`, `status`) VALUES
-(2, 'Malik', 'malik@gmail.com', '$2y$10$CJnzBp.ExVkoFlaRogv8OuBcGufoqzcb2IPtArQ.419', ' Jember', ' 081233445577', 'default.svg', 1, 0),
-(3, 'Ali', 'ali@gmail.com', '$2y$10$NuogtjgjZjgckSqLC.RG6.4GKDsS0GLR0Qzoj3gbQpU', ' ', ' ', 'default.svg', 1, 1),
-(4, 'Ibnu', 'ibnu@gmail.com', '$2y$10$rJa/Kduz2mTjiq4FrYNOgO/eZNrVl50OWvKvph49ILV', ' ', ' ', 'default.svg', 1, 1),
-(6, 'Mahmud', 'mahmud@gmail.com', '123', 'jember', '081122334455', 'default.svg', 2, 1);
+(1, 'Syaifudin', 'syaifudin@gmail.com', '123', ' ', ' ', 'default.svg', 1, 0),
+(2, 'Malik', 'malik@gmail.com', '123', ' Jember', ' 081233445577', 'default.svg', 1, 1),
+(3, 'Ali', 'ali@gmail.com', '123', ' ', ' ', 'default.svg', 1, 1),
+(4, 'Ibnu', 'ibnu@gmail.com', '123', ' ', ' ', 'default.svg', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -113,8 +123,8 @@ CREATE TABLE `pemilik` (
 --
 
 INSERT INTO `pemilik` (`id_pemilik`, `nama`, `email`, `password`, `nama_peternakan`, `alamat_peternakan`, `foto_profil`) VALUES
-(1, 'Bariza Arfadillah Abqariy', 'arfadillah.abqariy@gmail.com', '$2y$10$fS0wfDKkSZtAiBh2/XwUEuynZVhfyNPkvaOoKiJAuqT', 'Farmtech', 'Situbondo', 'default.svg'),
-(2, 'Muhammad', 'muhammad@gmail.com', '$2y$10$NcG3nG8zuM8GjfjVws.R6ecnwa5GNvQ0JZ/ASc01xbf', 'AlFarm', ' ', 'default.svg');
+(1, 'Bariza Arfadillah Abqariy', 'arfadillah.abqariy@gmail.com', '123', 'Farmtech', ' ', 'default.svg'),
+(2, 'Muhammad', 'muhammad@gmail.com', '123', 'AlFarm', ' ', 'default.svg');
 
 -- --------------------------------------------------------
 
@@ -126,9 +136,24 @@ CREATE TABLE `penjadwalan` (
   `id_jadwal` int(11) NOT NULL,
   `jenis` varchar(30) NOT NULL,
   `jam` time NOT NULL,
-  `tanggal` datetime NOT NULL,
+  `tanggal` date NOT NULL,
   `karyawan_id_karyawan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `penjadwalan`
+--
+
+INSERT INTO `penjadwalan` (`id_jadwal`, `jenis`, `jam`, `tanggal`, `karyawan_id_karyawan`) VALUES
+(2, 'Jadwal Pakan', '14:00:00', '2023-04-30', 2),
+(4, 'Jadwal Vitamin', '08:00:00', '2023-04-30', 2),
+(6, 'Jadwal Perah', '00:00:00', '2023-04-27', 2),
+(7, 'Jadwal Perah', '06:00:00', '2023-04-26', 2),
+(8, 'Jadwal Perah', '18:00:00', '2023-04-26', 2),
+(9, 'Jadwal Pakan', '06:30:00', '2023-04-26', 2),
+(10, 'Jadwal Pakan', '18:30:00', '2023-04-26', 2),
+(11, 'Jadwal Vitamin', '06:00:00', '2023-04-26', 2),
+(12, 'Jadwal Vitamin', '18:00:00', '2023-04-26', 2);
 
 -- --------------------------------------------------------
 
@@ -220,19 +245,19 @@ ALTER TABLE `recording_produksi`
 -- AUTO_INCREMENT untuk tabel `formulasi`
 --
 ALTER TABLE `formulasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `hewan_ternak`
 --
 ALTER TABLE `hewan_ternak`
-  MODIFY `id_ternak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_ternak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemilik`
@@ -244,7 +269,7 @@ ALTER TABLE `pemilik`
 -- AUTO_INCREMENT untuk tabel `penjadwalan`
 --
 ALTER TABLE `penjadwalan`
-  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `recording_penjualan`

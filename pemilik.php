@@ -106,14 +106,14 @@
             <!-- -------- Non Dropdown List Item ------- -->
             <li>
                 <div class="title">
-                    <a href="#" class="link">
+                    <a href="?page=formulasi" class="link">
                         <i class='bx bx-calculator'></i>
                         <span class="name">Formulasi</span>
                     </a>
                     <!-- <i class='bx bxs-chevron-down'></i> -->
                 </div>
                 <div class="submenu">
-                    <a href="#" class="link submenu-title">Formulasi</a>
+                    <a href="?page=formulasi" class="link submenu-title">Formulasi</a>
                     <!-- submenu links here  -->
                 </div>
             </li>
@@ -197,6 +197,11 @@
                 if ($_GET['page'] == "jadwalperah") {
                     if ($_GET['aksi'] == "") {
                         include "views/pemilik/jadwal/perah/jadwal.php";
+                    }
+                }
+                if ($_GET['page'] == "formulasi") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/pemilik/formulasi/formulasi.php";
                     }
                 }
             ?>
