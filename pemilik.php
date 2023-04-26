@@ -129,8 +129,8 @@
                 </div>
                 <div class="submenu">
                     <a href="#" class="link submenu-title">Recording</a>
-                    <a href="#" class="link">Penjualan</a>
-                    <a href="#" class="link">Produksi</a>
+                    <a href="?page=penjualan" class="link">Penjualan</a>
+                    <a href="?page=produksi" class="link">Produksi</a>
                 </div>
             </li>
         </ul>
@@ -202,6 +202,22 @@
                 if ($_GET['page'] == "formulasi") {
                     if ($_GET['aksi'] == "") {
                         include "views/pemilik/formulasi/formulasi.php";
+                    }
+                }
+                if ($_GET['page'] == "penjualan") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/pemilik/penjualan/penjualan.php";
+                    }
+                    if ($_GET['aksi'] == "grafik") {
+                        include "views/pemilik/penjualan/grafik.php";
+                    }
+                }
+                if ($_GET['page'] == "produksi") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/pemilik/produksi/produksi.php";
+                    }
+                    if ($_GET['aksi'] == "grafik") {
+                        include "views/pemilik/produksi/grafik.php";
                     }
                 }
             ?>

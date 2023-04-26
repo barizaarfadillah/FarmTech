@@ -2,6 +2,17 @@
 
 require_once 'controllers/C_Ternak-Karyawan.php';
 require_once 'controllers/C_Jadwal-Karyawan.php';
+require_once 'controllers/C_Penjualan-Karyawan.php';
+
+$Penjualan = new Penjualan();
+$result = $Penjualan->getData();
+$data_penjualan = array();
+while ($row = $result->fetch_array()){
+    $tanggal = $row['tanggal_penjualan'];
+    $total = $row['total'];
+
+    $data_penjualan[] = array('tanggal' => $tanggal, 'total' => $total);
+}
 
 $Ternak = new Ternak();
 $row = $Ternak->jumlahData();
@@ -9,6 +20,14 @@ $totalTernak = $row['total'];
 
 $Jadwal = new Jadwal();
 $result = $Jadwal->getData();
+
+$Penjualan = new Penjualan();
+$row = $Penjualan->jumlahData();
+$totalPenjualan = $row['total'];
+
+$Produksi = new Produksi();
+$row = $Produksi->jumlahData();
+$totalProduksi = $row['total'];
 ?>
 <h2 class="dash-title">Dashboard</h2>
             <div class="dash-cardss">
@@ -29,11 +48,11 @@ $result = $Jadwal->getData();
                         <span class="bx bx-money"></span>
                         <div>
                             <h5>Penjualan</h5>
-                            <h4>Rp 100.012.040</h4>
+                            <h4>Rp <?php echo $totalPenjualan;?></h4>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="">View all</a>
+                        <a href="?page=penjualan">View all</a>
                     </div>
                 </div>
                 <div class="card-single">
@@ -41,20 +60,22 @@ $result = $Jadwal->getData();
                         <span><img src="assets/img/milk-bottle.svg" alt=""></span>
                         <div>
                             <h5>Produksi</h5>
-                            <h4>50 Produk</h4>
+                            <h4><?php echo $totalProduksi;?> Produk</h4>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="">View all</a>
+                        <a href="?page=produksi">View all</a>
                     </div>
                 </div>
             </div>
             <section class="recent">
                 <div class="activity-grid">
 
-                    <div class="summary">
-                        <div class="summary-card">
-
+                    <div class="activity-card">
+                        <div class="table-responsive">
+                            <div>
+                                <canvas id="myChart"></canvas>
+                            </div>
                         </div>
                     </div>
                     <div class="activity-card">
@@ -96,3 +117,30 @@ $result = $Jadwal->getData();
                     </div>
                 </div>
             </section>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                
+                <script>
+var ctx = document.getElementById('myChart').getContext('2d');
+
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [<?php foreach ($data_penjualan as $data) { echo "'" . $data['tanggal'] . "', "; } ?>],
+        datasets: [{
+            label: 'Penjualan',
+            data: [<?php foreach ($data_penjualan as $data) { echo $data['total'] . ", "; } ?>],
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});                </script>            

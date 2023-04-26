@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Apr 2023 pada 14.41
+-- Waktu pembuatan: 26 Apr 2023 pada 20.02
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -164,11 +164,53 @@ INSERT INTO `penjadwalan` (`id_jadwal`, `jenis`, `jam`, `tanggal`, `karyawan_id_
 CREATE TABLE `recording_penjualan` (
   `id_penjualan` int(11) NOT NULL,
   `nama_produk` varchar(50) NOT NULL,
-  `tanggal_penjualan` datetime NOT NULL,
+  `tanggal_penjualan` date NOT NULL,
   `jumlah_produk` int(11) NOT NULL,
   `total` int(11) NOT NULL,
   `karyawan_id_karyawan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `recording_penjualan`
+--
+
+INSERT INTO `recording_penjualan` (`id_penjualan`, `nama_produk`, `tanggal_penjualan`, `jumlah_produk`, `total`, `karyawan_id_karyawan`) VALUES
+(3, 'Susu Sapi', '2023-04-25', 3, 45000, 2),
+(4, 'Susu Sapi', '2023-04-24', 1, 15000, 2),
+(5, 'Susu Sapi', '2023-04-23', 8, 120000, 2),
+(6, 'Susu Sapi', '2023-04-22', 10, 150000, 2),
+(7, 'Susu Sapi', '2023-04-26', 5, 75000, 2),
+(8, 'Susu Sapi', '2023-04-14', 8, 120000, 2),
+(9, 'Susu Sapi', '2023-05-01', 10, 50000, 1),
+(10, 'Susu Sapi', '2023-05-02', 8, 40000, 1),
+(11, 'Susu Sapi', '2023-05-03', 12, 60000, 1),
+(12, 'Susu Sapi', '2023-05-04', 15, 75000, 1),
+(13, 'Susu Sapi', '2023-05-05', 7, 35000, 1),
+(14, 'Susu Sapi', '2023-05-06', 10, 50000, 1),
+(15, 'Susu Sapi', '2023-05-07', 8, 40000, 1),
+(16, 'Susu Sapi', '2023-05-08', 12, 60000, 1),
+(17, 'Susu Sapi', '2023-05-09', 15, 75000, 1),
+(18, 'Susu Sapi', '2023-05-10', 7, 35000, 1),
+(19, 'Susu Sapi', '2023-05-11', 10, 50000, 1),
+(20, 'Susu Sapi', '2023-05-12', 8, 40000, 1),
+(21, 'Susu Sapi', '2023-05-13', 12, 60000, 1),
+(22, 'Susu Sapi', '2023-05-14', 15, 75000, 1),
+(23, 'Susu Sapi', '2023-05-15', 7, 35000, 1),
+(24, 'Susu Sapi', '2023-05-16', 10, 50000, 1),
+(25, 'Susu Sapi', '2023-05-17', 8, 40000, 1),
+(26, 'Susu Sapi', '2023-05-18', 12, 60000, 1),
+(27, 'Susu Sapi', '2023-05-19', 15, 75000, 1),
+(28, 'Susu Sapi', '2023-05-20', 7, 35000, 1),
+(29, 'Susu Sapi', '2023-05-21', 10, 50000, 1),
+(30, 'Susu Sapi', '2023-05-22', 8, 40000, 1),
+(31, 'Susu Sapi', '2023-05-23', 12, 60000, 1),
+(32, 'Susu Sapi', '2023-05-24', 15, 75000, 1),
+(33, 'Susu Sapi', '2023-05-25', 7, 35000, 1),
+(34, 'Susu Sapi', '2023-05-26', 10, 50000, 1),
+(35, 'Susu Sapi', '2023-05-27', 8, 40000, 1),
+(36, 'Susu Sapi', '2023-05-28', 12, 60000, 1),
+(37, 'Susu Sapi', '2023-05-29', 15, 75000, 1),
+(38, 'Susu Sapi', '2023-05-30', 7, 35000, 1);
 
 -- --------------------------------------------------------
 
@@ -179,10 +221,41 @@ CREATE TABLE `recording_penjualan` (
 CREATE TABLE `recording_produksi` (
   `id_produksi` int(11) NOT NULL,
   `nama_produk` varchar(30) NOT NULL,
-  `tanggal_produksi` datetime NOT NULL,
+  `tanggal_produksi` date NOT NULL,
   `jumlah_produksi` int(11) NOT NULL,
   `karyawan_id_karyawan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `recording_produksi`
+--
+
+INSERT INTO `recording_produksi` (`id_produksi`, `nama_produk`, `tanggal_produksi`, `jumlah_produksi`, `karyawan_id_karyawan`) VALUES
+(1, 'Susu Sapi', '2023-04-28', 210, 1),
+(3, 'Susu Sapi', '2023-04-28', 50, 1),
+(4, 'Susu Sapi', '2023-04-29', 100, 1),
+(5, 'Susu Sapi', '2023-04-30', 75, 1),
+(6, 'Susu Sapi', '2023-05-01', 150, 1),
+(7, 'Susu Sapi', '2023-05-02', 50, 1),
+(8, 'Susu Sapi', '2023-05-03', 25, 1),
+(9, 'Susu Sapi', '2023-05-04', 75, 1),
+(10, 'Susu Sapi', '2023-05-05', 100, 1),
+(11, 'Susu Sapi', '2023-05-06', 50, 1),
+(12, 'Susu Sapi', '2023-05-07', 100, 1),
+(13, 'Susu Sapi', '2023-05-08', 75, 1),
+(14, 'Susu Sapi', '2023-05-09', 150, 1),
+(15, 'Susu Sapi', '2023-05-10', 50, 1),
+(16, 'Susu Sapi', '2023-05-11', 25, 1),
+(17, 'Susu Sapi', '2023-05-12', 75, 1),
+(18, 'Susu Sapi', '2023-05-13', 100, 1),
+(19, 'Susu Sapi', '2023-05-14', 50, 1),
+(20, 'Susu Sapi', '2023-05-15', 100, 1),
+(21, 'Susu Sapi', '2023-05-16', 75, 1),
+(22, 'Susu Sapi', '2023-05-17', 150, 1),
+(23, 'Susu Sapi', '2023-05-18', 50, 1),
+(24, 'Susu Sapi', '2023-05-19', 25, 1),
+(25, 'Susu Sapi', '2023-05-20', 75, 1),
+(26, 'Susu Sapi', '2023-05-21', 100, 1);
 
 --
 -- Indexes for dumped tables
@@ -275,13 +348,13 @@ ALTER TABLE `penjadwalan`
 -- AUTO_INCREMENT untuk tabel `recording_penjualan`
 --
 ALTER TABLE `recording_penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT untuk tabel `recording_produksi`
 --
 ALTER TABLE `recording_produksi`
-  MODIFY `id_produksi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

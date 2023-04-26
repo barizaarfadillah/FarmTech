@@ -113,8 +113,8 @@
                 </div>
                 <div class="submenu">
                     <a href="#" class="link submenu-title">Recording</a>
-                    <a href="#" class="link">Penjualan</a>
-                    <a href="#" class="link">Produksi</a>
+                    <a href="?page=penjualan" class="link">Penjualan</a>
+                    <a href="?page=produksi" class="link">Produksi</a>
                 </div>
             </li>
         </ul>
@@ -178,6 +178,40 @@
                     }
                     if ($_GET['aksi'] == "hapus") {
                         include "views/karyawan/formulasi/hapus.php";
+                    }
+                }
+                if ($_GET['page'] == "penjualan") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/karyawan/penjualan/penjualan.php";
+                    }
+                    if ($_GET['aksi'] == "edit") {
+                        include "views/karyawan/penjualan/edit.php";
+                    }
+                    if ($_GET['aksi'] == "tambah") {
+                        include "views/karyawan/penjualan/tambah.php";
+                    }
+                    if ($_GET['aksi'] == "hapus") {
+                        include "views/karyawan/penjualan/hapus.php";
+                    }
+                    if ($_GET['aksi'] == "grafik") {
+                        include "views/karyawan/penjualan/grafik.php";
+                    }
+                }
+                if ($_GET['page'] == "produksi") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/karyawan/produksi/produksi.php";
+                    }
+                    if ($_GET['aksi'] == "edit") {
+                        include "views/karyawan/produksi/edit.php";
+                    }
+                    if ($_GET['aksi'] == "tambah") {
+                        include "views/karyawan/produksi/tambah.php";
+                    }
+                    if ($_GET['aksi'] == "hapus") {
+                        include "views/karyawan/produksi/hapus.php";
+                    }
+                    if ($_GET['aksi'] == "grafik") {
+                        include "views/karyawan/produksi/grafik.php";
                     }
                 }
                 if ($_GET['page'] == "jadwalpakan") {
