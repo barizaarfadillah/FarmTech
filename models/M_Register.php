@@ -11,7 +11,6 @@ class RegisterModel {
     }
 
     public function register($nama, $email, $password, $namapeternakan, $alamat, $profil) {
-        $password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $this->conn->prepare("INSERT INTO pemilik (nama, email, password, nama_peternakan, alamat_peternakan, foto_profil) VALUES ('$nama', '$email', '$password', '$namapeternakan', '$alamat', '$profil')");
         $stmt->execute();
         $stmt->close();

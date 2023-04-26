@@ -13,29 +13,12 @@
         public function login() {
             $email = $_POST['email'];
             $password = $_POST['password'];
-    
-            // validasi form
-            $errors = $this->cekDataNull($email, $password);
-    
-            if (count($errors) > 0) {
-                require_once 'login-pemilik.php';
-                
+            
+            if(empty($email)||empty($password)){
+                echo "<script>alert('Data wajib diisi');</script>";
             } else {
                 $this->loginModel->login($email, $password);
-                $_SESSION['pemilik'] = $email;
-				$_SESSION['login'] = true;
-				header('location: pemilik.php');
             }
-        }
-    
-        private function cekDataNull($email, $password) {
-            $errors = array();
-    
-            if(empty($email)||empty($password)){
-                $errors['dataNull'] = "Data wajib diisi";
-            }
-            
-            return $errors;
         }
     }
 ?>

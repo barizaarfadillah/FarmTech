@@ -33,6 +33,7 @@ $Karyawan = new Karyawan();
 if(isset($_POST["tambah"])) {
     $Karyawan->addData();?>
     <script>
-    window.location.href="?page=karyawan";
+        alert("Data berhasil ditambah")
+        window.location.href="?page=karyawan";
     </script>
 <?php }?>

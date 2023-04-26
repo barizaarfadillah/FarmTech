@@ -4,8 +4,8 @@ require_once 'controllers/C_Login-Pemilik.php';
 $Login = new Login();
 
 if(isset($_POST["login"])) {
-  $Login->login();
-}
+    $Login->login();
+  }
 
 mysqli_report (MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
@@ -37,8 +37,8 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
                         <p>Masukkan email dan password anda</p>
                         <!-- echo $msg; ?> -->
                         <form action="" method="post">
-                            <input type="email" class="email" name="email" placeholder="Email" required>
-                            <input type="password" class="password" name="password" placeholder="Password" style="margin-bottom: 2px;" required>
+                            <input type="email" class="email" name="email" placeholder="Email" >
+                            <input type="password" class="password" name="password" placeholder="Password" style="margin-bottom: 2px;" >
                             <p class="d-flex justify-content-end"><a href="forgot-password.php" style="margin-bottom: -5px; display: block; text-align: right;">Forgot Password?</a></p>
                             <button name="login" name="login" class="btn" type="login">Login</button>
                         </form>
@@ -51,5 +51,13 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
         </div>
     </div>
     <script src="js/bootsrap.bundle.js"></script>
+<?php
+if(isset($_POST["login"])) {
+    $Ternak->editData();?>
+    <script>
+        alert("Data berhasi diedit")
+        window.location.href="?page=ternak";
+    </script>
+<?php }?>
 </body>
 </html>

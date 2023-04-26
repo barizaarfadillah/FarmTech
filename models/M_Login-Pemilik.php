@@ -9,19 +9,16 @@ class LoginModel {
         $this->conn = $db->connection;
     }
 
-    public function login($email, $password) {
-        $stmt = $this->conn->prepare("SELECT * FROM pemilik WHERE email = '$email'");
+     public function login($email, $password) {
+        $stmt = $this->conn->prepare("SELECT * FROM pemilik WHERE email = '$email' AND password = '$password'");
         $stmt->execute();
         $result = $stmt->get_result();
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            if(password_verify($password, $row['password'])){
-                $_SESSION['id_pemilik'] = $row['id_pemilik'];
-            }
-            return true;
+        if ($result->num_rows == 1) {
+            $_SESSION['pemilik'] = $email;
+            header('location: pemilik.php');
         } else {
-            return false;
+            echo "<script>alert('Email atau password salah');</script>";
         }
 
     }
