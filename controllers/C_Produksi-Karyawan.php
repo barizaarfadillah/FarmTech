@@ -12,13 +12,13 @@
         }
     
     
-        public function getData() {
-            $result = $this->produksiModel->getData(); 
+        public function getRecordingProduksi() {
+            $result = $this->produksiModel->getRecordingProduksi(); 
             return $result;
         }
-        public function getDatabyId() {
+        public function getRecordingProduksibyId() {
             $id= $_GET['id'];
-            $result = $this->produksiModel->getDatabyId($id); 
+            $result = $this->produksiModel->getRecordingProduksibyId($id); 
             return $result;
         }
         public function jumlahData() {
@@ -26,46 +26,98 @@
             return $result;
         }
 
-        public function addData() {
+        public function addRecordingProduksi() {
             $nama = $_POST['nama'];
             $tanggal = $_POST['tanggal'];
             $jumlah = $_POST['jumlah'];
     
-            $errors = $this->cekData($nama, $tanggal, $jumlah);
+            $errors = $this->cekDataNull($nama, $tanggal, $jumlah);
             
-            if (count($errors) === 0) {
-                $this->produksiModel->addData($nama, $tanggal, $jumlah);
+            if (count($errors) > 0) {
+                $errors = $errors['error'];
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                <script>
+                swal({
+                    title: '$errors',
+                    icon: 'warning',
+                    button: 'Oke'
+                })
+                </script>";
+                
+            } else {
+                $this->produksiModel->addRecordingProduksi($nama, $tanggal, $jumlah);
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                    echo "<script>
+                        swal({
+                            title: 'Data berhasil ditambah',
+                            icon: 'success',
+                            button: 'Oke',
+                        }).then(() => {
+                            window.location.href='?page=produksi';
+                        });
+                    </script>";
             }
         }
-        public function editData() {
+        public function updateRecordingProduksi() {
             $nama = $_POST['nama'];
             $tanggal = $_POST['tanggal'];
             $jumlah = $_POST['jumlah'];
             $id= $_GET['id'];
     
-            $errors = $this->cekData($nama, $tanggal, $jumlah);
+            $errors = $this->cekDataNull($nama, $tanggal, $jumlah);
             
-            if (count($errors) === 0) {
-                $this->produksiModel->editData($id, $nama, $tanggal, $jumlah);
+            if (count($errors) > 0) {
+                $errors = $errors['error'];
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                <script>
+                swal({
+                    title: '$errors',
+                    icon: 'warning',
+                    button: 'Oke'
+                })
+                </script>";
+                
+            } else {
+                $this->produksiModel->updateRecordingProduksi($id, $nama, $tanggal, $jumlah);
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                    echo "<script>
+                        swal({
+                            title: 'Data tersimpan',
+                            icon: 'success',
+                            button: 'Oke',
+                        }).then(() => {
+                            window.location.href='?page=produksi';
+                        });
+                    </script>";
             }
+            
         }
 
-        private function cekData($nama, $tanggal, $jumlah) {
+        private function cekDataNull($nama, $tanggal, $jumlah) {
             
             $errors = array();
     
             if(empty($nama)||empty($tanggal)||empty($jumlah)){
-                $errors['dataNull'] = "Data wajib diisi";
+                $errors['error'] = "Data wajib diisi";
             }
             
             return $errors;
         }
 
-        public function deleteData() {
+        public function deleteRecordingProduksi() {
             $id= $_GET['id'];
             
-            $this->produksiModel->deleteData($id);
-            
+            $this->produksiModel->deleteRecordingProduksi($id);
+            echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+            echo "<script>
+                swal({
+                    title: 'Data berhasil dihapus',
+                    icon: 'success',
+                    button: 'Oke',
+                }).then(() => {
+                    window.location.href='?page=produksi';
+                });
+            </script>";
         }
 
     }

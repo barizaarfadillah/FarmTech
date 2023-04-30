@@ -1,9 +1,23 @@
 <?php
 require_once 'controllers/C_Penjualan-Karyawan.php';
 $Penjualan = new Penjualan();
-$result = $Penjualan->getData();
+$result = $Penjualan->getRecordingPenjualan();
 ?>
 
+<header>
+            <div class="toggle-sidebar">
+                <div class="text"><?php echo $data['nama'];?></div>
+            </div>
+            <div class="social-icons">
+                <span class="bx bx-bell"></span>
+                <div>
+                    <a href="?page=profil">
+                        <img src="assets/img/avatar/<?php echo $data['foto_profile'] ;?>" alt="">
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main>
 <h2 class="dash-title">Data Penjualan</h2>
             <div class="dash-cardsss">
                 <div class="card-singless">
@@ -36,7 +50,7 @@ $result = $Penjualan->getData();
                                     <td style="font-size: .9rem;"><?php echo $row['total'] ;?></td>
                                     <td style="text-align: center;display:flex;justify-content: center;align-items: center;">
                                         <a class="btn-add" href="?page=penjualan&aksi=edit&id=<?php echo $row['id_penjualan'] ?>" style="width:65px; margin:0.5rem;">Edit</a>
-                                        <a onclick="return confirm('Apakah anda yakin akan memecat karyawan ini?')" class="btn-delete" style="width:65px; margin:0.5rem;" href="?page=penjualan&aksi=hapus&id=<?php echo $row['id_penjualan'] ?>">Hapus</a>
+                                        <a class="btn-delete" style="width:65px; margin:0.5rem;" href="?page=penjualan&aksi=hapus&id=<?php echo $row['id_penjualan'] ?>">Hapus</a>
                                     </td>
                                 </tr>
                                 <?php
@@ -48,3 +62,4 @@ $result = $Penjualan->getData();
                     </div>
                 </div>
             </div>
+                                </main>

@@ -23,7 +23,7 @@ class ProduksiModel {
         }
     }
 
-    public function getData() {
+    public function getRecordingProduksi() {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
@@ -34,7 +34,7 @@ class ProduksiModel {
     }
     
 
-    public function getDatabyId($id) {
+    public function getRecordingProduksibyId($id) {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
@@ -44,20 +44,20 @@ class ProduksiModel {
         return $result;
     }
 
-    public function addData($nama, $tanggal, $jumlah) {
+    public function addRecordingProduksi($nama, $tanggal, $jumlah) {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $stmt = $this->conn->prepare("INSERT INTO recording_produksi (nama_produk, tanggal_produksi, jumlah_produksi, karyawan_id_karyawan) VALUES ('$nama', '$tanggal', '$jumlah', '$karyawan')");
         $stmt->execute();
         $stmt->close();
     }
-    public function editData($id, $nama, $tanggal, $jumlah) {
+    public function updateRecordingProduksi($id, $nama, $tanggal, $jumlah) {
         $stmt = $this->conn->prepare("UPDATE recording_produksi SET nama_produk = '$nama', tanggal_produksi = '$tanggal', jumlah_produksi = '$jumlah' WHERE id_produksi = '$id'");
         $stmt->execute();
         $stmt->close();
     }
 
-    public function deleteData($id) {
+    public function deleteRecordingProduksi($id) {
         $stmt = $this->conn->prepare("DELETE FROM recording_produksi WHERE id_produksi = '$id'");
         $stmt->execute();
         $stmt->close();

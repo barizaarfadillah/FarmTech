@@ -4,6 +4,19 @@ $Karyawan = new Karyawan();
 $result = $Karyawan->getKaryawan();
 ?>
 
+<header>
+            <div class="toggle-sidebar">
+                <div class="text"><?php echo $data['nama'] ;?></div>
+            </div>
+            <div class="social-icons">
+                <div>
+                    <a href="?page=profil">
+                        <img src="assets/img/avatar/<?php echo $data['profil'] ;?>" alt="">
+                    </a>
+                </div>
+            </div>
+        </header>
+<main>
 <h2 class="dash-title">Data Karyawan</h2>
             <div class="dash-cardsss">
                 <div class="card-singless">
@@ -42,3 +55,4 @@ $result = $Karyawan->getKaryawan();
                     </div>
                 </div>
             </div>
+                                        </main>

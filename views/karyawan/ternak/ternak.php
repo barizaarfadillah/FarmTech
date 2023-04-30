@@ -4,6 +4,20 @@ $Ternak = new Ternak();
 $result = $Ternak->getData();
 ?>
 
+<header>
+            <div class="toggle-sidebar">
+                <div class="text"><?php echo $data['nama'];?></div>
+            </div>
+            <div class="social-icons">
+                <span class="bx bx-bell"></span>
+                <div>
+                    <a href="?page=profil">
+                        <img src="assets/img/avatar/<?php echo $data['foto_profile'] ;?>" alt="">
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main>
 <h2 class="dash-title">Data Hewan Ternak</h2>
             <div class="dash-cardsss">
                 <div class="card-singless">
@@ -43,3 +57,4 @@ $result = $Ternak->getData();
                     </div>
                 </div>
             </div>
+                                </main>

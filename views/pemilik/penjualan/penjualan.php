@@ -1,9 +1,22 @@
 <?php
 require_once 'controllers/C_Penjualan-Pemilik.php';
 $Penjualan = new Penjualan();
-$result = $Penjualan->getData();
+$result = $Penjualan->getRecordingPenjualan();
 ?>
 
+<header>
+            <div class="toggle-sidebar">
+                <div class="text"><?php echo $data['nama'] ;?></div>
+            </div>
+            <div class="social-icons">
+                <div>
+                    <a href="?page=profil">
+                        <img src="assets/img/avatar/<?php echo $data['profil'] ;?>" alt="">
+                    </a>
+                </div>
+            </div>
+        </header>
+<main>
 <h2 class="dash-title">Data Penjualan</h2>
             <div class="dash-cardsss">
                 <div class="card-singless">
@@ -42,3 +55,4 @@ $result = $Penjualan->getData();
                     </div>
                 </div>
             </div>
+                                </main>

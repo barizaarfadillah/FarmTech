@@ -12,8 +12,8 @@
         }
     
     
-        public function getData() {
-            $result = $this->penjualanModel->getData(); 
+        public function getRecordingPenjualan() {
+            $result = $this->penjualanModel->getRecordingPenjualan(); 
             return $result;
         }
        

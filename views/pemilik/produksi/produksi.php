@@ -1,9 +1,22 @@
 <?php
 require_once 'controllers/C_Produksi-Pemilik.php';
 $Produksi = new Produksi();
-$result = $Produksi->getData();
+$result = $Produksi->getRecordingProduksi();
 ?>
 
+<header>
+            <div class="toggle-sidebar">
+                <div class="text"><?php echo $data['nama'] ;?></div>
+            </div>
+            <div class="social-icons">
+                <div>
+                    <a href="?page=profil">
+                        <img src="assets/img/avatar/<?php echo $data['profil'] ;?>" alt="">
+                    </a>
+                </div>
+            </div>
+        </header>
+<main>
 <h2 class="dash-title">Data Produksi</h2>
             <div class="dash-cardsss">
                 <div class="card-singless">
@@ -40,3 +53,4 @@ $result = $Produksi->getData();
                     </div>
                 </div>
             </div>
+                                </main>

@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Penjualan-Pemilik.php';
 $Penjualan = new Penjualan();
-$result = $Penjualan->getData();
+$result = $Penjualan->getRecordingPenjualan();
 $data_penjualan = array();
 while ($row = $result->fetch_array()){
     $tanggal = $row['tanggal_penjualan'];
@@ -10,7 +10,19 @@ while ($row = $result->fetch_array()){
     $data_penjualan[] = array('tanggal' => $tanggal, 'total' => $total);
 }
 ?>
-
+<header>
+            <div class="toggle-sidebar">
+                <div class="text"><?php echo $data['nama'] ;?></div>
+            </div>
+            <div class="social-icons">
+                <div>
+                    <a href="?page=profil">
+                        <img src="assets/img/avatar/<?php echo $data['profil'] ;?>" alt="">
+                    </a>
+                </div>
+            </div>
+        </header>
+<main>
             <h2 class="dash-title">Data Penjualan</h2>
             <div class="dash-cardsss">
                 <div class="card-singless">
@@ -47,3 +59,4 @@ var myChart = new Chart(ctx, {
         }
     }
 });                </script>
+</main>

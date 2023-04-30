@@ -31,9 +31,6 @@ $Produksi = new Produksi();
             </div>
 <?php
 if(isset($_POST["tambah"])) {
-    $Produksi->addData();?>
-    <script>
-        alert("Data berhasil ditambah")
-        window.location.href="?page=produksi";
-    </script>
+    $Produksi->addRecordingProduksi();?>
+
 <?php }?>

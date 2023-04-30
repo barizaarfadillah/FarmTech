@@ -122,22 +122,7 @@
 
     <!-- ============= Home Section =============== -->
     <section class="home">
-        <header>
-            <div class="toggle-sidebar">
-                <div class="text"><?php echo $data['nama'];?></div>
-            </div>
-            <div class="social-icons">
-                <span class="bx bx-bell"></span>
-                <div>
-                    <a href="?page=profil">
-                        <img src="assets/img/avatar/<?php echo $data['foto_profile'] ;?>" alt="">
-                    </a>
-                </div>
-                <span class="garis"></span>
-                <a onclick="logout()" class="btn-logout" >Logout</a>
-            </div>
-        </header>
-        <main>
+        
             <?php
                 if ($_GET['page'] == "") {
                     if ($_GET['aksi'] == "") {
@@ -257,7 +242,6 @@
                     }
                 }
             ?>
-        </main>
     </section>
 
     <!-- Link JS -->

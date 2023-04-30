@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Produksi-Karyawan.php';
 $Produksi = new Produksi();
-$result = $Produksi->getDatabyId();
+$result = $Produksi->getRecordingProduksibyId();
 $row = $result->fetch_assoc()
 ?>
 <div class="dash-cardsss">
@@ -27,7 +27,7 @@ $row = $result->fetch_assoc()
                                     <input name='jumlah'type="text" value="<?php echo $row['jumlah_produksi'] ;?>"/>
                                 </div>
                                 <div class="edit-profile">
-                                    <button name='edit' class="btn-add" href="#" style="border-style: none; width:65px; margin:0.5rem;">Edit</button>
+                                    <button name='edit' class="btn-add" href="#" style="border-style: none; width:65px; margin:0.5rem;">Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -36,9 +36,5 @@ $row = $result->fetch_assoc()
             </div>
 <?php
 if(isset($_POST["edit"])) {
-    $Produksi->editData();?>
-    <script>
-        alert("Data berhasi diedit")
-        window.location.href="?page=produksi";
-    </script>
+    $Produksi->updateRecordingProduksi();?>
 <?php }?>

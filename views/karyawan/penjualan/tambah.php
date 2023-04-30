@@ -35,9 +35,6 @@ $Penjualan = new Penjualan();
             </div>
 <?php
 if(isset($_POST["tambah"])) {
-    $Penjualan->addData();?>
-    <script>
-        alert("Data berhasi ditambah")
-        window.location.href="?page=penjualan";
-    </script>
+    $Penjualan->addRecordingPenjualan();?>
+
 <?php }?>

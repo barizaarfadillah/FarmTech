@@ -4,6 +4,19 @@ $Jadwal = new Jadwal();
 $result = $Jadwal->getDataPakan();
 ?>
 
+<header>
+            <div class="toggle-sidebar">
+                <div class="text"><?php echo $data['nama'] ;?></div>
+            </div>
+            <div class="social-icons">
+                <div>
+                    <a href="?page=profil">
+                        <img src="assets/img/avatar/<?php echo $data['profil'] ;?>" alt="">
+                    </a>
+                </div>
+            </div>
+        </header>
+<main>
 <h2 class="dash-title">Jadwal Pemberian Pakan</h2>
             <div class="dash-cardsss">
                 <div class="card-singless">
@@ -39,3 +52,4 @@ $result = $Jadwal->getDataPakan();
                     </div>
                 </div>
             </div>
+                                </main>

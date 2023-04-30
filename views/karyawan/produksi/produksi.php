@@ -1,9 +1,23 @@
 <?php
 require_once 'controllers/C_Produksi-Karyawan.php';
 $Produksi = new Produksi();
-$result = $Produksi->getData();
+$result = $Produksi->getRecordingProduksi();
 ?>
 
+<header>
+            <div class="toggle-sidebar">
+                <div class="text"><?php echo $data['nama'];?></div>
+            </div>
+            <div class="social-icons">
+                <span class="bx bx-bell"></span>
+                <div>
+                    <a href="?page=profil">
+                        <img src="assets/img/avatar/<?php echo $data['foto_profile'] ;?>" alt="">
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main>
 <h2 class="dash-title">Data Produksi</h2>
             <div class="dash-cardsss">
                 <div class="card-singless">
@@ -34,7 +48,7 @@ $result = $Produksi->getData();
                                     <td style="font-size: .9rem;"><?php echo $row['jumlah_produksi'] ;?></td>
                                     <td style="text-align: center;display:flex;justify-content: center;align-items: center;">
                                         <a class="btn-add" href="?page=produksi&aksi=edit&id=<?php echo $row['id_produksi'] ?>" style="width:65px; margin:0.5rem;">Edit</a>
-                                        <a onclick="return confirm('Apakah anda yakin akan menghapus data ini?')" class="btn-delete" style="width:65px; margin:0.5rem;" href="?page=produksi&aksi=hapus&id=<?php echo $row['id_produksi'] ?>">Hapus</a>
+                                        <a class="btn-delete" style="width:65px; margin:0.5rem;" href="?page=produksi&aksi=hapus&id=<?php echo $row['id_produksi'] ?>">Hapus</a>
                                     </td>
                                 </tr>
                                 <?php
@@ -46,3 +60,4 @@ $result = $Produksi->getData();
                     </div>
                 </div>
             </div>
+            </main

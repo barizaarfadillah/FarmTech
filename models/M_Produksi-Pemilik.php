@@ -23,7 +23,7 @@ class ProduksiModel {
         }
     }
 
-    public function getData() {
+    public function getRecordingProduksi() {
         $pemilik = $this->getPemilik();
         $stmt = $this->conn->prepare("SELECT recording_produksi.id_produksi, recording_produksi.nama_produk, recording_produksi.tanggal_produksi, recording_produksi.jumlah_produksi FROM karyawan JOIN recording_produksi ON karyawan.id_karyawan = recording_produksi.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' ORDER BY recording_produksi.tanggal_produksi");
         $stmt->execute();

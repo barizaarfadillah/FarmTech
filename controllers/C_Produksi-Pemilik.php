@@ -12,8 +12,8 @@
         }
     
     
-        public function getData() {
-            $result = $this->produksiModel->getData(); 
+        public function getRecordingProduksi() {
+            $result = $this->produksiModel->getRecordingProduksi(); 
             return $result;
         }
 

@@ -6,7 +6,7 @@ require_once 'controllers/C_Penjualan-Karyawan.php';
 require_once 'controllers/C_Produksi-Karyawan.php';
 
 $Penjualan = new Penjualan();
-$result = $Penjualan->getData();
+$result = $Penjualan->getRecordingPenjualan();
 $data_penjualan = array();
 while ($row = $result->fetch_array()){
     $tanggal = $row['tanggal_penjualan'];
@@ -30,6 +30,23 @@ $Produksi = new Produksi();
 $row = $Produksi->jumlahData();
 $totalProduksi = $row['total'];
 ?>
+
+<header>
+            <div class="toggle-sidebar">
+                <div class="text"><?php echo $data['nama'];?></div>
+            </div>
+            <div class="social-icons">
+                <span class="bx bx-bell"></span>
+                <div>
+                    <a href="?page=profil">
+                        <img src="assets/img/avatar/<?php echo $data['foto_profile'] ;?>" alt="">
+                    </a>
+                </div>
+                <span class="garis"></span>
+                <a onclick="logout()" class="btn-logout" >Logout</a>
+            </div>
+        </header>
+        <main>
 <h2 class="dash-title">Dashboard</h2>
             <div class="dash-cardss">
                 <div class="card-single">
@@ -145,3 +162,4 @@ var myChart = new Chart(ctx, {
         }
     }
 });                </script>            
+</main>

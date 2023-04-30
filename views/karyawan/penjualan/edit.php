@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Penjualan-Karyawan.php';
 $Penjualan = new Penjualan();
-$result = $Penjualan->getDatabyId();
+$result = $Penjualan->getRecordingPenjualanbyId();
 $row = $result->fetch_assoc()
 ?>
 <div class="dash-cardsss">
@@ -31,7 +31,7 @@ $row = $result->fetch_assoc()
                                     <input name='total'type="text" value="<?php echo $row['total'] ;?>"/>
                                 </div>
                                 <div class="edit-profile">
-                                    <button name='edit' class="btn-add" href="#" style="border-style: none; width:65px; margin:0.5rem;">Edit</button>
+                                    <button name='edit' class="btn-add" href="#" style="border-style: none; width:65px; margin:0.5rem;">Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -40,9 +40,5 @@ $row = $result->fetch_assoc()
             </div>
 <?php
 if(isset($_POST["edit"])) {
-    $Penjualan->editData();?>
-    <script>
-        alert("Data berhasi diedit")
-        window.location.href="?page=penjualan";
-    </script>
+    $Penjualan->updateRecordingPenjualan();?>
 <?php }?>
