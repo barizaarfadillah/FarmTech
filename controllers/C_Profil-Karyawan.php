@@ -12,35 +12,76 @@
         }
     
     
-        public function getData() {
+        public function getKaryawan() {
             
-            return $this->profilModel->getData();
+            return $this->profilModel->getKaryawan();
         }
 
-        public function editProfil() {
+        public function simpan() {
             $email = $_POST['email'];
             $nama = $_POST['nama'];
             $alamat = $_POST['alamat'];
             $no_hp = $_POST['no_hp'];
+            $password = $_POST['password'];
             
 
-            $this->profilModel->editProfil($email, $nama, $alamat, $no_hp);
-            // $errors = $this->cekData($nama, $alamat, $no_hp);
+            $errors = $this->cekDataNull($nama, $alamat, $no_hp, $password);
             
-            // if (count($errors) === 0) {
+            if (count($errors) > 0) {
+                $errors = $errors['error'];
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                 <script>
+                swal({
+                    title: '$errors',
+                    icon: 'warning',
+                    button: 'Oke'
+                })
+            </script>";
                 
-                
-            // }
-    
-            
+            } else {
+                $this->profilModel->simpan($email, $nama, $alamat, $no_hp, $password);
+                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                    <script>
+                            swal({
+                    title: "Simpan ?",
+                    icon: "warning",
+                    buttons: {
+                        confirm: {
+                            text: "Simpan",
+                            value: true,
+                            visible: true,
+                            className: "btn btn-primary",
+                            closeModal: true
+                        },
+                        cancel: {
+                            text: "Batal",
+                            value: false,
+                            visible: true,
+                            className: "btn btn-secondary",
+                            closeModal: true,
+                        }
+                    }
+                }).then((value) => {
+                    if (value) {
+                        swal({
+                            title: "Data tersimpan",
+                            icon: "success",
+                            button: "Oke",
+                        }).then(() => {
+                            window.location.href="?page=profil";
+                        });
+                    }
+                });
+                    </script>';
+            }
         }
 
-        private function cekData($nama, $alamat, $no_hp) {
+        private function cekDataNull($nama, $alamat, $no_hp, $password) {
             
             $errors = array();
     
-            if(empty($nama)||empty($alamat)||empty($no_hp)){
-                $errors['dataNull'] = "Data wajib diisi";
+            if(empty($nama)||empty($alamat)||empty($no_hp)||empty($password)){
+                $errors['error'] = "Data harus diisi";
             }
             
             return $errors;

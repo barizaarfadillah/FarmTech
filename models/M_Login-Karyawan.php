@@ -10,19 +10,37 @@ class LoginModel {
     }
 
     public function login($email, $password) {
-        $stmt = $this->conn->prepare("SELECT * FROM karyawan WHERE email = '$email' AND password = '$password'");
+        if ($this->cekEmailTerdaftar($email) == true) {
+            if ($this->cekPasswordBenar($email, $password) == true){
+                $_SESSION['karyawan'] = $email;       
+            }
+        }
+    }
+
+    public function cekEmailTerdaftar($email){
+        $stmt = $this->conn->prepare("SELECT * FROM karyawan WHERE email = '$email'");
         $stmt->execute();
         $result = $stmt->get_result();
-
-        if ($result->num_rows == 1) {
-            $_SESSION['karyawan'] = $email;
-            header('location: karyawan.php');
+        $stmt->close();
+    
+        if($result->num_rows > 0) {
+            return true;
         } else {
-            echo "<script>alert('Email atau password salah');</script>";
+            return false;
         }
-
     }
     
+    public function cekPasswordBenar($email, $password){
+        $stmt = $this->conn->prepare("SELECT * FROM karyawan WHERE email = '$email' AND password = $password");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
     
+        if($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 

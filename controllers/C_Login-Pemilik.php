@@ -13,12 +13,47 @@
         public function login() {
             $email = $_POST['email'];
             $password = $_POST['password'];
-            
-            if(empty($email)||empty($password)){
-                echo "<script>alert('Data wajib diisi');</script>";
+
+            $errors = $this->cekDataNull($email, $password);
+        
+            if (count($errors) > 0) {
+                $errors = $errors['error'];
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                <script>
+                swal({
+                    title: '$errors',
+                    icon: 'warning',
+                    button: 'Oke'
+                })
+            </script>";
+                
             } else {
                 $this->loginModel->login($email, $password);
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                    echo "<script>
+                    swal({
+                        title: 'Login Berhasil',
+                        icon: 'success',
+                        button: 'Oke',
+                    }).then(() => {
+                        window.location.href='pemilik.php';
+                    });
+                    </script>";
             }
+        }
+
+        private function cekDataNull($email, $password) {
+            $errors = array();
+    
+            if(empty($email)||empty($password)){
+                $errors['error'] = "Data harus diisi";
+            } elseif ($this->loginModel->cekEmailTerdaftar($email) == false){
+                $errors['error'] = "Akun tidak terdaftar";
+            } elseif ($this->loginModel->cekPasswordBenar($email, $password) == false){
+                $errors['error'] = "Password Salah";
+            }
+            
+            return $errors;
         }
     }
 ?>

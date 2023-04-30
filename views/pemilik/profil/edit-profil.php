@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Profil-Pemilik.php';
 $Profil = new Profil();
-$data = $Profil->getData();
+$data = $Profil->getPemilik();
 ?>
 <div class="dash-cardsss">
                 <div class="card-singles">
@@ -24,6 +24,10 @@ $data = $Profil->getData();
                                     <input name= "email" type="text" value="<?php echo $data['email'];?>" readonly/>
                                 </div>
                                 <div class="info-profile">
+                                    <label for="">Password</label></br>
+                                    <input name= "password" type="password" value="<?php echo $data['password'];?>"/>
+                                </div>
+                                <div class="info-profile">
                                     <label for="">Nama Peternakan</label></br>
                                     <input name= "peternakan" value="<?php echo $data['peternakan'];?>"/>
                                 </div>
@@ -41,11 +45,5 @@ $data = $Profil->getData();
             </div>
 <?php
 if(isset($_POST["simpan"])) {
-    $Profil->editProfil();
-?>  
-<script>
-    window.location.href="?page=profil";
-</script>  
-<?php
-}
-?>
+    $Profil->simpan();?>
+<?php }?>

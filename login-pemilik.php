@@ -3,9 +3,9 @@ require_once 'controllers/C_Login-Pemilik.php';
 
 $Login = new Login();
 
-if(isset($_POST["login"])) {
-    $Login->login();
-  }
+// if(isset($_POST["login"])) {
+//     $Login->login();
+//   }
 
 mysqli_report (MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
@@ -53,11 +53,7 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     <script src="js/bootsrap.bundle.js"></script>
 <?php
 if(isset($_POST["login"])) {
-    $Ternak->editData();?>
-    <script>
-        alert("Data berhasi diedit")
-        window.location.href="?page=ternak";
-    </script>
-<?php }?>
+    $Login->login();
+}?>
 </body>
 </html>

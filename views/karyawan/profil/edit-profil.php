@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Profil-Karyawan.php';
 $Profil = new Profil();
-$data = $Profil->getData();
+$data = $Profil->getKaryawan();
 ?>
 <div class="dash-cardsss">
                 <div class="card-singles">
@@ -24,6 +24,10 @@ $data = $Profil->getData();
                                     <input name= "email" type="text" value="<?php echo $data['email'];?>" readonly/>
                                 </div>
                                 <div class="info-profile">
+                                    <label for="">Password</label></br>
+                                    <input name= "password" type="password" value="<?php echo $data['password'];?>" />
+                                </div>
+                                <div class="info-profile">
                                     <label for="">Alamat</label></br>
                                     <input name= "alamat" type="text" value="<?php echo $data['alamat'];?>"/>
                                 </div>
@@ -41,11 +45,9 @@ $data = $Profil->getData();
             </div>
 <?php
 if(isset($_POST["simpan"])) {
-    $Profil->editProfil();
+    $Profil->simpan();
 ?>  
-<script>
-    window.location.href="?page=profil";
-</script>  
+
 <?php
 }
 ?>

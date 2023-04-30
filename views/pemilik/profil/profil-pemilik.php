@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Profil-Pemilik.php';
 $Profil = new Profil();
-$data = $Profil->getData();
+$data = $Profil->getPemilik();
 $_SESSION['id_pemilik'] = $data['id'];
 ?>
 <div class="dash-cardsss">
@@ -19,6 +19,10 @@ $_SESSION['id_pemilik'] = $data['id'];
                             <div class="info-profile">
                                 <label for="">Email</label></br>
                                 <input type="text" value="<?php echo $data['email'];?>" readonly/>
+                            </div>
+                            <div class="info-profile">
+                                <label for="">Password</label></br>
+                                <input type="password" value="<?php echo $data['password'];?>" readonly/>
                             </div>
                             <div class="info-profile">
                                 <label for="">Nama Peternakan</label></br>

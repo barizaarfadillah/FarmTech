@@ -22,12 +22,28 @@ class Register {
         $errors = $this->cekData($nama, $email, $password, $cpassword, $namapeternakan);
         
         if (count($errors) > 0) {
-            require_once 'register.php';
+            $errors = $errors['error'];
+            echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+             <script>
+            swal({
+                title: '$errors',
+                icon: 'warning',
+                button: 'Oke'
+            })
+        </script>";
             
         } else {
             $this->registerModel->register($nama, $email, $password, $namapeternakan, $alamat, $profil);
-            $_SESSION['info'] = "Registrasi, silahkan login";
-            header('location: login-pemilik.php');
+            echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                echo "<script>
+                    swal({
+                        title: 'Registrasi Berhasil',
+                        icon: 'success',
+                        button: 'Oke',
+                    }).then(() => {
+                        window.location.href='login-pemilik.php';
+                    });
+                </script>";
         }
     }
 
@@ -35,11 +51,11 @@ class Register {
         $errors = array();
 
         if(empty($nama)||empty($namapeternakan)||empty($email)||empty($password)||empty($cpassword)){
-            $errors['dataNull'] = "Data wajib diisi";
+            $errors['error'] = "Data wajib diisi";
         } elseif ($this->registerModel->cekEmail($email)){
-            $errors['email'] = "Email sudah terdaftar";
+            $errors['error'] = "Email sudah terdaftar";
         } elseif ($password !== $cpassword){
-            $errors['password'] = "Password tidak cocok";
+            $errors['error'] = "Password Tidak Sama";
         }
         
         return $errors;

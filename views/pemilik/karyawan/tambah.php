@@ -10,16 +10,16 @@ $Karyawan = new Karyawan();
                         <div class="profile">
                                 <form action="" method="post">
                                 <div class="info-profile">
-                                    <label for="">Nama Lengkap</label></br>
-                                    <input name='nama'type="text"/>
-                                </div>
-                                <div class="info-profile">
                                     <label for="">Email</label></br>
                                     <input name='email' type="text"/>
                                 </div>
                                 <div class="info-profile">
                                     <label for="">Password</label></br>
                                     <input name='password' type="password"/>
+                                </div>
+                                <div class="info-profile">
+                                    <label for="">Confirm Password</label></br>
+                                    <input name='cpassword' type="password"/>
                                 </div>
                                 <div class="edit-profile">
                                     <button name='tambah' class="btn-add" href="#" style="border-style: none;">Tambah</button>
@@ -31,9 +31,5 @@ $Karyawan = new Karyawan();
             </div>
 <?php
 if(isset($_POST["tambah"])) {
-    $Karyawan->addData();?>
-    <script>
-        alert("Data berhasil ditambah")
-        window.location.href="?page=karyawan";
-    </script>
+    $Karyawan->addDataAkun();?>
 <?php }?>

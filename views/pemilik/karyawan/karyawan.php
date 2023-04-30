@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Karyawan-Pemilik.php';
 $Karyawan = new Karyawan();
-$result = $Karyawan->getData();
+$result = $Karyawan->getKaryawan();
 ?>
 
 <h2 class="dash-title">Data Karyawan</h2>
@@ -33,7 +33,7 @@ $result = $Karyawan->getData();
                                     <td style="font-size: .9rem;"><?php echo $row['alamat'] ;?></td>
                                     <td style="font-size: .9rem;"><?php echo $row['email'] ;?></td>
                                     <td style="font-size: .9rem;"><?php echo $row['no_hp'] ;?></td>
-                                    <td style="text-align: center;display:flex;justify-content: center;align-items: center;"><a style="width:65px; margin:0.5rem;"onclick="return confirm('Apakah anda yakin akan memecat karyawan ini?')" class="btn-delete" href="?page=karyawan&aksi=hapus&id=<?php echo $row['id_karyawan'] ?>">Pecat</a></td>
+                                    <td style="text-align: center;display:flex;justify-content: center;align-items: center;"><a style="width:65px; margin:0.5rem;" class="btn-delete" href="?page=karyawan&aksi=hapus&id=<?php echo $row['id_karyawan'] ?>">Hapus</a></td>
                                 </tr>
                                 <?php }}?>
                                 

@@ -23,7 +23,7 @@ class KaryawanModel {
         }
     }
 
-    public function getData() {
+    public function getDataAkun() {
         $pemilik = $this->getPemilik();
         $stmt = $this->conn->prepare("SELECT * FROM karyawan WHERE pemilik_id_pemilik = '$pemilik' AND status = 1");
         $stmt->execute();
@@ -32,14 +32,14 @@ class KaryawanModel {
         
     }
 
-    public function addData($nama, $email, $password) {
+    public function addDataAkun($email, $password) {
         $pemilik = $this->getPemilik();
-        $stmt = $this->conn->prepare("INSERT INTO karyawan (nama, email, password, alamat, no_hp, foto_profile, pemilik_id_pemilik, status) VALUES ('$nama', '$email', '$password', ' ', ' ', 'default.svg', '$pemilik', 1)");
+        $stmt = $this->conn->prepare("INSERT INTO karyawan (nama, email, password, alamat, no_hp, foto_profile, pemilik_id_pemilik, status) VALUES (' ', '$email', '$password', ' ', ' ', 'default.svg', '$pemilik', 1)");
         $stmt->execute();
         $stmt->close();
     }
 
-    public function deleteData($id) {
+    public function hapus($id) {
         $stmt = $this->conn->prepare("UPDATE karyawan SET status = 0 WHERE id_karyawan = '$id'");
         $stmt->execute();
         $stmt->close();

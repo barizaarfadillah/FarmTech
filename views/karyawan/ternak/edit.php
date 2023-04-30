@@ -32,7 +32,7 @@ $row = $result->fetch_assoc()
                                     </select>
                                 </div>
                                 <div class="edit-profile">
-                                    <button name='edit' class="btn-add" href="#" style="border-style: none; width:65px; margin:0.5rem;">Edit</button>
+                                    <button name='edit' class="btn-add" href="#" style="border-style: none; width:65px; margin:0.5rem;">Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -42,8 +42,38 @@ $row = $result->fetch_assoc()
 <?php
 if(isset($_POST["edit"])) {
     $Ternak->editData();?>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-        alert("Data berhasi diedit")
-        window.location.href="?page=ternak";
+            swal({
+    title: "Simpan perubahan?",
+    icon: "warning",
+    buttons: {
+        confirm: {
+            text: "Simpan",
+            value: true,
+            visible: true,
+            className: "btn btn-primary",
+            closeModal: true
+        },
+        cancel: {
+            text: "Batal",
+            value: false,
+            visible: true,
+            className: "btn btn-secondary",
+            closeModal: true,
+        }
+    }
+}).then((value) => {
+    if (value) {
+        swal({
+            title: "Berhasil!",
+            text: "Data berhasil diedit",
+            icon: "success",
+            button: "Oke",
+        }).then(() => {
+            window.location.href="?page=ternak";
+        });
+    }
+});
     </script>
 <?php }?>

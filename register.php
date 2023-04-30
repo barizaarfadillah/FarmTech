@@ -3,9 +3,6 @@ require_once 'controllers/C_Register.php';
 
 $Register = new Register();
 
-if(isset($_POST["signup"])) {
-  $Register->register();
-}
 
 mysqli_report (MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
@@ -36,11 +33,11 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
                           <header>Register</header>
                           <p>Silahkan lengkapi untuk melakukan registrasi</p>
                           <form action="" method="post">
-                              <input type="text" class="nama" name="nama" placeholder="Nama" required>
-                              <input type="text" class="namapeternakan" name="namapeternakan" placeholder="Nama Peternakan" required>
-                              <input type="email" class="email" name="email" placeholder="Email" required>
-                              <input type="password" class="password" name="password" placeholder="Password" required>
-                              <input type="password" class="cpassword" name="cpassword" placeholder="Confirm Password" required>
+                              <input type="text" class="nama" name="nama" placeholder="Nama" >
+                              <input type="text" class="namapeternakan" name="namapeternakan" placeholder="Nama Peternakan" >
+                              <input type="email" class="email" name="email" placeholder="Email" >
+                              <input type="password" class="password" name="password" placeholder="Password" >
+                              <input type="password" class="cpassword" name="cpassword" placeholder="Confirm Password" >
                           
                               <button name="signup"  class="btn" type="submit">Register</button>
                           </form>
@@ -56,6 +53,12 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="assets/js/bootsrap.bundle.js"></script>
+    <?php
+    if(isset($_POST["signup"])) {
+        $Register->register();
+      }
+      
+    ?>
 </body>
 </html>
           

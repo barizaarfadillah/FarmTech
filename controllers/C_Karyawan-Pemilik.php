@@ -12,8 +12,12 @@
         }
     
     
-        public function getData() {
-            $result = $this->karyawanModel->getData(); 
+        public function getDataAkun() {
+            $result = $this->karyawanModel->getDataAkun(); 
+            return $result;
+        }
+        public function getKaryawan() {
+            $result = $this->karyawanModel->getDataAkun(); 
             return $result;
         }
         public function jumlahData() {
@@ -21,34 +25,67 @@
             return $result;
         }
 
-        public function addData() {
-            $nama = $_POST['nama'];
+        public function addDataAkun() {
             $email = $_POST['email'];
             $password = $_POST['password'];
+            $cpassword = $_POST['cpassword'];
     
-            $errors = $this->cekData($nama, $email, $password);
-            
-            if (count($errors) === 0) {
-                $this->karyawanModel->addData($nama, $email, $password);
+            $errors = $this->cekDataNull($email, $password, $cpassword);
+
+            if (count($errors) > 0) {
+                $errors = $errors['error'];
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                 <script>
+                swal({
+                    title: '$errors',
+                    icon: 'warning',
+                    button: 'Oke'
+                })
+            </script>";
+                
+            } else {
+                $this->karyawanModel->addDataAkun($email, $password);
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                    echo "<script>
+                        swal({
+                            title: 'Data berhasil ditambahkan',
+                            icon: 'success',
+                            button: 'Oke',
+                        }).then(() => {
+                            window.location.href='?page=karyawan';
+                        });
+                    </script>";
             }
         }
 
-        private function cekData($nama, $email, $password) {
+        private function cekDataNull($email, $password, $cpassword) {
             
             $errors = array();
     
-            if(empty($nama)||empty($email)||empty($password)){
-                $errors['dataNull'] = "Data wajib diisi";
+            if(empty($email)||empty($password)||empty($cpassword)){
+                $errors['error'] = "Data harus diisi";
+            } elseif ($password != $cpassword) {
+                $errors['error'] = "Password tidak sama";
             }
             
             return $errors;
         }
 
-        public function deleteData() {
+        public function hapus() {
             $id= $_GET['id'];
             
-            $this->karyawanModel->deleteData($id);
+            $this->karyawanModel->hapus($id);
             
+            echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                    echo "<script>
+                        swal({
+                            title: 'Data berhasil dihapus',
+                            icon: 'success',
+                            button: 'Oke',
+                        }).then(() => {
+                            window.location.href='?page=karyawan';
+                        });
+                    </script>";
         }
 
     }

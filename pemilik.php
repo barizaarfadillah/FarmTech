@@ -32,6 +32,7 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -150,7 +151,7 @@
                     </a>
                 </div>
                 <span class="garis"></span>
-                <a onclick="return confirm('Apakah anda yakin akan logout?')" class="btn-logout" href="logout.php">Logout</a>
+                <a onclick="logout()" class="btn-logout">Logout</a>
             </div>
         </header>
         <main>            
@@ -226,7 +227,36 @@
 
     <!-- Link JS -->
     <script src="assets/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        function logout(){
+            swal({
+                title: "Apakah anda ingin keluar?",
+                icon: "warning",
+                buttons: {
+                    confirm: {
+                        text: "Iya",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    },
+                    cancel: {
+                        text: "tidak",
+                        value: false,
+                        visible: true,
+                        className: "btn btn-secondary",
+                        closeModal: true,
+                    }
+                }
+            }).then((value) => {
+                if (value) {
+                    window.location.href="logout.php";
+                }
+            });
+        }
+    </script>
+    
     <script>
         $(document).ready(function () {
             $('#example').DataTable();
