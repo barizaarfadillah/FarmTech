@@ -32,7 +32,7 @@ $row = $Penjualan->jumlahData();
 $totalPenjualan = $row['total'];
 
 $Jadwal = new Jadwal();
-$result = $Jadwal->getData();
+$result = $Jadwal->getPenjadwalan();
 ?>
 <header>
             <div class="toggle-sidebar">

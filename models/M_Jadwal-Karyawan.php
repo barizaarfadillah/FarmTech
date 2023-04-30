@@ -23,7 +23,7 @@ class JadwalModel {
         }
     }
 
-    public function getData() {
+    public function getPenjadwalan() {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
@@ -35,7 +35,7 @@ class JadwalModel {
         return $result;
     }
 
-    public function getDataPakan() {
+    public function getPenjadwalanPakan() {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
@@ -45,7 +45,7 @@ class JadwalModel {
         return $result;
     }
     
-    public function getDataVitamin() {
+    public function getPenjadwalanVitamin() {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
@@ -55,7 +55,7 @@ class JadwalModel {
         return $result;
     }
     
-    public function getDataPerah() {
+    public function getPenjadwalanPerah() {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
@@ -65,7 +65,7 @@ class JadwalModel {
         return $result;
     }
 
-    public function getDatabyId($id) {
+    public function getPenjadwalanbyId($id) {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
@@ -75,20 +75,20 @@ class JadwalModel {
         return $result;
     }
 
-    public function addData($jenis, $jam, $tanggal) {
+    public function addPenjadwalan($jenis, $jam, $tanggal) {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $stmt = $this->conn->prepare("INSERT INTO penjadwalan (jenis, jam, tanggal, karyawan_id_karyawan) VALUES ('$jenis', '$jam', '$tanggal', '$karyawan')");
         $stmt->execute();
         $stmt->close();
     }
-    public function editData($id, $jenis, $jam, $tanggal) {
+    public function updatePenjadwalan($id, $jenis, $jam, $tanggal) {
         $stmt = $this->conn->prepare("UPDATE penjadwalan SET jenis = '$jenis', tanggal = '$tanggal', jam = '$jam' WHERE id_jadwal = '$id'");
         $stmt->execute();
         $stmt->close();
     }
 
-    public function deleteData($id) {
+    public function deletePenjadwalan($id) {
         $stmt = $this->conn->prepare("DELETE FROM penjadwalan WHERE id_jadwal = '$id'");
         $stmt->execute();
         $stmt->close();

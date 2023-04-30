@@ -11,68 +11,113 @@
             $this->jadwalModel = new JadwalModel();
         }
     
-        public function getData() {
-            $result = $this->jadwalModel->getData(); 
+        public function getPenjadwalan() {
+            $result = $this->jadwalModel->getPenjadwalan(); 
             return $result;
         }
-        public function getDataPakan() {
-            $result = $this->jadwalModel->getDataPakan(); 
+        public function getPenjadwalanPakan() {
+            $result = $this->jadwalModel->getPenjadwalanPakan(); 
             return $result;
         }
-        public function getDataVitamin() {
-            $result = $this->jadwalModel->getDataVitamin(); 
+        public function getPenjadwalanVitamin() {
+            $result = $this->jadwalModel->getPenjadwalanVitamin(); 
             return $result;
         }
-        public function getDataPerah() {
-            $result = $this->jadwalModel->getDataPerah(); 
+        public function getPenjadwalanPerah() {
+            $result = $this->jadwalModel->getPenjadwalanPerah(); 
             return $result;
         }
-        public function getDatabyId() {
+        public function getPenjadwalanbyId() {
             $id= $_GET['id'];
-            $result = $this->jadwalModel->getDatabyId($id); 
+            $result = $this->jadwalModel->getPenjadwalanbyId($id); 
             return $result;
         }
 
-        public function addData() {
+        public function addPenjadwalan() {
             $jenis = $_POST['jenis'];
             $jam = $_POST['jam'];
             $tanggal = $_POST['tanggal'];
     
-            $errors = $this->cekData($jenis, $jam, $tanggal);
+            $errors = $this->cekDataNull($jenis, $jam, $tanggal);
             
-            if (count($errors) === 0) {
-                $this->jadwalModel->addData($jenis, $jam, $tanggal);
+            if (count($errors) > 0) {
+                $errors = $errors['error'];
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                <script>
+                swal({
+                    title: '$errors',
+                    icon: 'warning',
+                    button: 'Oke'
+                })
+                </script>";
+                
+            } else {
+                $this->jadwalModel->addPenjadwalan($jenis, $jam, $tanggal);
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                    echo "<script>
+                        swal({
+                            title: 'Data berhasil ditambah',
+                            icon: 'success',
+                            button: 'Oke',
+                        });
+                    </script>";
             }
         }
-        public function editData() {
+        public function updatePenjadwalan() {
             $jenis = $_POST['jenis'];
             $jam = $_POST['jam'];
             $tanggal = $_POST['tanggal'];
             $id= $_GET['id'];
     
-            $errors = $this->cekData($jenis, $jam, $tanggal);
-            
-            if (count($errors) === 0) {
-                $this->jadwalModel->editData($id, $jenis, $jam, $tanggal);
+            $errors = $this->cekDataNull($jenis, $jam, $tanggal);
+           
+            if (count($errors) > 0) {
+                $errors = $errors['error'];
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                <script>
+                swal({
+                    title: '$errors',
+                    icon: 'warning',
+                    button: 'Oke'
+                })
+                </script>";
+                
+            } else {
+                $this->jadwalModel->updatePenjadwalan($id, $jenis, $jam, $tanggal);
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                    echo "<script>
+                        swal({
+                            title: 'Data tersimpan',
+                            icon: 'success',
+                            button: 'Oke',
+                        });
+                    </script>";
             }
         }
 
-        private function cekData($jenis, $jam, $tanggal) {
+        private function cekDataNull($jenis, $jam, $tanggal) {
             
             $errors = array();
     
             if(empty($jenis)||empty($jam)||empty($tanggal)){
-                $errors['dataNull'] = "Data wajib diisi";
+                $errors['error'] = "Data wajib diisi";
             }
             
             return $errors;
         }
 
-        public function deleteData() {
+        public function deletePenjadwalan() {
             $id= $_GET['id'];
             
-            $this->jadwalModel->deleteData($id);
-            
+            $this->jadwalModel->deletePenjadwalan($id);
+            echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                    echo "<script>
+                        swal({
+                            title: 'Data berhasil dihapus',
+                            icon: 'success',
+                            button: 'Oke',
+                        });
+                    </script>";
         }
 
     }

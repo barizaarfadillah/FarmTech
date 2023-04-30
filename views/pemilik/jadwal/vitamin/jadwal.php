@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Jadwal-Pemilik.php';
 $Jadwal = new Jadwal();
-$result = $Jadwal->getDataVitamin();
+$result = $Jadwal->getPenjadwalanVitamin();
 ?>
 
 <header>

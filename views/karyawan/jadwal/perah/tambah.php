@@ -23,7 +23,7 @@ $Jadwal = new Jadwal();
                                 </div>
                                 
                                 <div class="edit-profile">
-                                    <button name='tambah' class="btn-add" href="#" style="border-style: none;">Tambah</button>
+                                    <button name='tambah' class="btn-add" href="#" style="border-style: none;">Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -32,9 +32,8 @@ $Jadwal = new Jadwal();
             </div>
 <?php
 if(isset($_POST["tambah"])) {
-    $Jadwal->addData();?>
+    $Jadwal->addPenjadwalan();?>
     <script>
-        alert("Data berhasi ditambah")
         window.location.href="?page=jadwalperah";
     </script>
 <?php }?>

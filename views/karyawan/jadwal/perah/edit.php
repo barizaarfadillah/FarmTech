@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Jadwal-Karyawan.php';
 $Jadwal = new Jadwal();
-$result = $Jadwal->getDatabyId();
+$result = $Jadwal->getPenjadwalanbyId();
 $row = $result->fetch_assoc()
 ?>
 <div class="dash-cardsss">
@@ -23,7 +23,7 @@ $row = $result->fetch_assoc()
                                     <input name='tanggal' type="date" value="<?php echo $row['tanggal'] ;?>"/>
                                 </div>
                                 <div class="edit-profile">
-                                    <button name='edit' class="btn-add" href="#" style="border-style: none; width:65px; margin:0.5rem;">Edit</button>
+                                    <button name='edit' class="btn-add" href="#" style="border-style: none; width:65px; margin:0.5rem;">Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -32,9 +32,8 @@ $row = $result->fetch_assoc()
             </div>
 <?php
 if(isset($_POST["edit"])) {
-    $Jadwal->editData();?>
+    $Jadwal->updatePenjadwalan();?>
     <script>
-        alert("Data berhasi diedit")
         window.location.href="?page=jadwalperah";
     </script>
 <?php }?>

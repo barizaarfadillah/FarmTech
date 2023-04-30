@@ -23,7 +23,7 @@ class JadwalModel {
         }
     }
 
-    public function getData() {
+    public function getPenjadwalan() {
         $pemilik = $this->getPemilik();
         $objDateTime = date_create("now", new DateTimeZone("Asia/Jakarta"));
         $tanggal = $objDateTime->format("Y-m-d");
@@ -33,7 +33,7 @@ class JadwalModel {
         return $result;
     }
 
-    public function getDataPakan() {
+    public function getPenjadwalanPakan() {
         $pemilik = $this->getPemilik();
         $stmt = $this->conn->prepare("SELECT penjadwalan.id_jadwal, penjadwalan.jenis, penjadwalan.jam, penjadwalan.tanggal FROM karyawan JOIN penjadwalan ON karyawan.id_karyawan = penjadwalan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' AND penjadwalan.jenis = 'Jadwal Pakan'");
         $stmt->execute();
@@ -41,7 +41,7 @@ class JadwalModel {
         return $result;
     }
     
-    public function getDataVitamin() {
+    public function getPenjadwalanVitamin() {
         $pemilik = $this->getPemilik();
         $stmt = $this->conn->prepare("SELECT penjadwalan.id_jadwal, penjadwalan.jenis, penjadwalan.jam, penjadwalan.tanggal FROM karyawan JOIN penjadwalan ON karyawan.id_karyawan = penjadwalan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' AND penjadwalan.jenis = 'Jadwal Vitamin'");
         $stmt->execute();
@@ -49,7 +49,7 @@ class JadwalModel {
         return $result;
     }
     
-    public function getDataPerah() {
+    public function getPenjadwalanPerah() {
         $pemilik = $this->getPemilik();
         $stmt = $this->conn->prepare("SELECT penjadwalan.id_jadwal, penjadwalan.jenis, penjadwalan.jam, penjadwalan.tanggal FROM karyawan JOIN penjadwalan ON karyawan.id_karyawan = penjadwalan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' AND penjadwalan.jenis = 'Jadwal Perah'");
         $stmt->execute();

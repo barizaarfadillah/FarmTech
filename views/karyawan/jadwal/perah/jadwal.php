@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Jadwal-Karyawan.php';
 $Jadwal = new Jadwal();
-$result = $Jadwal->getDataPerah();
+$result = $Jadwal->getPenjadwalanPerah();
 ?>
 
 <header>
@@ -47,7 +47,7 @@ $result = $Jadwal->getDataPerah();
                                     <td style="font-size: .9rem;"><?php echo $row['tanggal'] ;?></td>
                                     <td style="text-align: center;display:flex;justify-content: center;align-items: center;">
                                         <a class="btn-add" href="?page=jadwalperah&aksi=edit&id=<?php echo $row['id_jadwal'] ;?>" style="width:65px; margin:0.5rem;">Edit</a>
-                                        <a onclick="return confirm('Apakah anda yakin akan menghapus jadwal ini?')" class="btn-delete" style="width:65px; margin:0.5rem;" href="?page=jadwalperah&aksi=hapus&id=<?php echo $row['id_jadwal'] ?>">Hapus</a>
+                                        <a class="btn-delete" style="width:65px; margin:0.5rem;" href="?page=jadwalperah&aksi=hapus&id=<?php echo $row['id_jadwal'] ?>">Hapus</a>
                                     </td>
                                 </tr>
                                 <?php

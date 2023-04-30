@@ -32,9 +32,8 @@ $Jadwal = new Jadwal();
             </div>
 <?php
 if(isset($_POST["tambah"])) {
-    $Jadwal->addData();?>
+    $Jadwal->addPenjadwalan();?>
     <script>
-        alert("Data berhasi ditambah")
         window.location.href="?page=jadwalvitamin";
     </script>
 <?php }?>

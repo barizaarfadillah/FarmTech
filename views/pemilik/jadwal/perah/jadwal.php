@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Jadwal-Pemilik.php';
 $Jadwal = new Jadwal();
-$result = $Jadwal->getDataPerah();
+$result = $Jadwal->getPenjadwalanPerah();
 ?>
 
 <header>

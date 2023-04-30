@@ -20,7 +20,7 @@ $row = $Ternak->jumlahData();
 $totalTernak = $row['total'];
 
 $Jadwal = new Jadwal();
-$result = $Jadwal->getData();
+$result = $Jadwal->getPenjadwalan();
 
 $Penjualan = new Penjualan();
 $row = $Penjualan->jumlahData();
