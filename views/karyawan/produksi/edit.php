@@ -4,6 +4,19 @@ $Produksi = new Produksi();
 $result = $Produksi->getRecordingProduksibyId();
 $row = $result->fetch_assoc()
 ?>
+<header>
+            <div class="toggle-sidebar">
+                <div class="text"><?php echo $data['nama'];?></div>
+            </div>
+            <div class="social-icons">
+                <div>
+                    <a href="?page=profil">
+                        <img src="assets/img/avatar/<?php echo $data['foto_profile'] ;?>" alt="">
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main>
 <div class="dash-cardsss">
                 <div class="card-singles">
                     <h2 class="dash-title" style="margin-top: 2rem; margin-left: 2rem;">Edit Data Produksi</h2>
@@ -34,6 +47,7 @@ $row = $result->fetch_assoc()
                     </div>
                 </div>
             </div>
+</main>
 <?php
 if(isset($_POST["edit"])) {
     $Produksi->updateRecordingProduksi();?>

@@ -3,6 +3,19 @@ require_once 'controllers/C_Penjualan-Karyawan.php';
 $Penjualan = new Penjualan();
 
 ?>
+<header>
+            <div class="toggle-sidebar">
+                <div class="text"><?php echo $data['nama'];?></div>
+            </div>
+            <div class="social-icons">
+                <div>
+                    <a href="?page=profil">
+                        <img src="assets/img/avatar/<?php echo $data['foto_profile'] ;?>" alt="">
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main>
 <div class="dash-cardsss">
                 <div class="card-singles">
                     <h2 class="dash-title" style="margin-top: 2rem; margin-left: 2rem;">Tambah Data Penjualan</h2>
@@ -33,6 +46,7 @@ $Penjualan = new Penjualan();
                     </div>
                 </div>
             </div>
+</main>
 <?php
 if(isset($_POST["tambah"])) {
     $Penjualan->addRecordingPenjualan();?>

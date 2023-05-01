@@ -3,6 +3,19 @@ require_once 'controllers/C_Profil-Pemilik.php';
 $Profil = new Profil();
 $data = $Profil->getPemilik();
 ?>
+<header>
+            <div class="toggle-sidebar">
+                <div class="text"><?php echo $data['nama'] ;?></div>
+            </div>
+            <div class="social-icons">
+                <div>
+                    <a href="?page=profil">
+                        <img src="assets/img/avatar/<?php echo $data['profil'] ;?>" alt="">
+                    </a>
+                </div>
+            </div>
+        </header>
+<main>
 <div class="dash-cardsss">
                 <div class="card-singles">
                     <h2 class="dash-title" style="margin-top: 2rem; margin-left: 2rem;">Profile</h2>
@@ -43,6 +56,7 @@ $data = $Profil->getPemilik();
                     </div>
                 </div>
             </div>
+            </main>
 <?php
 if(isset($_POST["simpan"])) {
     $Profil->simpan();?>
