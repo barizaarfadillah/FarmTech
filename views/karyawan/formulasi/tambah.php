@@ -18,7 +18,7 @@ $Formulasi = new Formulasi();
         <main>
 <div class="dash-cardsss">
                 <div class="card-singles">
-                    <h2 class="dash-title" style="margin-top: 2rem; margin-left: 2rem;">Tambah Formulasi</h2>
+                    <h2 class="dash-title" style="margin-top: 2rem; margin-left: 2rem;"><a href="?page=formulasi" style="margin-right:1rem;"><i class='bx bx-arrow-back'></i></a> Tambah Formulasi</h2>
                     <div class="card-bodys">
                         <div class="profile">
                                 <form action="" method="post">

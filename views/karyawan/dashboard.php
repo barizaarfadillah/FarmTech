@@ -42,7 +42,7 @@ $totalProduksi = $row['total'];
                     </a>
                 </div>
                 <span class="garis"></span>
-                <a onclick="logout()" class="btn-logout" >Logout</a>
+                <a onclick="logout()" class="btn-logout" style="cursor: pointer;">Logout</a>
             </div>
         </header>
         <main>
