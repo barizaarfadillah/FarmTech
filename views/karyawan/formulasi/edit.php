@@ -40,7 +40,7 @@ $row = $result->fetch_assoc()
                                     <input name='jangka'type="text" value="<?php echo $row['jangka_waktu'] ;?>"/>
                                 </div>
                                 <div class="edit-profile">
-                                    <button name='edit' class="btn-add" href="#" style="border-style: none; width:65px; margin:0.5rem;">Edit</button>
+                                    <button name='edit' class="btn-add" href="#" style="border-style: none; width:65px; margin:0.5rem;">Simpan</button>
                                 </div>
                             </form>
                         </div>
