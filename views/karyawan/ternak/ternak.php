@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Ternak-Karyawan.php';
 $Ternak = new Ternak();
-$result = $Ternak->getData();
+$result = $Ternak->getDataTernak();
 ?>
 
 <header>
@@ -44,7 +44,7 @@ $result = $Ternak->getData();
                                     <td style="font-size: .9rem;"><?php echo $row['status'] ;?></td>
                                     <td style="text-align: center;display:flex;justify-content: center;align-items: center;">
                                         <a class="btn-add" href="?page=ternak&aksi=edit&id=<?php echo $row['id_ternak'] ?>" style="width:65px; margin:0.5rem;">Edit</a>
-                                        <a onclick="return confirm('Apakah anda yakin akan memecat karyawan ini?')" class="btn-delete" style="width:65px; margin:0.5rem;" href="?page=ternak&aksi=hapus&id=<?php echo $row['id_ternak'] ?>">Hapus</a>
+                                        <a id="btn-delete" class="btn-delete" style="width:65px; margin:0.5rem;" href="?page=ternak&aksi=hapus&id=<?php echo $row['id_ternak'] ?>">Hapus</a>
                                     </td>
                                 </tr>
                                 <?php
@@ -57,3 +57,34 @@ $result = $Ternak->getData();
                 </div>
             </div>
                                 </main>
+                                <script>
+    $(document).on('click', '#btn-delete', function(e){
+        e.preventDefault();
+        var link = $(this).attr('href');
+
+        swal({
+                    title: "Menghapus data?",
+                    icon: "warning",
+                    buttons: {
+                        confirm: {
+                            text: "Iya",
+                            value: true,
+                            visible: true,
+                            className: "btn btn-primary",
+                            closeModal: true
+                        },
+                        cancel: {
+                            text: "Tidak",
+                            value: false,
+                            visible: true,
+                            className: "btn btn-secondary",
+                            closeModal: true,
+                        }
+                    }
+                }).then((value) => {
+                    if (value) {
+                        window.location = link;
+                    }
+                });
+    })
+</script>

@@ -12,13 +12,13 @@
         }
     
     
-        public function getData() {
-            $result = $this->ternakModel->getData(); 
+        public function getDataTernak() {
+            $result = $this->ternakModel->getDataTernak(); 
             return $result;
         }
-        public function getDatabyId() {
+        public function getDataTernakbyId() {
             $id= $_GET['id'];
-            $result = $this->ternakModel->getDatabyId($id); 
+            $result = $this->ternakModel->getDataTernakbyId($id); 
             return $result;
         }
         public function jumlahData() {
@@ -26,46 +26,97 @@
             return $result;
         }
 
-        public function addData() {
+        public function addDataTernak() {
             $jenis = $_POST['jenis'];
             $tanggal = $_POST['tanggal'];
             $status = $_POST['status'];
     
-            $errors = $this->cekData($jenis, $tanggal, $status);
+            $errors = $this->cekDataNull($jenis, $tanggal, $status);
             
-            if (count($errors) === 0) {
-                $this->ternakModel->addData($jenis, $tanggal, $status);
+            if (count($errors) > 0) {
+                $errors = $errors['error'];
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                <script>
+                swal({
+                    title: '$errors',
+                    icon: 'warning',
+                    button: 'Oke'
+                })
+                </script>";
+                
+            } else {
+                $this->ternakModel->addDataTernak($jenis, $tanggal, $status);
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                    echo "<script>
+                        swal({
+                            title: 'Data berhasil ditambah',
+                            icon: 'success',
+                            button: 'Oke',
+                        }).then(() => {
+                            window.location.href='?page=ternak';
+                        });
+                    </script>";
             }
         }
-        public function editData() {
+        public function updateDataTernak() {
             $jenis = $_POST['jenis'];
             $tanggal = $_POST['tanggal'];
             $status = $_POST['status'];
             $id= $_GET['id'];
     
-            $errors = $this->cekData($jenis, $tanggal, $status);
+            $errors = $this->cekDataNull($jenis, $tanggal, $status);
             
-            if (count($errors) === 0) {
-                $this->ternakModel->editData($id, $jenis, $tanggal, $status);
+            if (count($errors) > 0) {
+                $errors = $errors['error'];
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                <script>
+                swal({
+                    title: '$errors',
+                    icon: 'warning',
+                    button: 'Oke'
+                })
+                </script>";
+                
+            } else {
+                $this->ternakModel->updateDataTernak($id, $jenis, $tanggal, $status);
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                    echo "<script>
+                        swal({
+                            title: 'Data tersimpan',
+                            icon: 'success',
+                            button: 'Oke',
+                        }).then(() => {
+                            window.location.href='?page=ternak';
+                        });
+                    </script>";
             }
         }
 
-        private function cekData($jenis, $tanggal, $status) {
+        private function cekDataNull($jenis, $tanggal, $status) {
             
             $errors = array();
     
             if(empty($jenis)||empty($tanggal)||empty($status)){
-                $errors['dataNull'] = "Data wajib diisi";
+                $errors['error'] = "Data wajib diisi";
             }
             
             return $errors;
         }
 
-        public function deleteData() {
+        public function deleteDataTernak() {
             $id= $_GET['id'];
             
-            $this->ternakModel->deleteData($id);
-            
+            $this->ternakModel->deleteDataTernak($id);
+            echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                    echo "<script>
+                        swal({
+                            title: 'Data berhasil dihapus',
+                            icon: 'success',
+                            button: 'Oke',
+                        }).then(() => {
+                            window.location.href='?page=ternak';
+                        });
+                    </script>";          
         }
 
     }

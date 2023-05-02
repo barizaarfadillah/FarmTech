@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Formulasi-Karyawan.php';
 $Formulasi = new Formulasi();
-$result = $Formulasi->getDatabyId();
+$result = $Formulasi->getFormulasibyId();
 $row = $result->fetch_assoc()
 ?>
 <header>
@@ -50,9 +50,5 @@ $row = $result->fetch_assoc()
 </main>
 <?php
 if(isset($_POST["edit"])) {
-    $Formulasi->editData();?>
-    <script>
-        alert("Data berhasi diedit")
-        window.location.href="?page=formulasi";
-    </script>
+    $Formulasi->updateFormulasi();?>
 <?php }?>

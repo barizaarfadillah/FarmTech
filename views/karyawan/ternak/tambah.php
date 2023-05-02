@@ -50,9 +50,5 @@ $Ternak = new Ternak();
 </main>
 <?php
 if(isset($_POST["tambah"])) {
-    $Ternak->addData();?>
-    <script>
-        alert("Data berhasi ditambah")
-        window.location.href="?page=ternak";
-    </script>
+    $Ternak->addDataTernak();?>
 <?php }?>

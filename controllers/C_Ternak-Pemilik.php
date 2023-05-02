@@ -12,8 +12,8 @@
         }
     
     
-        public function getData() {
-            $result = $this->ternakModel->getData(); 
+        public function getDataTernak() {
+            $result = $this->ternakModel->getDataTernak(); 
             return $result;
         }
 

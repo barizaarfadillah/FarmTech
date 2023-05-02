@@ -12,13 +12,13 @@
         }
     
     
-        public function getData() {
-            $result = $this->formulasiModel->getData(); 
+        public function getFormulasi() {
+            $result = $this->formulasiModel->getFormulasi(); 
             return $result;
         }
-        public function getDatabyId() {
+        public function getFormulasibyId() {
             $id= $_GET['id'];
-            $result = $this->formulasiModel->getDatabyId($id); 
+            $result = $this->formulasiModel->getFormulasibyId($id); 
             return $result;
         }
         public function jumlahData() {
@@ -26,48 +26,99 @@
             return $result;
         }
 
-        public function addData() {
+        public function addFormulasi() {
             $rentang = $_POST['rentang'];
             $nama = $_POST['nama'];
             $berat = $_POST['berat'];
             $jangka = $_POST['jangka'];
     
-            $errors = $this->cekData($rentang, $nama, $berat, $jangka);
+            $errors = $this->cekDataNull($rentang, $nama, $berat, $jangka);
             
-            if (count($errors) === 0) {
-                $this->formulasiModel->addData($rentang, $nama, $berat, $jangka);
+            if (count($errors) > 0) {
+                $errors = $errors['error'];
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                <script>
+                swal({
+                    title: '$errors',
+                    icon: 'warning',
+                    button: 'Oke'
+                })
+                </script>";
+                
+            } else {
+                $this->formulasiModel->addFormulasi($rentang, $nama, $berat, $jangka);
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                    echo "<script>
+                        swal({
+                            title: 'Data berhasil ditambah',
+                            icon: 'success',
+                            button: 'Oke',
+                        }).then(() => {
+                            window.location.href='?page=formulasi';
+                        });
+                    </script>";
             }
         }
-        public function editData() {
+        public function updateFormulasi() {
             $rentang = $_POST['rentang'];
             $nama = $_POST['nama'];
             $berat = $_POST['berat'];
             $jangka = $_POST['jangka'];
             $id= $_GET['id'];
     
-            $errors = $this->cekData($rentang, $nama, $berat, $jangka);
+            $errors = $this->cekDataNull($rentang, $nama, $berat, $jangka);
             
-            if (count($errors) === 0) {
-                $this->formulasiModel->editData($id, $rentang, $nama, $berat, $jangka);
+            if (count($errors) > 0) {
+                $errors = $errors['error'];
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+                <script>
+                swal({
+                    title: '$errors',
+                    icon: 'warning',
+                    button: 'Oke'
+                })
+                </script>";
+                
+            } else {
+                $this->formulasiModel->updateFormulasi($id, $rentang, $nama, $berat, $jangka);
+                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                    echo "<script>
+                        swal({
+                            title: 'Data tersimpan',
+                            icon: 'success',
+                            button: 'Oke',
+                        }).then(() => {
+                            window.location.href='?page=formulasi';
+                        });
+                    </script>";
             }
         }
 
-        private function cekData($rentang, $nama, $berat, $jangka) {
+        private function cekDataNull($rentang, $nama, $berat, $jangka) {
             
             $errors = array();
     
             if(empty($rentang)||empty($nama)||empty($berat)||empty($jangka)){
-                $errors['dataNull'] = "Data wajib diisi";
+                $errors['error'] = "Data wajib diisi";
             }
             
             return $errors;
         }
 
-        public function deleteData() {
+        public function deleteFormulasi() {
             $id= $_GET['id'];
             
-            $this->formulasiModel->deleteData($id);
-            
+            $this->formulasiModel->deleteFormulasi($id);
+            echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                    echo "<script>
+                        swal({
+                            title: 'Data berhasil dihapus',
+                            icon: 'success',
+                            button: 'Oke',
+                        }).then(() => {
+                            window.location.href='?page=formulasi';
+                        });
+                    </script>";
         }
 
     }

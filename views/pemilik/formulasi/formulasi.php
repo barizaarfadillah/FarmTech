@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Formulasi-Pemilik.php';
 $Formulasi = new Formulasi();
-$result = $Formulasi->getData();
+$result = $Formulasi->getFormulasi();
 ?>
 
 <header>

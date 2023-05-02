@@ -12,13 +12,8 @@
         }
     
     
-        public function getData() {
-            $result = $this->formulasiModel->getData(); 
-            return $result;
-        }
-        public function getDatabyId() {
-            $id= $_GET['id'];
-            $result = $this->formulasiModel->getDatabyId($id); 
+        public function getFormulasi() {
+            $result = $this->formulasiModel->getFormulasi(); 
             return $result;
         }
 

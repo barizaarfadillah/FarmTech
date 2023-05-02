@@ -23,7 +23,7 @@ class FormulasiModel {
         }
     }
 
-    public function getData() {
+    public function getFormulasi() {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
@@ -32,7 +32,7 @@ class FormulasiModel {
         $result = $stmt->get_result();
         return $result;
     }
-    public function getDatabyId($id) {
+    public function getFormulasibyId($id) {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
@@ -42,20 +42,20 @@ class FormulasiModel {
         return $result;
     }
 
-    public function addData($rentang, $nama, $berat, $jangka) {
+    public function addFormulasi($rentang, $nama, $berat, $jangka) {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $stmt = $this->conn->prepare("INSERT INTO formulasi (rentang_berat, nama_pakan, berat_pakan, jangka_waktu, karyawan_id_karyawan) VALUES ('$rentang', '$nama', '$berat', '$jangka' ,'$karyawan')");
         $stmt->execute();
         $stmt->close();
     }
-    public function editData($id, $rentang, $nama, $berat, $jangka) {
+    public function updateFormulasi($id, $rentang, $nama, $berat, $jangka) {
         $stmt = $this->conn->prepare("UPDATE formulasi SET rentang_berat = '$rentang', nama_pakan = '$nama', berat_pakan = '$berat', jangka_waktu = '$jangka' WHERE id = '$id'");
         $stmt->execute();
         $stmt->close();
     }
 
-    public function deleteData($id) {
+    public function deleteFormulasi($id) {
         $stmt = $this->conn->prepare("DELETE FROM formulasi WHERE id = '$id'");
         $stmt->execute();
         $stmt->close();

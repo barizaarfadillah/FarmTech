@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Ternak-Pemilik.php';
 $Ternak = new Ternak();
-$result = $Ternak->getData();
+$result = $Ternak->getDataTernak();
 ?>
 
 <header>

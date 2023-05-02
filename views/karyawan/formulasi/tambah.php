@@ -49,9 +49,5 @@ $Formulasi = new Formulasi();
 </main>
 <?php
 if(isset($_POST["tambah"])) {
-    $Formulasi->addData();?>
-    <script>
-        alert("Data berhasi ditambah")
-        window.location.href="?page=formulasi";
-    </script>
+    $Formulasi->addFormulasi();?>
 <?php }?>

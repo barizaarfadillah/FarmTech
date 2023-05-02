@@ -23,7 +23,7 @@ class TernakModel {
         }
     }
 
-    public function getData() {
+    public function getDataTernak() {
         $pemilik = $this->getPemilik();
         $stmt = $this->conn->prepare("SELECT hewan_ternak.id_ternak, hewan_ternak.jenis, hewan_ternak.tanggal_pendataan, hewan_ternak.status FROM karyawan JOIN hewan_ternak ON karyawan.id_karyawan = hewan_ternak.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik'");
         $stmt->execute();

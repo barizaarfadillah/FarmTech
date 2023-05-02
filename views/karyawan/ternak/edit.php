@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Ternak-Karyawan.php';
 $Ternak = new Ternak();
-$result = $Ternak->getDatabyId();
+$result = $Ternak->getDataTernakbyId();
 $row = $result->fetch_assoc()
 ?>
 <header>
@@ -55,39 +55,5 @@ $row = $result->fetch_assoc()
 </main>
 <?php
 if(isset($_POST["edit"])) {
-    $Ternak->editData();?>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-            swal({
-    title: "Simpan perubahan?",
-    icon: "warning",
-    buttons: {
-        confirm: {
-            text: "Simpan",
-            value: true,
-            visible: true,
-            className: "btn btn-primary",
-            closeModal: true
-        },
-        cancel: {
-            text: "Batal",
-            value: false,
-            visible: true,
-            className: "btn btn-secondary",
-            closeModal: true,
-        }
-    }
-}).then((value) => {
-    if (value) {
-        swal({
-            title: "Berhasil!",
-            text: "Data berhasil diedit",
-            icon: "success",
-            button: "Oke",
-        }).then(() => {
-            window.location.href="?page=ternak";
-        });
-    }
-});
-    </script>
+    $Ternak->updateDataTernak();?>
 <?php }?>

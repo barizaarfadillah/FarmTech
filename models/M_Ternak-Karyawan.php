@@ -23,7 +23,7 @@ class TernakModel {
         }
     }
 
-    public function getData() {
+    public function getDataTernak() {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
@@ -32,7 +32,7 @@ class TernakModel {
         $result = $stmt->get_result();
         return $result;
     }
-    public function getDatabyId($id) {
+    public function getDataTernakbyId($id) {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
@@ -42,20 +42,20 @@ class TernakModel {
         return $result;
     }
 
-    public function addData($jenis, $tanggal, $status) {
+    public function addDataTernak($jenis, $tanggal, $status) {
         $row = $this->getKaryawan();
         $karyawan = $row['id_karyawan'];
         $stmt = $this->conn->prepare("INSERT INTO hewan_ternak (jenis, tanggal_pendataan, status, karyawan_id_karyawan) VALUES ('$jenis', '$tanggal', '$status', '$karyawan')");
         $stmt->execute();
         $stmt->close();
     }
-    public function editData($id, $jenis, $tanggal, $status) {
+    public function updateDataTernak($id, $jenis, $tanggal, $status) {
         $stmt = $this->conn->prepare("UPDATE hewan_ternak SET jenis = '$jenis', tanggal_pendataan = '$tanggal', status = '$status' WHERE id_ternak = '$id'");
         $stmt->execute();
         $stmt->close();
     }
 
-    public function deleteData($id) {
+    public function deleteDataTernak($id) {
         $stmt = $this->conn->prepare("DELETE FROM hewan_ternak WHERE id_ternak = '$id'");
         $stmt->execute();
         $stmt->close();

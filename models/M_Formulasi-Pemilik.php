@@ -23,7 +23,7 @@ class FormulasiModel {
         }
     }
 
-    public function getData() {
+    public function getFormulasi() {
         $pemilik = $this->getPemilik();
         $stmt = $this->conn->prepare("SELECT formulasi.id, formulasi.rentang_berat, formulasi.nama_pakan, formulasi.berat_pakan, formulasi.jangka_waktu FROM karyawan JOIN formulasi ON karyawan.id_karyawan = formulasi.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik'");
         $stmt->execute();
