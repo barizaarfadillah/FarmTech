@@ -84,14 +84,112 @@
                 
             } else {
                 $this->jadwalModel->update($id, $jenis, $jam, $tanggal);
-                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
-                    echo "<script>
+                if($jenis == 'Jadwal Pakan'){
+                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script>
                         swal({
-                            title: 'Data tersimpan',
-                            icon: 'success',
-                            button: 'Oke',
-                        });
-                    </script>";
+                title: "Simpan ?",
+                icon: "warning",
+                buttons: {
+                    confirm: {
+                        text: "Simpan",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    },
+                    cancel: {
+                        text: "Batal",
+                        value: false,
+                        visible: true,
+                        className: "btn btn-secondary",
+                        closeModal: true,
+                    }
+                }
+            }).then((value) => {
+                if (value) {
+                    swal({
+                        title: "Data tersimpan",
+                        icon: "success",
+                        button: "Oke",
+                    }).then(() => {
+                        window.location.href="?page=jadwalpakan";
+                    });
+                }
+            });
+                </script>';
+                }else if($jenis == 'Jadwal Perah'){
+                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script>
+                        swal({
+                title: "Simpan ?",
+                icon: "warning",
+                buttons: {
+                    confirm: {
+                        text: "Simpan",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    },
+                    cancel: {
+                        text: "Batal",
+                        value: false,
+                        visible: true,
+                        className: "btn btn-secondary",
+                        closeModal: true,
+                    }
+                }
+            }).then((value) => {
+                if (value) {
+                    swal({
+                        title: "Data tersimpan",
+                        icon: "success",
+                        button: "Oke",
+                    }).then(() => {
+                        window.location.href="?page=jadwalperah";
+                    });
+                }
+            });
+                </script>';
+                }else if($jenis == 'Jadwal Vitamin'){
+                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script>
+                        swal({
+                title: "Simpan ?",
+                icon: "warning",
+                buttons: {
+                    confirm: {
+                        text: "Simpan",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    },
+                    cancel: {
+                        text: "Batal",
+                        value: false,
+                        visible: true,
+                        className: "btn btn-secondary",
+                        closeModal: true,
+                    }
+                }
+            }).then((value) => {
+                if (value) {
+                    swal({
+                        title: "Data tersimpan",
+                        icon: "success",
+                        button: "Oke",
+                    }).then(() => {
+                        window.location.href="?page=jadwalvitamin";
+                    });
+                }
+            });
+                </script>';
+                }
             }
         }
 

@@ -80,15 +80,39 @@
             } else {
                 $this->ternakModel->update($id, $jenis, $tanggal, $status);
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
-                    echo "<script>
+                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                    <script>
+                            swal({
+                    title: "Simpan ?",
+                    icon: "warning",
+                    buttons: {
+                        confirm: {
+                            text: "Simpan",
+                            value: true,
+                            visible: true,
+                            className: "btn btn-primary",
+                            closeModal: true
+                        },
+                        cancel: {
+                            text: "Batal",
+                            value: false,
+                            visible: true,
+                            className: "btn btn-secondary",
+                            closeModal: true,
+                        }
+                    }
+                }).then((value) => {
+                    if (value) {
                         swal({
-                            title: 'Data tersimpan',
-                            icon: 'success',
-                            button: 'Oke',
+                            title: "Data tersimpan",
+                            icon: "success",
+                            button: "Oke",
                         }).then(() => {
-                            window.location.href='?page=ternak';
+                            window.location.href="?page=ternak";
                         });
-                    </script>";
+                    }
+                });
+                    </script>';
             }
         }
 

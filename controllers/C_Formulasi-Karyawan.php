@@ -81,16 +81,40 @@
                 
             } else {
                 $this->formulasiModel->update($id, $rentang, $nama, $berat, $jangka);
-                echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
-                    echo "<script>
+                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script>
                         swal({
-                            title: 'Data tersimpan',
-                            icon: 'success',
-                            button: 'Oke',
-                        }).then(() => {
-                            window.location.href='?page=formulasi';
-                        });
-                    </script>";
+                title: "Simpan ?",
+                icon: "warning",
+                buttons: {
+                    confirm: {
+                        text: "Simpan",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    },
+                    cancel: {
+                        text: "Batal",
+                        value: false,
+                        visible: true,
+                        className: "btn btn-secondary",
+                        closeModal: true,
+                    }
+                }
+            }).then((value) => {
+                if (value) {
+                    swal({
+                        title: "Data tersimpan",
+                        icon: "success",
+                        button: "Oke",
+                    }).then(() => {
+                        window.location.href="?page=formulasi";
+                    });
+                }
+            });
+                </script>';
             }
         }
 

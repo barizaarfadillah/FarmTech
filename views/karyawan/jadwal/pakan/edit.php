@@ -47,7 +47,4 @@ $row = $result->fetch_assoc()
 <?php
 if(isset($_POST["edit"])) {
     $Jadwal->updatePenjadwalan();?>
-    <script>
-        window.location.href="?page=jadwalpakan";
-    </script>
 <?php }?>
