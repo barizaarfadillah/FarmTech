@@ -10,7 +10,7 @@ class PenjualanModel {
         $this->conn = $db->connection;
     }
 
-    public function getPemilik() {
+    public function Pemilik() {
         $pemilik = $_SESSION['pemilik'];
         $stmt = $this->conn->prepare("SELECT * FROM pemilik WHERE email = '$pemilik'");
         $stmt->execute();
@@ -23,8 +23,8 @@ class PenjualanModel {
         }
     }
 
-    public function getRecordingPenjualan() {
-        $pemilik = $this->getPemilik();
+    public function RecordingPenjualan() {
+        $pemilik = $this->Pemilik();
         $stmt = $this->conn->prepare("SELECT recording_penjualan.id_penjualan, recording_penjualan.nama_produk, recording_penjualan.tanggal_penjualan, recording_penjualan.jumlah_produk, recording_penjualan.total FROM karyawan JOIN recording_penjualan ON karyawan.id_karyawan = recording_penjualan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' ORDER BY recording_penjualan.tanggal_penjualan");
         $stmt->execute();
         $result = $stmt->get_result();
@@ -32,7 +32,7 @@ class PenjualanModel {
     }
 
     public function jumlahData() {
-        $pemilik = $this->getPemilik();
+        $pemilik = $this->Pemilik();
         $stmt = $this->conn->prepare("SELECT SUM(recording_penjualan.total) as total FROM karyawan JOIN recording_penjualan ON karyawan.id_karyawan = recording_penjualan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik'");
         $stmt->execute();
         $result = $stmt->get_result();

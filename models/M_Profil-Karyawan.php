@@ -10,7 +10,7 @@ class ProfilModel {
         $this->conn = $db->connection;
     }
 
-    public function getKaryawan() {
+    public function Karyawan() {
         $email = $_SESSION['karyawan'];
         $stmt = $this->conn->prepare("SELECT * FROM karyawan WHERE email = '$email'");
         $stmt->execute();
@@ -23,8 +23,8 @@ class ProfilModel {
         }
     }
 
-    public function simpan($email, $nama, $alamat, $no_hp, $password) {
-        $stmt = $this->conn->prepare("UPDATE karyawan SET nama = '$nama', alamat = '$alamat', no_hp = '$no_hp', password = '$password' WHERE email = '$email'");
+    public function update($email, $nama, $alamat, $no_hp, $password, $image) {
+        $stmt = $this->conn->prepare("UPDATE karyawan SET nama = '$nama', alamat = '$alamat', no_hp = '$no_hp', password = '$password', foto_profile = '$image' WHERE email = '$email'");
         $stmt->execute();
         $stmt->close();
     }

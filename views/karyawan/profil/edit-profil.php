@@ -21,12 +21,12 @@ $data = $Profil->getKaryawan();
                     <h2 class="dash-title" style="margin-top: 2rem; margin-left: 2rem;"><a href="?page=profil" style="margin-right:1rem;"><i class='bx bx-arrow-back'></i></a> Profil</h2>
                     <div class="card-bodys">
                         <div class="profile">
-                            <form action="" method="post">
+                            <form action="" method="post" enctype="multipart/form-data">
                                 <div class="img-profile">
                                     <img src="assets/img/avatar/<?php echo $data['foto_profile'] ;?>" alt="">
                                 </div>
                                 <div class="btn-upload">
-                                    <input type="file" name="image" accept= "image/jpg, image/jpeg, image/png"/>
+                                    <input type="file" name="image" accept="image/jpeg"/>
                                 </div>
                                 <div class="info-profile">
                                     <label for="">Nama Lengkap</label></br>
@@ -59,7 +59,7 @@ $data = $Profil->getKaryawan();
 </main>
 <?php
 if(isset($_POST["simpan"])) {
-    $Profil->simpan();
+    $Profil->updateKaryawan();
 ?>  
 
 <?php

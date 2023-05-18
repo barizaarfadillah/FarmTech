@@ -13,12 +13,12 @@
     
     
         public function getRecordingPenjualan() {
-            $result = $this->penjualanModel->getRecordingPenjualan(); 
+            $result = $this->penjualanModel->RecordingPenjualan(); 
             return $result;
         }
         public function getRecordingPenjualanbyId() {
             $id= $_GET['id'];
-            $result = $this->penjualanModel->getRecordingPenjualanbyId($id); 
+            $result = $this->penjualanModel->RecordingPenjualanbyId($id); 
             return $result;
         }
         public function jumlahData() {
@@ -46,7 +46,7 @@
                 </script>";
                 
             } else {
-                $this->penjualanModel->addRecordingPenjualan($nama, $tanggal, $jumlah, $total);
+                $this->penjualanModel->add($nama, $tanggal, $jumlah, $total);
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({
@@ -80,7 +80,7 @@
                 </script>";
                 
             } else {
-                $this->penjualanModel->updateRecordingPenjualan($id, $nama, $tanggal, $jumlah, $total);
+                $this->penjualanModel->update($id, $nama, $tanggal, $jumlah, $total);
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({
@@ -108,7 +108,7 @@
         public function deleteRecordingPenjualan() {
             $id= $_GET['id'];
             
-            $this->penjualanModel->deleteRecordingPenjualan($id);
+            $this->penjualanModel->delete($id);
             echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({

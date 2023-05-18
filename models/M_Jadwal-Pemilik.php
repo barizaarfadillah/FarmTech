@@ -10,7 +10,7 @@ class JadwalModel {
         $this->conn = $db->connection;
     }
 
-    public function getPemilik() {
+    public function Pemilik() {
         $pemilik = $_SESSION['pemilik'];
         $stmt = $this->conn->prepare("SELECT * FROM pemilik WHERE email = '$pemilik'");
         $stmt->execute();
@@ -23,8 +23,8 @@ class JadwalModel {
         }
     }
 
-    public function getPenjadwalan() {
-        $pemilik = $this->getPemilik();
+    public function Penjadwalan() {
+        $pemilik = $this->Pemilik();
         $objDateTime = date_create("now", new DateTimeZone("Asia/Jakarta"));
         $tanggal = $objDateTime->format("Y-m-d");
         $stmt = $this->conn->prepare("SELECT penjadwalan.id_jadwal, penjadwalan.jenis, penjadwalan.jam, penjadwalan.tanggal FROM karyawan JOIN penjadwalan ON karyawan.id_karyawan = penjadwalan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' AND penjadwalan.tanggal = '$tanggal' ORDER BY penjadwalan.jam");
@@ -33,24 +33,24 @@ class JadwalModel {
         return $result;
     }
 
-    public function getPenjadwalanPakan() {
-        $pemilik = $this->getPemilik();
+    public function PenjadwalanPakan() {
+        $pemilik = $this->Pemilik();
         $stmt = $this->conn->prepare("SELECT penjadwalan.id_jadwal, penjadwalan.jenis, penjadwalan.jam, penjadwalan.tanggal FROM karyawan JOIN penjadwalan ON karyawan.id_karyawan = penjadwalan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' AND penjadwalan.jenis = 'Jadwal Pakan'");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result;
     }
     
-    public function getPenjadwalanVitamin() {
-        $pemilik = $this->getPemilik();
+    public function PenjadwalanVitamin() {
+        $pemilik = $this->Pemilik();
         $stmt = $this->conn->prepare("SELECT penjadwalan.id_jadwal, penjadwalan.jenis, penjadwalan.jam, penjadwalan.tanggal FROM karyawan JOIN penjadwalan ON karyawan.id_karyawan = penjadwalan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' AND penjadwalan.jenis = 'Jadwal Vitamin'");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result;
     }
     
-    public function getPenjadwalanPerah() {
-        $pemilik = $this->getPemilik();
+    public function PenjadwalanPerah() {
+        $pemilik = $this->Pemilik();
         $stmt = $this->conn->prepare("SELECT penjadwalan.id_jadwal, penjadwalan.jenis, penjadwalan.jam, penjadwalan.tanggal FROM karyawan JOIN penjadwalan ON karyawan.id_karyawan = penjadwalan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' AND penjadwalan.jenis = 'Jadwal Perah'");
         $stmt->execute();
         $result = $stmt->get_result();

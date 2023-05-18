@@ -10,14 +10,9 @@
         public function __construct() {
             $this->karyawanModel = new KaryawanModel();
         }
-    
-    
-        public function getDataAkun() {
-            $result = $this->karyawanModel->getDataAkun(); 
-            return $result;
-        }
+        
         public function getKaryawan() {
-            $result = $this->karyawanModel->getDataAkun(); 
+            $result = $this->karyawanModel->Karyawan(); 
             return $result;
         }
         public function jumlahData() {
@@ -25,7 +20,7 @@
             return $result;
         }
 
-        public function addDataAkun() {
+        public function addKaryawan() {
             $email = $_POST['email'];
             $password = $_POST['password'];
             $cpassword = $_POST['cpassword'];
@@ -44,7 +39,7 @@
             </script>";
                 
             } else {
-                $this->karyawanModel->addDataAkun($email, $password);
+                $this->karyawanModel->add($email, $password);
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({

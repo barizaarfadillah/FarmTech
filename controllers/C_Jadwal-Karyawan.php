@@ -12,24 +12,24 @@
         }
     
         public function getPenjadwalan() {
-            $result = $this->jadwalModel->getPenjadwalan(); 
+            $result = $this->jadwalModel->Penjadwalan(); 
             return $result;
         }
         public function getPenjadwalanPakan() {
-            $result = $this->jadwalModel->getPenjadwalanPakan(); 
+            $result = $this->jadwalModel->PenjadwalanPakan(); 
             return $result;
         }
         public function getPenjadwalanVitamin() {
-            $result = $this->jadwalModel->getPenjadwalanVitamin(); 
+            $result = $this->jadwalModel->PenjadwalanVitamin(); 
             return $result;
         }
         public function getPenjadwalanPerah() {
-            $result = $this->jadwalModel->getPenjadwalanPerah(); 
+            $result = $this->jadwalModel->PenjadwalanPerah(); 
             return $result;
         }
         public function getPenjadwalanbyId() {
             $id= $_GET['id'];
-            $result = $this->jadwalModel->getPenjadwalanbyId($id); 
+            $result = $this->jadwalModel->PenjadwalanbyId($id); 
             return $result;
         }
 
@@ -52,7 +52,7 @@
                 </script>";
                 
             } else {
-                $this->jadwalModel->addPenjadwalan($jenis, $jam, $tanggal);
+                $this->jadwalModel->add($jenis, $jam, $tanggal);
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({
@@ -83,7 +83,7 @@
                 </script>";
                 
             } else {
-                $this->jadwalModel->updatePenjadwalan($id, $jenis, $jam, $tanggal);
+                $this->jadwalModel->update($id, $jenis, $jam, $tanggal);
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({
@@ -109,7 +109,7 @@
         public function deletePenjadwalan() {
             $id= $_GET['id'];
             
-            $this->jadwalModel->deletePenjadwalan($id);
+            $this->jadwalModel->delete($id);
             echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({

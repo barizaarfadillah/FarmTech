@@ -10,7 +10,6 @@ $_SESSION['id_karyawan'] = $data['id'];
                 <div class="text"><?php echo $data['nama'];?></div>
             </div>
             <div class="social-icons">
-                <span class="bx bx-bell"></span>
                 <div>
                     <a href="?page=profil">
                         <img src="assets/img/avatar/<?php echo $data['foto_profile'] ;?>" alt="">

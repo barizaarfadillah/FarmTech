@@ -10,7 +10,7 @@ class PenjualanModel {
         $this->conn = $db->connection;
     }
 
-    public function getKaryawan() {
+    public function Karyawan() {
         $karyawan = $_SESSION['karyawan'];
         $stmt = $this->conn->prepare("SELECT * FROM karyawan WHERE email = '$karyawan'");
         $stmt->execute();
@@ -23,8 +23,8 @@ class PenjualanModel {
         }
     }
 
-    public function getRecordingPenjualan() {
-        $row = $this->getKaryawan();
+    public function RecordingPenjualan() {
+        $row = $this->Karyawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
         $stmt = $this->conn->prepare("SELECT recording_penjualan.id_penjualan, recording_penjualan.nama_produk, recording_penjualan.tanggal_penjualan, recording_penjualan.jumlah_produk, recording_penjualan.total FROM karyawan JOIN recording_penjualan ON karyawan.id_karyawan = recording_penjualan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' ORDER BY recording_penjualan.tanggal_penjualan");
@@ -34,8 +34,8 @@ class PenjualanModel {
     }
     
 
-    public function getRecordingPenjualanbyId($id) {
-        $row = $this->getKaryawan();
+    public function RecordingPenjualanbyId($id) {
+        $row = $this->Karyawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
         $stmt = $this->conn->prepare("SELECT recording_penjualan.id_penjualan, recording_penjualan.nama_produk, recording_penjualan.tanggal_penjualan, recording_penjualan.jumlah_produk, recording_penjualan.total FROM karyawan JOIN recording_penjualan ON karyawan.id_karyawan = recording_penjualan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' AND recording_penjualan.id_penjualan = '$id'");
@@ -44,27 +44,27 @@ class PenjualanModel {
         return $result;
     }
 
-    public function addRecordingPenjualan($nama, $tanggal, $jumlah, $total) {
-        $row = $this->getKaryawan();
+    public function add($nama, $tanggal, $jumlah, $total) {
+        $row = $this->Karyawan();
         $karyawan = $row['id_karyawan'];
         $stmt = $this->conn->prepare("INSERT INTO recording_penjualan (nama_produk, tanggal_penjualan, jumlah_produk, total, karyawan_id_karyawan) VALUES ('$nama', '$tanggal', '$jumlah', '$total', '$karyawan')");
         $stmt->execute();
         $stmt->close();
     }
-    public function updateRecordingPenjualan($id, $nama, $tanggal, $jumlah, $total) {
+    public function update($id, $nama, $tanggal, $jumlah, $total) {
         $stmt = $this->conn->prepare("UPDATE recording_penjualan SET nama_produk = '$nama', tanggal_penjualan = '$tanggal', jumlah_produk = '$jumlah', total = '$total' WHERE id_penjualan = '$id'");
         $stmt->execute();
         $stmt->close();
     }
 
-    public function deleteRecordingPenjualan($id) {
+    public function delete($id) {
         $stmt = $this->conn->prepare("DELETE FROM recording_penjualan WHERE id_penjualan = '$id'");
         $stmt->execute();
         $stmt->close();
     }
 
     public function jumlahData() {
-        $row = $this->getKaryawan();
+        $row = $this->Karyawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
         $stmt = $this->conn->prepare("SELECT SUM(recording_penjualan.total) as total FROM karyawan JOIN recording_penjualan ON karyawan.id_karyawan = recording_penjualan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik'");

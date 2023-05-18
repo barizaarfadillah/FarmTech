@@ -13,7 +13,7 @@
     
     
         public function getFormulasi() {
-            $result = $this->formulasiModel->getFormulasi(); 
+            $result = $this->formulasiModel->Formulasi(); 
             return $result;
         }
 

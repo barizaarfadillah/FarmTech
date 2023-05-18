@@ -13,12 +13,12 @@
     
     
         public function getDataTernak() {
-            $result = $this->ternakModel->getDataTernak(); 
+            $result = $this->ternakModel->DataTernak(); 
             return $result;
         }
         public function getDataTernakbyId() {
             $id= $_GET['id'];
-            $result = $this->ternakModel->getDataTernakbyId($id); 
+            $result = $this->ternakModel->DataTernakbyId($id); 
             return $result;
         }
         public function jumlahData() {
@@ -45,7 +45,7 @@
                 </script>";
                 
             } else {
-                $this->ternakModel->addDataTernak($jenis, $tanggal, $status);
+                $this->ternakModel->add($jenis, $tanggal, $status);
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({
@@ -78,7 +78,7 @@
                 </script>";
                 
             } else {
-                $this->ternakModel->updateDataTernak($id, $jenis, $tanggal, $status);
+                $this->ternakModel->update($id, $jenis, $tanggal, $status);
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({
@@ -106,7 +106,7 @@
         public function deleteDataTernak() {
             $id= $_GET['id'];
             
-            $this->ternakModel->deleteDataTernak($id);
+            $this->ternakModel->delete($id);
             echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({

@@ -14,6 +14,12 @@
             $password = $_POST['password'];
 
             $errors = $this->cekDataNull($email, $password);
+            if (empty($errors)){
+                $errors = $this->cekEmailTerdaftar($email);
+                if (empty($errors)){
+                    $errors = $this->cekPasswordBenar($email, $password);
+                }
+            }
         
             if (count($errors) > 0) {
                 $errors = $errors['error'];
@@ -46,13 +52,28 @@
     
             if(empty($email)||empty($password)){
                 $errors['error'] = "Data harus diisi";
-            } elseif ($this->loginModel->cekEmailTerdaftar($email) == false){
-                $errors['error'] = "Akun tidak terdaftar";
-            } elseif ($this->loginModel->cekPasswordBenar($email, $password) == false){
+            } 
+            
+            return $errors;
+        }
+        private function cekPasswordBenar($email, $password) {
+            $errors = array();
+    
+            if ($this->loginModel->cekPasswordBenar($email, $password) == false){
                 $errors['error'] = "Password Salah";
             }
             
             return $errors;
         }
+        private function cekEmailTerdaftar($email) {
+            $errors = array();
+    
+            if ($this->loginModel->cekEmailTerdaftar($email) == false){
+                $errors['error'] = "Akun tidak terdaftar";
+            }
+            
+            return $errors;
+        }
+        
     }
 ?>

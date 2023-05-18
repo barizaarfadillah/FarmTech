@@ -10,7 +10,7 @@ class FormulasiModel {
         $this->conn = $db->connection;
     }
 
-    public function getPemilik() {
+    public function Pemilik() {
         $pemilik = $_SESSION['pemilik'];
         $stmt = $this->conn->prepare("SELECT * FROM pemilik WHERE email = '$pemilik'");
         $stmt->execute();
@@ -23,8 +23,8 @@ class FormulasiModel {
         }
     }
 
-    public function getFormulasi() {
-        $pemilik = $this->getPemilik();
+    public function Formulasi() {
+        $pemilik = $this->Pemilik();
         $stmt = $this->conn->prepare("SELECT formulasi.id, formulasi.rentang_berat, formulasi.nama_pakan, formulasi.berat_pakan, formulasi.jangka_waktu FROM karyawan JOIN formulasi ON karyawan.id_karyawan = formulasi.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik'");
         $stmt->execute();
         $result = $stmt->get_result();

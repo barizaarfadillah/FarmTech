@@ -12,19 +12,19 @@
         }
     
         public function getPenjadwalan() {
-            $result = $this->jadwalModel->getPenjadwalan(); 
+            $result = $this->jadwalModel->Penjadwalan(); 
             return $result;
         }
         public function getPenjadwalanPakan() {
-            $result = $this->jadwalModel->getPenjadwalanPakan(); 
+            $result = $this->jadwalModel->PenjadwalanPakan(); 
             return $result;
         }
         public function getPenjadwalanVitamin() {
-            $result = $this->jadwalModel->getPenjadwalanVitamin(); 
+            $result = $this->jadwalModel->PenjadwalanVitamin(); 
             return $result;
         }
         public function getPenjadwalanPerah() {
-            $result = $this->jadwalModel->getPenjadwalanPerah(); 
+            $result = $this->jadwalModel->PenjadwalanPerah(); 
             return $result;
         }
     }

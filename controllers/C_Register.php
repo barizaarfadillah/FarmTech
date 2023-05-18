@@ -19,8 +19,13 @@ class Register {
         $alamat = ' ';
         $profil = 'default.svg';
 
-        $errors = $this->cekData($nama, $email, $password, $cpassword, $namapeternakan);
-        
+        $errors = $this->cekDataNull($nama, $email, $password, $cpassword, $namapeternakan);
+            if (empty($errors)){
+                $errors = $this->cekEmailTerdaftar($email);
+                if (empty($errors)){
+                    $errors = $this->cekKonfirmasiPassword($password, $cpassword);
+                }
+            }
         if (count($errors) > 0) {
             $errors = $errors['error'];
             echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
@@ -47,15 +52,29 @@ class Register {
         }
     }
 
-    private function cekData($nama, $email, $password, $cpassword, $namapeternakan) {
+    private function cekDataNull($nama, $email, $password, $cpassword, $namapeternakan) {
         $errors = array();
 
         if(empty($nama)||empty($namapeternakan)||empty($email)||empty($password)||empty($cpassword)){
             $errors['error'] = "Data wajib diisi";
-        } elseif ($this->registerModel->cekEmail($email)){
-            $errors['error'] = "Email sudah terdaftar";
-        } elseif ($password !== $cpassword){
+        }
+        
+        return $errors;
+    }
+    private function cekKonfirmasiPassword($password, $cpassword) {
+        $errors = array();
+
+        if ($password !== $cpassword){
             $errors['error'] = "Password Tidak Sama";
+        }
+        
+        return $errors;
+    }
+    private function cekEmailTerdaftar($email) {
+        $errors = array();
+
+        if ($this->registerModel->cekEmail($email)){
+            $errors['error'] = "Email sudah terdaftar";
         }
         
         return $errors;

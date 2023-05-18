@@ -13,7 +13,7 @@
     
     
         public function getRecordingPenjualan() {
-            $result = $this->penjualanModel->getRecordingPenjualan(); 
+            $result = $this->penjualanModel->RecordingPenjualan(); 
             return $result;
         }
        

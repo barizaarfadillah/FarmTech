@@ -14,17 +14,36 @@
     
         public function getPemilik() {
             
-            return $this->profilModel->getPemilik();
+            return $this->profilModel->Pemilik();
         }
 
-        public function simpan() {
+        public function uploadfoto(){
+            $nama = $_POST['nama'];
+            $uploadDirectory = 'assets/img/avatar/';
+            $fileName = $_FILES['image']['name'];
+            $fileTmpName = $_FILES['image']['tmp_name'];
+
+            $uniqueName = $nama . '.jpg';
+
+            $uploadPath = $uploadDirectory . $uniqueName;
+            
+
+            if(move_uploaded_file($fileTmpName, $uploadPath)){
+                return $uniqueName;
+            }
+            $image = $uniqueName;
+
+            return $image;
+        }
+
+        public function updatePemilik() {
             $email = $_POST['email'];
             $nama = $_POST['nama'];
             $peternakan = $_POST['peternakan'];
             $alamat = $_POST['alamat'];
             $password = $_POST['password'];
+            $image = $this->uploadfoto();
             
-
             $errors = $this->cekDataNull($nama, $peternakan, $alamat, $password);
             
             if (count($errors) > 0) {
@@ -39,7 +58,7 @@
             </script>";
                 
             } else {
-                $this->profilModel->simpan($email, $nama, $peternakan, $alamat, $password);
+                $this->profilModel->update($email, $nama, $peternakan, $alamat, $password, $image);
                 echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
                     <script>
                             swal({

@@ -3,10 +3,6 @@ require_once 'controllers/C_Login-Pemilik.php';
 
 $Login = new Login();
 
-// if(isset($_POST["login"])) {
-//     $Login->login();
-//   }
-
 mysqli_report (MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 

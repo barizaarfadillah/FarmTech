@@ -13,7 +13,7 @@
     
     
         public function getRecordingProduksi() {
-            $result = $this->produksiModel->getRecordingProduksi(); 
+            $result = $this->produksiModel->RecordingProduksi(); 
             return $result;
         }
 

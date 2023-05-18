@@ -13,7 +13,7 @@
     
     
         public function getDataTernak() {
-            $result = $this->ternakModel->getDataTernak(); 
+            $result = $this->ternakModel->DataTernak(); 
             return $result;
         }
 

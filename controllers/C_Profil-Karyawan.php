@@ -14,15 +14,35 @@
     
         public function getKaryawan() {
             
-            return $this->profilModel->getKaryawan();
+            return $this->profilModel->Karyawan();
         }
 
-        public function simpan() {
+        public function uploadfoto(){
+            $nama = $_POST['nama'];
+            $uploadDirectory = 'assets/img/avatar/';
+            $fileName = $_FILES['image']['name'];
+            $fileTmpName = $_FILES['image']['tmp_name'];
+
+            $uniqueName = $nama . '.jpg';
+
+            $uploadPath = $uploadDirectory . $uniqueName;
+            
+
+            if(move_uploaded_file($fileTmpName, $uploadPath)){
+                return $uniqueName;
+            }
+            $image = $uniqueName;
+
+            return $image;
+        }
+
+        public function updateKaryawan() {
             $email = $_POST['email'];
             $nama = $_POST['nama'];
             $alamat = $_POST['alamat'];
             $no_hp = $_POST['no_hp'];
             $password = $_POST['password'];
+            $image = $this->uploadfoto();
             
 
             $errors = $this->cekDataNull($nama, $alamat, $no_hp, $password);
@@ -39,7 +59,7 @@
             </script>";
                 
             } else {
-                $this->profilModel->simpan($email, $nama, $alamat, $no_hp, $password);
+                $this->profilModel->update($email, $nama, $alamat, $no_hp, $password, $image);
                 echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
                     <script>
                             swal({

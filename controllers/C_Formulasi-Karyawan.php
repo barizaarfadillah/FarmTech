@@ -13,12 +13,12 @@
     
     
         public function getFormulasi() {
-            $result = $this->formulasiModel->getFormulasi(); 
+            $result = $this->formulasiModel->Formulasi(); 
             return $result;
         }
         public function getFormulasibyId() {
             $id= $_GET['id'];
-            $result = $this->formulasiModel->getFormulasibyId($id); 
+            $result = $this->formulasiModel->FormulasibyId($id); 
             return $result;
         }
         public function jumlahData() {
@@ -46,7 +46,7 @@
                 </script>";
                 
             } else {
-                $this->formulasiModel->addFormulasi($rentang, $nama, $berat, $jangka);
+                $this->formulasiModel->add($rentang, $nama, $berat, $jangka);
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({
@@ -80,7 +80,7 @@
                 </script>";
                 
             } else {
-                $this->formulasiModel->updateFormulasi($id, $rentang, $nama, $berat, $jangka);
+                $this->formulasiModel->update($id, $rentang, $nama, $berat, $jangka);
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({
@@ -108,7 +108,7 @@
         public function deleteFormulasi() {
             $id= $_GET['id'];
             
-            $this->formulasiModel->deleteFormulasi($id);
+            $this->formulasiModel->delete($id);
             echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({

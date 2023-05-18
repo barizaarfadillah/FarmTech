@@ -10,7 +10,7 @@ class KaryawanModel {
         $this->conn = $db->connection;
     }
 
-    public function getPemilik() {
+    public function Pemilik() {
         $pemilik = $_SESSION['pemilik'];
         $stmt = $this->conn->prepare("SELECT * FROM pemilik WHERE email = '$pemilik'");
         $stmt->execute();
@@ -23,8 +23,8 @@ class KaryawanModel {
         }
     }
 
-    public function getDataAkun() {
-        $pemilik = $this->getPemilik();
+    public function Karyawan() {
+        $pemilik = $this->Pemilik();
         $stmt = $this->conn->prepare("SELECT * FROM karyawan WHERE pemilik_id_pemilik = '$pemilik' AND status = 1");
         $stmt->execute();
         $result = $stmt->get_result();
@@ -32,8 +32,8 @@ class KaryawanModel {
         
     }
 
-    public function addDataAkun($email, $password) {
-        $pemilik = $this->getPemilik();
+    public function add($email, $password) {
+        $pemilik = $this->Pemilik();
         $stmt = $this->conn->prepare("INSERT INTO karyawan (nama, email, password, alamat, no_hp, foto_profile, pemilik_id_pemilik, status) VALUES (' ', '$email', '$password', ' ', ' ', 'default.svg', '$pemilik', 1)");
         $stmt->execute();
         $stmt->close();
@@ -46,7 +46,7 @@ class KaryawanModel {
     }
 
     public function jumlahData() {
-        $pemilik = $this->getPemilik();
+        $pemilik = $this->Pemilik();
         $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM karyawan WHERE pemilik_id_pemilik='$pemilik' AND status = 1");
         $stmt->execute();
         $result = $stmt->get_result();

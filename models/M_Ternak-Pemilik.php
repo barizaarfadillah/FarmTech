@@ -10,7 +10,7 @@ class TernakModel {
         $this->conn = $db->connection;
     }
 
-    public function getPemilik() {
+    public function Pemilik() {
         $pemilik = $_SESSION['pemilik'];
         $stmt = $this->conn->prepare("SELECT * FROM pemilik WHERE email = '$pemilik'");
         $stmt->execute();
@@ -23,8 +23,8 @@ class TernakModel {
         }
     }
 
-    public function getDataTernak() {
-        $pemilik = $this->getPemilik();
+    public function DataTernak() {
+        $pemilik = $this->Pemilik();
         $stmt = $this->conn->prepare("SELECT hewan_ternak.id_ternak, hewan_ternak.jenis, hewan_ternak.tanggal_pendataan, hewan_ternak.status FROM karyawan JOIN hewan_ternak ON karyawan.id_karyawan = hewan_ternak.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik'");
         $stmt->execute();
         $result = $stmt->get_result();
@@ -32,7 +32,7 @@ class TernakModel {
     }
 
     public function jumlahData() {
-        $pemilik = $this->getPemilik();
+        $pemilik = $this->Pemilik();
         $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM karyawan JOIN hewan_ternak ON karyawan.id_karyawan = hewan_ternak.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik'");
         $stmt->execute();
         $result = $stmt->get_result();

@@ -13,12 +13,12 @@
     
     
         public function getRecordingProduksi() {
-            $result = $this->produksiModel->getRecordingProduksi(); 
+            $result = $this->produksiModel->RecordingProduksi(); 
             return $result;
         }
         public function getRecordingProduksibyId() {
             $id= $_GET['id'];
-            $result = $this->produksiModel->getRecordingProduksibyId($id); 
+            $result = $this->produksiModel->RecordingProduksibyId($id); 
             return $result;
         }
         public function jumlahData() {
@@ -45,7 +45,7 @@
                 </script>";
                 
             } else {
-                $this->produksiModel->addRecordingProduksi($nama, $tanggal, $jumlah);
+                $this->produksiModel->add($nama, $tanggal, $jumlah);
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({
@@ -78,7 +78,7 @@
                 </script>";
                 
             } else {
-                $this->produksiModel->updateRecordingProduksi($id, $nama, $tanggal, $jumlah);
+                $this->produksiModel->update($id, $nama, $tanggal, $jumlah);
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({
@@ -107,7 +107,7 @@
         public function deleteRecordingProduksi() {
             $id= $_GET['id'];
             
-            $this->produksiModel->deleteRecordingProduksi($id);
+            $this->produksiModel->delete($id);
             echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
             echo "<script>
                 swal({
