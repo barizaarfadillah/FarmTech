@@ -3,9 +3,7 @@ require_once 'controllers/C_LupaPassword.php';
 
 $Forgot = new Forgot();
 
-if(isset($_POST["send"])) {
-  $Forgot->forgot();
-}
+
 
 mysqli_report (MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
@@ -34,10 +32,9 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
                      <div class="input-box">
                         <header>Lupa Password</header>
                         <p>Masukkan email anda untuk melakukan verifikasi</p>
-                        <!-- echo $msg; ?> -->
                         <form action="" method="post">
                             <input type="email" class="email" name="email" placeholder="Email" required>
-                            <button name="send" name="submit" class="btn" type="submit">Kirim reset link</button>
+                            <button name="submit" class="btn" type="submit">Reset Password</button>
                         </form>
                         <div class="social-icons text-center">
                             <p>kembali ke <a href="index.php">login</a>.</p>
@@ -50,3 +47,8 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     <script src="assets/js/bootsrap.bundle.js"></script>
 </body>
 </html>
+<?php
+if(isset($_POST["submit"])) {
+    $Forgot->forgot();
+  }
+?>

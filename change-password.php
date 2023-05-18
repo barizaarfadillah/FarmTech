@@ -1,3 +1,14 @@
+<?php
+require_once 'controllers/C_LupaPassword.php';
+
+$Forgot = new Forgot();
+
+
+
+mysqli_report (MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +33,8 @@
                         <p>Masukkan password baru anda</p>
                         <!-- echo $msg; ?> -->
                         <form action="" method="post">
-                            <input type="password" class="password" name="password" placeholder="Password" required>
-                            <input type="cpassword" class="cpassword" name="cpassword" placeholder="Confirm Password" required>
+                            <input type="password" class="password" name="password" placeholder="Password">
+                            <input type="password" class="cpassword" name="cpassword" placeholder="Confirm Password">
                             <button name="submit" name="submit" class="btn" type="submit">Ganti Password</button>
                         </form>
                         <div class="social-icons text-center">
@@ -37,3 +48,8 @@
     <script src="assets/js/bootsrap.bundle.js"></script>
 </body>
 </html>
+<?php
+if(isset($_POST["submit"])) {
+    $Forgot->change();
+  }
+?>
