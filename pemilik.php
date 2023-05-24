@@ -99,10 +99,10 @@
                     <i class='bx bxs-chevron-down'></i>
                 </div>
                 <div class="submenu">
-                    <a href="#" class="link submenu-title">Jadwal</a>
-                    <a href="?page=jadwalpakan" class="link">Pakan</a>
-                    <a href="?page=jadwalvitamin" class="link">Vitamin</a>
-                    <a href="?page=jadwalperah" class="link">Perah</a>
+                    <a href="#" class="link submenu-title">Penjadwalan</a>
+                    <a href="?page=jadwalpakan" class="link">Penjadwalan Pakan</a>
+                    <a href="?page=jadwalvitamin" class="link">Penjadwalan Vitamin</a>
+                    <a href="?page=jadwalperah" class="link">Penjadwalan Perah</a>
                 </div>
             </li>
             <!-- -------- Non Dropdown List Item ------- -->
@@ -134,8 +134,8 @@
                         </div>
                         <div class="submenu">
                             <a href="#" class="link submenu-title">Recording</a>
-                            <a href="?page=penjualan" class="link">Penjualan</a>
-                            <a href="?page=produksi" class="link">Produksi</a>
+                            <a href="?page=penjualan" class="link">Recording Penjualan</a>
+                            <a href="?page=produksi" class="link">Recording Produksi</a>
                         </div>
                     </li>
             <?php
@@ -149,7 +149,7 @@
                             </a>
                         </div>
                         <div class="submenu">
-                            <a href="?page=formulasi" style="font-weight:bold; color:#dc3545;"  class="link submenu-title">Fitur Terkunci</a>
+                            <a href="#" style="font-weight:bold; color:#dc3545;"  class="link submenu-title">Fitur Terkunci</a>
                             <!-- submenu links here  -->
                         </div>
                     </li>
