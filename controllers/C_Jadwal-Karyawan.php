@@ -54,13 +54,37 @@
             } else {
                 $this->jadwalModel->add($jenis, $jam, $tanggal);
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
+                if($jenis == 'Jadwal Pakan'){
                     echo "<script>
-                        swal({
-                            title: 'Data berhasil ditambah',
-                            icon: 'success',
-                            button: 'Oke',
-                        });
+                    swal({
+                        title: 'Data berhasil dihapus',
+                        icon: 'success',
+                        button: 'Oke',
+                    }).then(() => {
+                        window.location.href='?page=jadwalpakan';
+                    });
                     </script>";
+                } elseif ($jenis == 'Jadwal Perah') {
+                    echo "<script>
+                    swal({
+                        title: 'Data berhasil dihapus',
+                        icon: 'success',
+                        button: 'Oke',
+                    }).then(() => {
+                        window.location.href='?page=jadwalperah';
+                    });
+                    </script>";
+                } elseif ($jenis == 'Jadwal Vitamin') {
+                    echo "<script>
+                    swal({
+                        title: 'Data berhasil dihapus',
+                        icon: 'success',
+                        button: 'Oke',
+                    }).then(() => {
+                        window.location.href='?page=jadwalvitamin';
+                    });
+                    </script>";
+                }
             }
         }
         public function updatePenjadwalan() {

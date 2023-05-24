@@ -44,6 +44,7 @@ $result = $Jadwal->getPenjadwalan();
                         <img src="assets/img/avatar/<?php echo $data['profil'] ;?>" alt="">
                     </a>
                 </div>
+                <a onclick="upgrade()" class="btn-upgrade" style="cursor: pointer; margin-left: 20px;">Upgrade</a>
                 <span class="garis"></span>
                 <a onclick="logout()" class="btn-logout" style="cursor: pointer;">Logout</a>
             </div>
@@ -181,3 +182,4 @@ var myChart = new Chart(ctx, {
     }
 });                </script> 
 </main>
+

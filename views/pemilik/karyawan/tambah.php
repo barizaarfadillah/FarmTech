@@ -46,5 +46,5 @@ $Karyawan = new Karyawan();
 </main>
 <?php
 if(isset($_POST["tambah"])) {
-    $Karyawan->addDataAkun();?>
+    $Karyawan->addKaryawan();?>
 <?php }?>

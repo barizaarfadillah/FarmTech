@@ -225,12 +225,6 @@ header {
     justify-content: center;
 }
 
-.social-icons span,
-.social-icons div {
-    margin-left: 1.2rem;
-    font-size: 20px;
-}
-
 .social-icons div img {
     height: 38px;
     width: 38px;
@@ -273,6 +267,17 @@ header {
     font-size: .8rem;
 }
 
+.btn-upgrade {
+    padding: 10px;
+    background-color: #62D2A2;
+    color: #1e1e1e;
+    margin-left: 20px;
+    align-items: center;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: .8rem;
+}
+
 .btn-delete {
     padding: 10px;
     background-color: #dc3545;
@@ -288,6 +293,7 @@ header {
     height: 38px;
     width: 2px;
     background-color: #777;
+    margin-left: 20px;
 }
 
 main {

@@ -47,7 +47,4 @@ $Jadwal = new Jadwal();
 <?php
 if(isset($_POST["tambah"])) {
     $Jadwal->addPenjadwalan();?>
-    <script>
-        window.location.href="?page=jadwalvitamin";
-    </script>
 <?php }?>

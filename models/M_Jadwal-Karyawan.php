@@ -76,7 +76,7 @@ class JadwalModel {
     }
 
     public function add($jenis, $jam, $tanggal) {
-        $row = $this->getKaryawan();
+        $row = $this->Karyawan();
         $karyawan = $row['id_karyawan'];
         $stmt = $this->conn->prepare("INSERT INTO penjadwalan (jenis, jam, tanggal, karyawan_id_karyawan) VALUES ('$jenis', '$jam', '$tanggal', '$karyawan')");
         $stmt->execute();

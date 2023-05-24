@@ -8,7 +8,9 @@
         header("location:index.php");
     }
 
-    $data = $Dasboard->getData();
+    $data = $Dasboard->getKaryawan();
+    $row = $Dasboard->getData();
+    $status = $row;
 
     mysqli_report (MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 	error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
@@ -103,20 +105,41 @@
             </li>
 
             <!-- -------- Dropdown List Item ------- -->
-            <li class="dropdown">
-                <div class="title">
-                    <a href="#" class="link">
-                        <i class='bx bx-line-chart'></i>
-                        <span class="name">Recording</span>
-                    </a>
-                    <i class='bx bxs-chevron-down'></i>
-                </div>
-                <div class="submenu">
-                    <a href="#" class="link submenu-title">Recording</a>
-                    <a href="?page=penjualan" class="link">Penjualan</a>
-                    <a href="?page=produksi" class="link">Produksi</a>
-                </div>
-            </li>
+            <?php
+                if($status == 1){
+            ?>
+                    <li class="dropdown">
+                        <div class="title">
+                            <a href="#" class="link">
+                                <i class='bx bx-line-chart'></i>
+                                <span class="name">Recording</span>
+                            </a>
+                            <i class='bx bxs-chevron-down'></i>
+                        </div>
+                        <div class="submenu">
+                            <a href="#" class="link submenu-title">Recording</a>
+                            <a href="?page=penjualan" class="link">Penjualan</a>
+                            <a href="?page=produksi" class="link">Produksi</a>
+                        </div>
+                    </li>
+            <?php
+                } else {
+            ?>
+                    <li class="dropdown">
+                        <div class="title">
+                            <a href="#" class="link">
+                                <i class='bx bx-block' style="font-weight:bold; color:#dc3545;"></i>
+                                <span class="name" style="font-weight:bold; color:#dc3545;">Fitur Terkunci</span>
+                            </a>
+                        </div>
+                        <div class="submenu">
+                            <a href="?page=formulasi" style="font-weight:bold; color:#dc3545;"  class="link submenu-title">Fitur Terkunci</a>
+                            <!-- submenu links here  -->
+                        </div>
+                    </li>
+            <?php
+                }
+            ?>
         </ul>
     </div>
 

@@ -9,6 +9,7 @@
     }
 
     $data = $Dasboard->getData();
+    $status = $data['status'];
 
 
     mysqli_report (MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
@@ -120,20 +121,41 @@
             </li>
 
             <!-- -------- Dropdown List Item ------- -->
-            <li class="dropdown">
-                <div class="title">
-                    <a href="#" class="link">
-                        <i class='bx bx-line-chart'></i>
-                        <span class="name">Recording</span>
-                    </a>
-                    <i class='bx bxs-chevron-down'></i>
-                </div>
-                <div class="submenu">
-                    <a href="#" class="link submenu-title">Recording</a>
-                    <a href="?page=penjualan" class="link">Penjualan</a>
-                    <a href="?page=produksi" class="link">Produksi</a>
-                </div>
-            </li>
+            <?php
+                if($status == 1){
+            ?>
+                    <li class="dropdown">
+                        <div class="title">
+                            <a href="#" class="link">
+                                <i class='bx bx-line-chart'></i>
+                                <span class="name">Recording</span>
+                            </a>
+                            <i class='bx bxs-chevron-down'></i>
+                        </div>
+                        <div class="submenu">
+                            <a href="#" class="link submenu-title">Recording</a>
+                            <a href="?page=penjualan" class="link">Penjualan</a>
+                            <a href="?page=produksi" class="link">Produksi</a>
+                        </div>
+                    </li>
+            <?php
+                } else {
+            ?>
+                    <li class="dropdown">
+                        <div class="title">
+                            <a href="#" class="link">
+                                <i class='bx bx-block' style="font-weight:bold; color:#dc3545;"></i>
+                                <span class="name" style="font-weight:bold; color:#dc3545;">Fitur Terkunci</span>
+                            </a>
+                        </div>
+                        <div class="submenu">
+                            <a href="?page=formulasi" style="font-weight:bold; color:#dc3545;"  class="link submenu-title">Fitur Terkunci</a>
+                            <!-- submenu links here  -->
+                        </div>
+                    </li>
+            <?php
+                }
+            ?>
         </ul>
     </div>
 
@@ -206,6 +228,11 @@
                         include "views/pemilik/produksi/grafik.php";
                     }
                 }
+                if ($_GET['page'] == "pembayaran") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/pemilik/pembayaran/pembayaran.php";
+                    }
+                }
             ?>
     </section>
 
@@ -238,6 +265,44 @@
                     window.location.href="logout.php";
                 }
             });
+        }
+    </script>
+
+<script>
+        function upgrade(){
+            var status = <?php echo $status; ?>;
+            if(status != 1) {
+                swal({
+                    title: "Apakah anda ingin upgrade?",
+                    icon: "warning",
+                    buttons: {
+                        confirm: {
+                            text: "Iya",
+                            value: true,
+                            visible: true,
+                            className: "btn btn-primary",
+                            closeModal: true
+                        },
+                        cancel: {
+                            text: "tidak",
+                            value: false,
+                            visible: true,
+                            className: "btn btn-secondary",
+                            closeModal: true,
+                        }
+                    }
+                }).then((value) => {
+                    if (value) {
+                        window.location.href="?page=pembayaran";
+                    }
+                });
+            } else {
+                swal({
+                    title: 'Sudah Premium',
+                    icon: 'warning',
+                    button: 'Oke'
+                })
+            }
         }
     </script>
     

@@ -14,6 +14,10 @@
             
             return $this->dashboardModel->getData();
         }
+        public function getKaryawan() {
+            
+            return $this->dashboardModel->getKaryawan();
+        }
     
     }
 ?>

@@ -24,6 +24,7 @@ class DashboardModel {
                 'peternakan' => $row['nama_peternakan'],
                 'alamat' => $row['alamat_peternakan'],
                 'profil' => $row['foto_profil'],
+                'status' => $row['status']
             );
             return $data;
         } else {
