@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Bulan Mei 2023 pada 03.30
+-- Waktu pembuatan: 24 Bulan Mei 2023 pada 09.33
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -115,16 +115,15 @@ CREATE TABLE `pemilik` (
   `nama_peternakan` varchar(100) NOT NULL,
   `alamat_peternakan` varchar(100) NOT NULL,
   `foto_profil` varchar(100) NOT NULL,
-  `status` varchar(20) NOT NULL,
-  `pembayaran_id_pembayaran` int(11) NOT NULL
+  `status` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `pemilik`
 --
 
-INSERT INTO `pemilik` (`id_pemilik`, `nama`, `email`, `password`, `nama_peternakan`, `alamat_peternakan`, `foto_profil`, `status`, `pembayaran_id_pembayaran`) VALUES
-(1, 'Bariza Arfadillah Abqariy', 'arfadillah.abqariy@gmail.com', '12345', 'Farmtech', 'Jember', 'Bariza Arfadillah Abqariy.jpg', 'Premium', 1);
+INSERT INTO `pemilik` (`id_pemilik`, `nama`, `email`, `password`, `nama_peternakan`, `alamat_peternakan`, `foto_profil`, `status`) VALUES
+(1, 'Bariza Arfadillah Abqariy', 'arfadillah.abqariy@gmail.com', '12345', 'Farmtech', 'Jember', 'Bariza Arfadillah Abqariy.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -331,13 +330,13 @@ ALTER TABLE `hewan_ternak`
 -- AUTO_INCREMENT untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemilik`
 --
 ALTER TABLE `pemilik`
-  MODIFY `id_pemilik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pemilik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `penjadwalan`
