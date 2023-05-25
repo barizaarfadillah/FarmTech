@@ -78,15 +78,15 @@
                 <div class="title">
                     <a href="#" class="link">
                         <i class='bx bx-calendar'></i>
-                        <span class="name">Jadwal</span>
+                        <span class="name">Reporting</span>
                     </a>
                     <i class='bx bxs-chevron-down'></i>
                 </div>
                 <div class="submenu">
-                    <a href="#" class="link submenu-title">Penjadwalan</a>
-                    <a href="?page=jadwalpakan" class="link">Penjadwalan Pakan</a>
-                    <a href="?page=jadwalvitamin" class="link">Penjadwalan Vitamin</a>
-                    <a href="?page=jadwalperah" class="link">Penjadwalan Perah</a>
+                    <a href="#" class="link submenu-title">Reporting</a>
+                    <a href="?page=reportingpakan" class="link">Reporting Pakan</a>
+                    <a href="?page=reportingvitamin" class="link">Reporting Vitamin</a>
+                    <a href="?page=reportingperah" class="link">Reporting Perah</a>
                 </div>
             </li>
             <!-- -------- Non Dropdown List Item ------- -->
@@ -118,8 +118,8 @@
                         </div>
                         <div class="submenu">
                             <a href="#" class="link submenu-title">Recording</a>
-                            <a href="?page=penjualan" class="link">Penjualan</a>
-                            <a href="?page=produksi" class="link">Produksi</a>
+                            <a href="?page=penjualan" class="link">Recording Penjualan</a>
+                            <a href="?page=produksi" class="link">Recording Produksi</a>
                         </div>
                     </li>
             <?php
@@ -222,46 +222,57 @@
                         include "views/karyawan/produksi/grafik.php";
                     }
                 }
-                if ($_GET['page'] == "jadwalpakan") {
+                if ($_GET['page'] == "stok") {
                     if ($_GET['aksi'] == "") {
-                        include "views/karyawan/jadwal/pakan/jadwal.php";
-                    }
-                    if ($_GET['aksi'] == "edit") {
-                        include "views/karyawan/jadwal/pakan/edit.php";
+                        include "views/karyawan/stok/stok.php";
                     }
                     if ($_GET['aksi'] == "tambah") {
-                        include "views/karyawan/jadwal/pakan/tambah.php";
+                        include "views/karyawan/stok/tambah.php";
                     }
                     if ($_GET['aksi'] == "hapus") {
-                        include "views/karyawan/jadwal/pakan/hapus.php";
+                        include "views/karyawan/stok/hapus.php";
                     }
                 }
-                if ($_GET['page'] == "jadwalvitamin") {
+                if ($_GET['page'] == "reportingpakan") {
                     if ($_GET['aksi'] == "") {
-                        include "views/karyawan/jadwal/vitamin/jadwal.php";
+                        include "views/karyawan/reporting/pakan/reporting.php";
                     }
                     if ($_GET['aksi'] == "edit") {
-                        include "views/karyawan/jadwal/vitamin/edit.php";
+                        include "views/karyawan/reporting/pakan/edit.php";
                     }
                     if ($_GET['aksi'] == "tambah") {
-                        include "views/karyawan/jadwal/vitamin/tambah.php";
+                        include "views/karyawan/reporting/pakan/tambah.php";
                     }
                     if ($_GET['aksi'] == "hapus") {
-                        include "views/karyawan/jadwal/vitamin/hapus.php";
+                        include "views/karyawan/reporting/pakan/hapus.php";
                     }
                 }
-                if ($_GET['page'] == "jadwalperah") {
+                if ($_GET['page'] == "reportingvitamin") {
                     if ($_GET['aksi'] == "") {
-                        include "views/karyawan/jadwal/perah/jadwal.php";
+                        include "views/karyawan/reporting/vitamin/reporting.php";
                     }
                     if ($_GET['aksi'] == "edit") {
-                        include "views/karyawan/jadwal/perah/edit.php";
+                        include "views/karyawan/reporting/vitamin/edit.php";
                     }
                     if ($_GET['aksi'] == "tambah") {
-                        include "views/karyawan/jadwal/perah/tambah.php";
+                        include "views/karyawan/reporting/vitamin/tambah.php";
                     }
                     if ($_GET['aksi'] == "hapus") {
-                        include "views/karyawan/jadwal/perah/hapus.php";
+                        include "views/karyawan/reporting/vitamin/hapus.php";
+                    }
+                }
+                if ($_GET['page'] == "reportingperah") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/karyawan/reporting/perah/reporting.php";
+                    }
+                    if ($_GET['aksi'] == "edit") {
+                        include "views/karyawan/reporting/perah/edit.php";
+                    }
+                    if ($_GET['aksi'] == "tambah") {
+                        include "views/karyawan/reporting/perah/tambah.php";
+                    }
+                    if ($_GET['aksi'] == "hapus") {
+                        include "views/karyawan/reporting/perah/hapus.php";
                     }
                 }
             ?>

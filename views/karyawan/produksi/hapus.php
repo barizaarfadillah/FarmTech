@@ -1,5 +1,5 @@
 <?php
-require_once 'controllers/C_Produksi-Karyawan.php';
-$Produksi = new Produksi();
+require_once 'controllers/C_Recording-Karyawan.php';
+$Recording = new Recording();
 
-$Produksi->deleteRecordingProduksi();?>
+$Recording->deleteRecordingProduksi();?>

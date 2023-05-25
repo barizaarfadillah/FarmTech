@@ -1,6 +1,7 @@
 <?php
-require_once 'controllers/C_Penjualan-Karyawan.php';
-$Penjualan = new Penjualan();
+require_once 'controllers/C_Recording-Karyawan.php';
+$Recording = new Recording();
+$result = $Recording->getStok();
 
 ?>
 <header>
@@ -23,8 +24,21 @@ $Penjualan = new Penjualan();
                         <div class="profile">
                                 <form action="" method="post">
                                 <div class="info-profile">
+                                    <label for="">Nama Karyawan</label></br>
+                                    <input name='karyawan'type="text" value="<?php echo $data['nama'];?>" readonly/>
+                                </div>
+                                <div class="info-profile">
                                     <label for="">Nama Produk</label></br>
-                                    <input name='nama'type="text"/>
+                                    <select name="nama" id="nama">
+                                    <?php
+                                    if ($result->num_rows>0) {
+                                        while ($row = $result->fetch_assoc()){
+                                    ?>
+                                        <option value="<?php echo $row['nama_produk'] ;?>"><?php echo $row['nama_produk'] ;?></option>
+                                    <?php
+                                    }}
+                                    ?>
+                                    </select>
                                 </div>
                                 <div class="info-profile">
                                     <label for="">Tanggal Penjualan</label></br>
@@ -35,7 +49,7 @@ $Penjualan = new Penjualan();
                                     <input name='jumlah'type="text"/>
                                 </div>
                                 <div class="info-profile">
-                                    <label for="">Total</label></br>
+                                    <label for="">Total (Rp)</label></br>
                                     <input name='total'type="text"/>
                                 </div>
                                 <div class="edit-profile">
@@ -49,6 +63,6 @@ $Penjualan = new Penjualan();
 </main>
 <?php
 if(isset($_POST["tambah"])) {
-    $Penjualan->addRecordingPenjualan();?>
+    $Recording->addRecordingPenjualan();?>
 
 <?php }?>

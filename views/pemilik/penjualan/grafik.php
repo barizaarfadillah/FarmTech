@@ -1,7 +1,7 @@
 <?php
-require_once 'controllers/C_Penjualan-Pemilik.php';
-$Penjualan = new Penjualan();
-$result = $Penjualan->getRecordingPenjualan();
+require_once 'controllers/C_Recording-Pemilik.php';
+$Recording = new Recording();
+$result = $Recording->getRecordingPenjualan();
 $data_penjualan = array();
 while ($row = $result->fetch_array()){
     $tanggal = $row['tanggal_penjualan'];

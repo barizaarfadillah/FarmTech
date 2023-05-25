@@ -1,7 +1,7 @@
 <?php
-require_once 'controllers/C_Produksi-Pemilik.php';
-$Produksi = new Produksi();
-$result = $Produksi->getRecordingProduksi();
+require_once 'controllers/C_Recording-Pemilik.php';
+$Recording = new Recording();
+$result = $Recording->getRecordingProduksi();
 ?>
 
 <header>
@@ -21,14 +21,16 @@ $result = $Produksi->getRecordingProduksi();
             <div class="dash-cardsss">
                 <div class="card-singless">
                     <a class="btn-delete" href="?page=produksi&aksi=grafik">Lihat Grafik</a>
+                    <a class="btn-add" href="?page=stok">Lihat Stok</a>
                     <div class="table-responsives">
                         <table id="example" class="cell-border hover">
                             <thead style="background-color:#9DF3C4;">
                                 <tr>
                                     <th style="width:5%; align-items:center; font-size: 1rem;">No</th>
+                                    <th style="width:25%; font-size: 1rem;">Nama Karyawan</th>
                                     <th style="width:25%; font-size: 1rem;">Nama Produk</th>
                                     <th style="width:25%; font-size: 1rem;">Tanggal Produksi</th>
-                                    <th style="width:25%; font-size: 1rem;">Jumlah Produksi</th>
+                                    <th style="width:20%; font-size: 1rem;">Jumlah Produksi</th>
                                 </tr>
                             </thead>
                             <tbody style="background-color:#D7FBE8; font-weight:500;">
@@ -40,6 +42,7 @@ $result = $Produksi->getRecordingProduksi();
                                 ?>
                                 <tr>
                                     <td style="text-align: center; font-size: .9rem;"><?php echo $no?></td>
+                                    <td style="font-size: .9rem;"><?php echo $row['nama'] ;?></td>
                                     <td style="font-size: .9rem;"><?php echo $row['nama_produk'] ;?></td>
                                     <td style="font-size: .9rem;"><?php echo $row['tanggal_produksi'] ;?></td>
                                     <td style="font-size: .9rem;"><?php echo $row['jumlah_produksi'] ;?></td>

@@ -1,6 +1,6 @@
 <?php
-require_once 'controllers/C_Ternak-Karyawan.php';
-$Ternak = new Ternak();
+require_once 'controllers/C_Recording-Karyawan.php';
+$Recording = new Recording();
 
 ?>
 <header>
@@ -18,25 +18,17 @@ $Ternak = new Ternak();
         <main>
 <div class="dash-cardsss">
                 <div class="card-singles">
-                    <h2 class="dash-title" style="margin-top: 2rem; margin-left: 2rem;"><a href="?page=ternak" style="margin-right:1rem;"><i class='bx bx-arrow-back'></i></a> Tambah Data Ternak</h2>
+                    <h2 class="dash-title" style="margin-top: 2rem; margin-left: 2rem;"><a href="?page=stok" style="margin-right:1rem;"><i class='bx bx-arrow-back'></i></a> Tambah Nama Produk</h2>
                     <div class="card-bodys">
                         <div class="profile">
                                 <form action="" method="post">
                                 <div class="info-profile">
-                                    <label for="">Jenis Ternak</label></br>
-                                    <input name='jenis'type="text"/>
+                                    <label for="">Kode Produk</label></br>
+                                    <input name='kode'type="text"/>
                                 </div>
                                 <div class="info-profile">
-                                    <label for="">Tanggal Pendataan</label></br>
-                                    <input name='tanggal' type="date"/>
-                                </div>
-                                <div class="info-profile">
-                                    <label for="">Status</label></br>
-                                    <select name="status" id="status">
-                                        <option value="">--- Pilih Status ---</option>
-                                        <option value="Sehat">Sehat</option>
-                                        <option value="Sakit">Sakit</option>
-                                    </select>
+                                    <label for="">Nama Produk</label></br>
+                                    <input name='nama'type="text"/>
                                 </div>
                                 <div class="edit-profile">
                                     <button name='tambah' class="btn-add" href="#" style="border-style: none;">Tambah</button>
@@ -49,5 +41,6 @@ $Ternak = new Ternak();
 </main>
 <?php
 if(isset($_POST["tambah"])) {
-    $Ternak->addDataTernak();?>
+    $Recording->addStok();?>
+
 <?php }?>

@@ -1,7 +1,7 @@
 <?php
 require_once 'controllers/C_Recording-Karyawan.php';
 $Recording = new Recording();
-$result = $Recording->getRecordingPenjualan();
+$result = $Recording->getStok();
 ?>
 
 <header>
@@ -17,21 +17,17 @@ $result = $Recording->getRecordingPenjualan();
             </div>
         </header>
         <main>
-<h2 class="dash-title">Data Penjualan</h2>
+<h2 class="dash-title"><a href="?page=produksi" style="margin-right:1rem;"><i class='bx bx-arrow-back'></i></a>Stok Produk</h2>
             <div class="dash-cardsss">
                 <div class="card-singless">
-                    <a class="btn-add" href="?page=penjualan&aksi=tambah">Tambah Data</a>
-                    <a class="btn-delete" href="?page=penjualan&aksi=grafik">Lihat Grafik</a>
+                    <a class="btn-add" href="?page=stok&aksi=tambah">Tambah Nama Produk</a>
                     <div class="table-responsives">
                         <table id="example" class="cell-border hover">
                             <thead style="background-color:#9DF3C4;">
                                 <tr>
-                                    <th style="width:5%; align-items:center; font-size: 1rem;">No</th>
-                                    <th style="width:25%; font-size: 1rem;">Nama Karyawan</th>
-                                    <th style="width:25%; font-size: 1rem;">Nama Produk</th>
-                                    <th style="width:25%; font-size: 1rem;">Tanggal Penjualan</th>
-                                    <th style="width:25%; font-size: 1rem;">Jumlah Produk</th>
-                                    <th style="width:25%; font-size: 1rem;">Total</th>
+                                    <th style="width:15%; align-items:center; font-size: 1rem;">Kode Produk</th>
+                                    <th style="width:20%; font-size: 1rem;">Nama Produk</th>
+                                    <th style="width:20%; font-size: 1rem;">Jumlah Produk</th>
                                     <th style="width:15%; font-size: 1rem;">Aksi</th>
                                 </tr>
                             </thead>
@@ -43,15 +39,11 @@ $result = $Recording->getRecordingPenjualan();
                                             $no+=1;
                                 ?>
                                 <tr>
-                                    <td style="text-align: center; font-size: .9rem;"><?php echo $no?></td>
-                                    <td style="font-size: .9rem;"><?php echo $row['nama'] ;?></td>
+                                    <td style="font-size: .9rem;"><?php echo $row['kode_produk'] ;?></td>
                                     <td style="font-size: .9rem;"><?php echo $row['nama_produk'] ;?></td>
-                                    <td style="font-size: .9rem;"><?php echo $row['tanggal_penjualan'] ;?></td>
                                     <td style="font-size: .9rem;"><?php echo $row['jumlah_produk'] ;?></td>
-                                    <td style="font-size: .9rem;"><?php echo $row['total'] ;?></td>
                                     <td style="text-align: center;display:flex;justify-content: center;align-items: center;">
-                                        <a class="btn-add" href="?page=penjualan&aksi=edit&id=<?php echo $row['id_penjualan'] ?>" style="width:65px; margin:0.5rem;">Edit</a>
-                                        <a id="btn-delete" class="btn-delete" style="width:65px; margin:0.5rem;" href="?page=penjualan&aksi=hapus&id=<?php echo $row['id_penjualan'] ?>">Hapus</a>
+                                        <a id="btn-delete" class="btn-delete" style="width:65px; margin:0.5rem;" href="?page=stok&aksi=hapus&id=<?php echo $row['kode_produk'] ?>">Hapus</a>
                                     </td>
                                 </tr>
                                 <?php
@@ -63,7 +55,7 @@ $result = $Recording->getRecordingPenjualan();
                     </div>
                 </div>
             </div>
-                                </main>
+</main>
 <script>
     $(document).on('click', '#btn-delete', function(e){
         e.preventDefault();

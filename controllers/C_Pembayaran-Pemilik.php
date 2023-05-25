@@ -34,15 +34,39 @@
                 $this->pembayaranModel->add($id, $tanggal, $metode, $rekening);
                     $this->pembayaranModel->upgrade($id);
                     echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
-                    echo "<script>
+                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script>
+                        swal({
+                title: "Bayar senilai Rp 50.000,-",
+                icon: "warning",
+                buttons: {
+                    confirm: {
+                        text: "Bayar",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    },
+                    cancel: {
+                        text: "Batal",
+                        value: false,
+                        visible: true,
+                        className: "btn btn-secondary",
+                        closeModal: true,
+                    }
+                }
+            }).then((value) => {
+                if (value) {
                     swal({
-                        title: 'Pembayaran Berhasil',
-                                icon: 'success',
-                                button: 'Oke',
-                            }).then(() => {
-                                window.location.href='?';
-                            });
-                        </script>";
+                        title: "Pembayaran Berhasil",
+                        icon: "success",
+                        button: "Oke",
+                    }).then(() => {
+                        window.location.href="?";
+                    });
+                }
+            });
+                </script>';
                 
             }
         }

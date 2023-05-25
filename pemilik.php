@@ -94,15 +94,15 @@
                 <div class="title">
                     <a href="#" class="link">
                         <i class='bx bx-calendar'></i>
-                        <span class="name">Jadwal</span>
+                        <span class="name">Reporting</span>
                     </a>
                     <i class='bx bxs-chevron-down'></i>
                 </div>
                 <div class="submenu">
-                    <a href="#" class="link submenu-title">Penjadwalan</a>
-                    <a href="?page=jadwalpakan" class="link">Penjadwalan Pakan</a>
-                    <a href="?page=jadwalvitamin" class="link">Penjadwalan Vitamin</a>
-                    <a href="?page=jadwalperah" class="link">Penjadwalan Perah</a>
+                    <a href="#" class="link submenu-title">Reporting</a>
+                    <a href="?page=reportingpakan" class="link">Reporting Pakan</a>
+                    <a href="?page=reportingvitamin" class="link">Reporting Vitamin</a>
+                    <a href="?page=reportingperah" class="link">Reporting Perah</a>
                 </div>
             </li>
             <!-- -------- Non Dropdown List Item ------- -->
@@ -192,19 +192,19 @@
                         include "views/pemilik/ternak/ternak.php";
                     }
                 }
-                if ($_GET['page'] == "jadwalpakan") {
+                if ($_GET['page'] == "reportingpakan") {
                     if ($_GET['aksi'] == "") {
-                        include "views/pemilik/jadwal/pakan/jadwal.php";
+                        include "views/pemilik/reporting/pakan/reporting.php";
                     }
                 }
-                if ($_GET['page'] == "jadwalvitamin") {
+                if ($_GET['page'] == "reportingvitamin") {
                     if ($_GET['aksi'] == "") {
-                        include "views/pemilik/jadwal/vitamin/jadwal.php";
+                        include "views/pemilik/reporting/vitamin/reporting.php";
                     }
                 }
-                if ($_GET['page'] == "jadwalperah") {
+                if ($_GET['page'] == "reportingperah") {
                     if ($_GET['aksi'] == "") {
-                        include "views/pemilik/jadwal/perah/jadwal.php";
+                        include "views/pemilik/reporting/perah/reporting.php";
                     }
                 }
                 if ($_GET['page'] == "formulasi") {
@@ -231,6 +231,11 @@
                 if ($_GET['page'] == "pembayaran") {
                     if ($_GET['aksi'] == "") {
                         include "views/pemilik/pembayaran/pembayaran.php";
+                    }
+                }
+                if ($_GET['page'] == "stok") {
+                    if ($_GET['aksi'] == "") {
+                        include "views/pemilik/stok/stok.php";
                     }
                 }
             ?>

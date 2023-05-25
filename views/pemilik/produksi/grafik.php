@@ -1,7 +1,7 @@
 <?php
-require_once 'controllers/C_Produksi-Pemilik.php';
-$Produksi = new Produksi();
-$result = $Produksi->getRecordingProduksi();
+require_once 'controllers/C_Recording-Pemilik.php';
+$Recording = new Recording();
+$result = $Recording->getRecordingProduksi();
 $data_penjualan = array();
 while ($row = $result->fetch_array()){
     $tanggal = $row['tanggal_produksi'];

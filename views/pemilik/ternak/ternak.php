@@ -25,7 +25,6 @@ $result = $Ternak->getDataTernak();
                             <thead style="background-color:#9DF3C4;">
                                 <tr>
                                     <th style="width:5%; align-items:center; font-size: 1rem;">No</th>
-                                    <th style="width:5%; align-items:center; font-size: 1rem;">Id</th>
                                     <th style="width:30%; font-size: 1rem;">Jenis Ternak</th>
                                     <th style="width:30%; font-size: 1rem;">Tanggal Pendataan</th>
                                     <th style="width:30%; font-size: 1rem;">Status</th>
@@ -40,7 +39,6 @@ $result = $Ternak->getDataTernak();
                                 ?>
                                 <tr>
                                     <td style="text-align: center; font-size: .9rem;"><?php echo $no?></td>
-                                    <td style="text-align: center; font-size: .9rem;"><?php echo $row['id_ternak']?></td>
                                     <td style="font-size: .9rem;"><?php echo $row['jenis'] ;?></td>
                                     <td style="font-size: .9rem;"><?php echo $row['tanggal_pendataan'] ;?></td>
                                     <td style="font-size: .9rem;"><?php echo $row['status'] ;?></td>

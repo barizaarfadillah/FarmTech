@@ -1,7 +1,7 @@
 <?php
-require_once 'controllers/C_Penjualan-Karyawan.php';
-$Penjualan = new Penjualan();
-$result = $Penjualan->getRecordingPenjualanbyId();
+require_once 'controllers/C_Recording-Karyawan.php';
+$Recording = new Recording();
+$result = $Recording->getRecordingPenjualanbyId();
 $row = $result->fetch_assoc()
 ?>
 <header>
@@ -24,8 +24,8 @@ $row = $result->fetch_assoc()
                         <div class="profile">
                                 <form action="" method="post">
                                 <div class="info-profile">
-                                    <label for="">Id Penjualan</label></br>
-                                    <input name='id'type="text" value="<?php echo $row['id_penjualan'] ;?>" readonly/>
+                                    <label for="">Nama Karyawan</label></br>
+                                    <input name='karyawan'type="text" value="<?php echo $data['nama'];?>" readonly/>
                                 </div>
                                 <div class="info-profile">
                                     <label for="">Nama Produk</label></br>
@@ -54,5 +54,5 @@ $row = $result->fetch_assoc()
 </main>
 <?php
 if(isset($_POST["edit"])) {
-    $Penjualan->updateRecordingPenjualan();?>
+    $Recording->updateRecordingPenjualan();?>
 <?php }?>

@@ -1,12 +1,11 @@
 <?php
 
 require_once 'controllers/C_Ternak-Karyawan.php';
-require_once 'controllers/C_Jadwal-Karyawan.php';
-require_once 'controllers/C_Penjualan-Karyawan.php';
-require_once 'controllers/C_Produksi-Karyawan.php';
+require_once 'controllers/C_Reporting-Karyawan.php';
+require_once 'controllers/C_Recording-Karyawan.php';
 
-$Penjualan = new Penjualan();
-$result = $Penjualan->getRecordingPenjualan();
+$Recording = new Recording();
+$result = $Recording->getRecordingPenjualan();
 $data_penjualan = array();
 while ($row = $result->fetch_array()){
     $tanggal = $row['tanggal_penjualan'];
@@ -15,19 +14,19 @@ while ($row = $result->fetch_array()){
     $data_penjualan[] = array('tanggal' => $tanggal, 'total' => $total);
 }
 
+$Reporting = new Reporting();
+$array = $Reporting->getReporting();
+
 $Ternak = new Ternak();
 $row = $Ternak->jumlahData();
 $totalTernak = $row['total'];
 
-$Jadwal = new Jadwal();
-$result = $Jadwal->getPenjadwalan();
-
-$Penjualan = new Penjualan();
-$row = $Penjualan->jumlahData();
+$Recording = new Recording();
+$row = $Recording->jumlahDataPenjualan();
 $totalPenjualan = $row['total'];
 
-$Produksi = new Produksi();
-$row = $Produksi->jumlahData();
+$Recording = new Recording();
+$row = $Recording->jumlahDataProduksi();
 $totalProduksi = $row['total'];
 ?>
 
@@ -96,7 +95,7 @@ $totalProduksi = $row['total'];
                         </div>
                     </div>
                     <div class="activity-card">
-                        <h3>Jadwal Hari Ini</h3>
+                        <h3>Aktifitas Hari Ini</h3>
                         <div class="table-responsive">
                             <table>
                                 <thead>
@@ -108,15 +107,13 @@ $totalProduksi = $row['total'];
                                 </thead>
                                 <tbody>
                                     <?php
-                                        if ($result->num_rows>0) {
-                                            $no = 0; 
-                                            while ($row = $result->fetch_assoc()){
-                                                $no += 1;
+                                        if (count($array)>0) {
+                                            for($i=0; $i<count($array); $i++){
                                     ?>
                                     <tr>
-                                        <td><?php echo $row['jenis'] ;?></td>
-                                        <td><?php echo $row['tanggal'] ;?></td>
-                                        <td><?php echo $row['jam'] ;?></td>
+                                        <td><?php echo $array[$i]['uraian'] ;?></td>
+                                        <td><?php echo $array[$i]['tanggal'] ;?></td>
+                                        <td><?php echo $array[$i]['jam'] ;?></td>
                                     </tr>
                                     <?php
                                     } }else {

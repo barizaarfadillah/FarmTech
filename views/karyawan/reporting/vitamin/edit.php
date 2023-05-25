@@ -1,7 +1,7 @@
 <?php
-require_once 'controllers/C_Recording-Karyawan.php';
-$Recording = new Recording();
-$result = $Recording->getRecordingProduksibyId();
+require_once 'controllers/C_Reporting-Karyawan.php';
+$Reporting = new Reporting();
+$result = $Reporting->getReportingVitaminbyId();
 $row = $result->fetch_assoc()
 ?>
 <header>
@@ -19,25 +19,29 @@ $row = $result->fetch_assoc()
         <main>
 <div class="dash-cardsss">
                 <div class="card-singles">
-                    <h2 class="dash-title" style="margin-top: 2rem; margin-left: 2rem;"><a href="?page=produksi" style="margin-right:1rem;"><i class='bx bx-arrow-back'></i></a> Edit Data Produksi</h2>
+                    <h2 class="dash-title" style="margin-top: 2rem; margin-left: 2rem;"><a href="?page=reportingvitamin" style="margin-right:1rem;"><i class='bx bx-arrow-back'></i></a> Edit Reporting</h2>
                     <div class="card-bodys">
                         <div class="profile">
                                 <form action="" method="post">
                                 <div class="info-profile">
-                                    <label for="">Nama Karyawna</label></br>
-                                    <input name='Karyawan'type="text" value="<?php echo $data['nama'];?>" readonly/>
+                                    <label for="">Nama Karyawan</label></br>
+                                    <input name='karyawan'type="text" value="<?php echo $row['nama'] ;?>" readonly/>
                                 </div>
                                 <div class="info-profile">
-                                    <label for="">Nama Produk</label></br>
-                                    <input name='nama'type="text" value="<?php echo $row['nama_produk'] ;?>"/>
+                                    <label for="">Nama Vitamin</label></br>
+                                    <input name='nama'type="text" value="<?php echo $row['nama_vitamin'] ;?>" />
                                 </div>
                                 <div class="info-profile">
-                                    <label for="">Tanggal Produksi</label></br>
-                                    <input name='tanggal' type="date" value="<?php echo $row['tanggal_produksi'] ;?>"/>
+                                    <label for="">Dosis Vitamin</label></br>
+                                    <input name='dosis'type="text" value="<?php echo $row['dosis_vitamin'] ;?>"/>
                                 </div>
                                 <div class="info-profile">
-                                    <label for="">Jumlah Produk</label></br>
-                                    <input name='jumlah'type="text" value="<?php echo $row['jumlah_produksi'] ;?>"/>
+                                    <label for="">Jam</label></br>
+                                    <input name='jam' type="time" value="<?php echo $row['jam'] ;?>" readonly/>
+                                </div>
+                                <div class="info-profile">
+                                    <label for="">Tanggal</label></br>
+                                    <input name='tanggal' type="date" value="<?php echo $row['tanggal'] ;?>" readonly/>
                                 </div>
                                 <div class="edit-profile">
                                     <button name='edit' class="btn-add" href="#" style="border-style: none; width:65px; margin:0.5rem;">Simpan</button>
@@ -50,5 +54,5 @@ $row = $result->fetch_assoc()
 </main>
 <?php
 if(isset($_POST["edit"])) {
-    $Recording->updateRecordingProduksi();?>
+    $Reporting->updateReportingVitamin();?>
 <?php }?>
