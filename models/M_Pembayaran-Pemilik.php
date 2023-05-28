@@ -14,14 +14,10 @@ class PembayaranModel {
         $stmt = $this->conn->prepare("INSERT INTO pembayaran (tanggal_pembayaran, metode_pembayaran, no_rekening, pemilik_id_pemilik) VALUES ('$tanggal', '$metode', '$rekening', '$id')");
         $stmt->execute();
         $stmt->close();
-    }
-
-    public function upgrade($id) {
         $stmt = $this->conn->prepare("UPDATE pemilik SET status = 1 WHERE id_pemilik = '$id'");
         $stmt->execute();
         $stmt->close();
     }
-
     
 }
 

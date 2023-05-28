@@ -1,14 +1,13 @@
 <?php
     // session_start(); 
-    require_once 'models/M_Ternak-Karyawan.php';
+    require_once 'models/M_HewanTernak.php';
 
-    class Ternak {
-
+    class C_DataHewanTernak {
 
         private $ternakModel;
     
         public function __construct() {
-            $this->ternakModel = new TernakModel();
+            $this->ternakModel = new M_HewanTernak();
         }
     
     

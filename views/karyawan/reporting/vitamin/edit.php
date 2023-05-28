@@ -1,6 +1,6 @@
 <?php
-require_once 'controllers/C_Reporting-Karyawan.php';
-$Reporting = new Reporting();
+require_once 'controllers/C_Reporting.php';
+$Reporting = new C_Reporting();
 $result = $Reporting->getReportingVitaminbyId();
 $row = $result->fetch_assoc()
 ?>

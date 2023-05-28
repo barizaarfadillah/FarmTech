@@ -11,7 +11,7 @@
             $this->pembayaranModel = new PembayaranModel();
         }
 
-        public function addPembayaran() {
+        public function bayar() {
             $id = $_POST['id'];
             $tanggal = $_POST['tanggal'];
             $metode = $_POST['metode'];
@@ -32,7 +32,6 @@
                 
             } else {
                 $this->pembayaranModel->add($id, $tanggal, $metode, $rekening);
-                    $this->pembayaranModel->upgrade($id);
                     echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
                 <script>

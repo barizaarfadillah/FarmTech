@@ -1,7 +1,7 @@
 <?php
-require_once 'controllers/C_Login-Pemilik.php';
+require_once 'controllers/C_Pemilik.php';
 
-$Login = new Login();
+$Login = new C_Login();
 
 mysqli_report (MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));

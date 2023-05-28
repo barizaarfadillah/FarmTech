@@ -1,6 +1,6 @@
 <?php
-require_once 'controllers/C_Reporting-Karyawan.php';
-$Reporting = new Reporting();
+require_once 'controllers/C_Reporting.php';
+$Reporting = new C_Reporting();
 $result = $Reporting->getReportingPerahbyId();
 $row = $result->fetch_assoc()
 ?>
@@ -29,7 +29,7 @@ $row = $result->fetch_assoc()
                                 </div>
                                 <div class="info-profile">
                                     <label for="">Hasil Produksi (liter)</label></br>
-                                    <input name='hasil'type="text" value="<?php echo $row['hasil_produksi'] ;?>" />
+                                    <input name='hasil'type="text" value="<?php echo $row['hasil_perah'] ;?>" />
                                 </div>
                                 <div class="info-profile">
                                     <label for="">Jam</label></br>

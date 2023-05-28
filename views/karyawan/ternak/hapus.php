@@ -1,5 +1,5 @@
 <?php
-require_once 'controllers/C_Ternak-Karyawan.php';
-$Ternak = new Ternak();
+require_once 'controllers/C_HewanTernak.php';
+$Ternak = new C_DataHewanTernak();
 
 $Ternak->deleteDataTernak();?>

@@ -2,12 +2,25 @@
 // session_start();
 require_once 'koneksi.php';
 
-class ProduksiModel {
+class M_RecordingProduksi {
     private $conn;
 
     public function __construct() {
         $db = new Connection();
         $this->conn = $db->connection;
+    }
+
+    public function Pemilik() {
+        $pemilik = $_SESSION['pemilik'];
+        $stmt = $this->conn->prepare("SELECT * FROM pemilik WHERE email = '$pemilik'");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['id_pemilik'];
+        } else {
+            return false;
+        }
     }
 
     public function Karyawan() {
@@ -23,7 +36,7 @@ class ProduksiModel {
         }
     }
     
-    public function RecordingProduksibyId($id) {
+    public function recordingProduksibyId($id) {
         $row = $this->Karyawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
@@ -33,10 +46,28 @@ class ProduksiModel {
         return $result;
     }
 
-    public function RecordingProduksi() {
-        $row = $this->Karyawan();
-        $karyawan = $row['id_karyawan'];
-        $pemilik = $row['pemilik_id_pemilik'];
+    public function RecordingProduksiGrafik() {
+        if($karyawan = $_SESSION['karyawan']){
+            $row = $this->Karyawan();
+            $karyawan = $row['id_karyawan'];
+            $pemilik = $row['pemilik_id_pemilik'];
+        } else {
+            $pemilik = $this->Pemilik();
+        }
+        $stmt = $this->conn->prepare("SELECT recording_produksi.id_produksi, recording_produksi.nama_produk, recording_produksi.tanggal_produksi, recording_produksi.jumlah_produksi, karyawan.nama FROM karyawan JOIN recording_produksi ON karyawan.id_karyawan = recording_produksi.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' AND recording_produksi.tanggal_produksi >= DATE_SUB(CURDATE(), INTERVAL 30 DAY) ORDER BY recording_produksi.tanggal_produksi");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;
+    }
+
+    public function recordingProduksi() {
+        if($karyawan = $_SESSION['karyawan']){
+            $row = $this->Karyawan();
+            $karyawan = $row['id_karyawan'];
+            $pemilik = $row['pemilik_id_pemilik'];
+        } else {
+            $pemilik = $this->Pemilik();
+        }
         $stmt = $this->conn->prepare("SELECT recording_produksi.id_produksi, recording_produksi.nama_produk, recording_produksi.tanggal_produksi, recording_produksi.jumlah_produksi, karyawan.nama FROM karyawan JOIN recording_produksi ON karyawan.id_karyawan = recording_produksi.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' ORDER BY recording_produksi.tanggal_produksi");
         $stmt->execute();
         $result = $stmt->get_result();
@@ -68,9 +99,13 @@ class ProduksiModel {
     }
 
     public function jumlahData() {
-        $row = $this->Karyawan();
-        $karyawan = $row['id_karyawan'];
-        $pemilik = $row['pemilik_id_pemilik'];
+        if($karyawan = $_SESSION['karyawan']){
+            $row = $this->Karyawan();
+            $karyawan = $row['id_karyawan'];
+            $pemilik = $row['pemilik_id_pemilik'];
+        } else {
+            $pemilik = $this->Pemilik();
+        }
         $stmt = $this->conn->prepare("SELECT SUM(recording_produksi.jumlah_produksi) as total FROM karyawan JOIN recording_produksi ON karyawan.id_karyawan = recording_produksi.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik'");
         $stmt->execute();
         $result = $stmt->get_result();
@@ -78,10 +113,14 @@ class ProduksiModel {
         return $row;
     }
 
-    public function Stok(){
-        $row = $this->Karyawan();
-        $karyawan = $row['id_karyawan'];
-        $pemilik = $row['pemilik_id_pemilik'];
+    public function stok(){
+        if($karyawan = $_SESSION['karyawan']){
+            $row = $this->Karyawan();
+            $karyawan = $row['id_karyawan'];
+            $pemilik = $row['pemilik_id_pemilik'];
+        } else {
+            $pemilik = $this->Pemilik();
+        }
         $stmt = $this->conn->prepare("SELECT * FROM karyawan JOIN stok_produk ON karyawan.id_karyawan = stok_produk.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik'");
         $stmt->execute();
         $result = $stmt->get_result();
@@ -105,12 +144,25 @@ class ProduksiModel {
     
 }
 
-class PenjualanModel {
+class M_RecordingPenjualan {
     private $conn;
 
     public function __construct() {
         $db = new Connection();
         $this->conn = $db->connection;
+    }
+
+    public function Pemilik() {
+        $pemilik = $_SESSION['pemilik'];
+        $stmt = $this->conn->prepare("SELECT * FROM pemilik WHERE email = '$pemilik'");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['id_pemilik'];
+        } else {
+            return false;
+        }
     }
 
     public function Karyawan() {
@@ -126,22 +178,40 @@ class PenjualanModel {
         }
     }
 
-    public function RecordingPenjualan() {
-        $row = $this->Karyawan();
-        $karyawan = $row['id_karyawan'];
-        $pemilik = $row['pemilik_id_pemilik'];
+    public function recordingPenjualan() {
+        if($karyawan = $_SESSION['karyawan']){
+            $row = $this->Karyawan();
+            $karyawan = $row['id_karyawan'];
+            $pemilik = $row['pemilik_id_pemilik'];
+        } else {
+            $pemilik = $this->Pemilik();
+        }
         $stmt = $this->conn->prepare("SELECT recording_penjualan.id_penjualan, recording_penjualan.nama_produk, recording_penjualan.tanggal_penjualan, recording_penjualan.jumlah_produk, recording_penjualan.total, karyawan.nama FROM karyawan JOIN recording_penjualan ON karyawan.id_karyawan = recording_penjualan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' ORDER BY recording_penjualan.tanggal_penjualan");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;
+    }
+
+    public function recordingPenjualanGrafik() {
+        if($karyawan = $_SESSION['karyawan']){
+            $row = $this->Karyawan();
+            $karyawan = $row['id_karyawan'];
+            $pemilik = $row['pemilik_id_pemilik'];
+        } else {
+            $pemilik = $this->Pemilik();
+        }
+        $stmt = $this->conn->prepare("SELECT recording_penjualan.id_penjualan, recording_penjualan.nama_produk, recording_penjualan.tanggal_penjualan, recording_penjualan.jumlah_produk, recording_penjualan.total, karyawan.nama FROM karyawan JOIN recording_penjualan ON karyawan.id_karyawan = recording_penjualan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' AND recording_penjualan.tanggal_penjualan >= DATE_SUB(CURDATE(), INTERVAL 30 DAY) ORDER BY recording_penjualan.tanggal_penjualan");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result;
     }
     
 
-    public function RecordingPenjualanbyId($id) {
+    public function recordingPenjualanbyId($id) {
         $row = $this->Karyawan();
         $karyawan = $row['id_karyawan'];
         $pemilik = $row['pemilik_id_pemilik'];
-        $stmt = $this->conn->prepare("SELECT recording_penjualan.id_penjualan, recording_penjualan.nama_produk, recording_penjualan.tanggal_penjualan, recording_penjualan.jumlah_produk, recording_penjualan.total karyawan.nama FROM karyawan JOIN recording_penjualan ON karyawan.id_karyawan = recording_penjualan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' AND recording_penjualan.id_penjualan = '$id'");
+        $stmt = $this->conn->prepare("SELECT recording_penjualan.id_penjualan, recording_penjualan.nama_produk, recording_penjualan.tanggal_penjualan, recording_penjualan.jumlah_produk, recording_penjualan.total, karyawan.nama FROM karyawan JOIN recording_penjualan ON karyawan.id_karyawan = recording_penjualan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik' AND recording_penjualan.id_penjualan = '$id'");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result;
@@ -171,9 +241,13 @@ class PenjualanModel {
     }
 
     public function jumlahData() {
-        $row = $this->Karyawan();
-        $karyawan = $row['id_karyawan'];
-        $pemilik = $row['pemilik_id_pemilik'];
+        if($karyawan = $_SESSION['karyawan']){
+            $row = $this->Karyawan();
+            $karyawan = $row['id_karyawan'];
+            $pemilik = $row['pemilik_id_pemilik'];
+        } else {
+            $pemilik = $this->Pemilik();
+        }
         $stmt = $this->conn->prepare("SELECT SUM(recording_penjualan.total) as total FROM karyawan JOIN recording_penjualan ON karyawan.id_karyawan = recording_penjualan.karyawan_id_karyawan WHERE karyawan.pemilik_id_pemilik = '$pemilik'");
         $stmt->execute();
         $result = $stmt->get_result();

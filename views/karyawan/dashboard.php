@@ -1,11 +1,11 @@
 <?php
 
-require_once 'controllers/C_Ternak-Karyawan.php';
-require_once 'controllers/C_Reporting-Karyawan.php';
-require_once 'controllers/C_Recording-Karyawan.php';
+require_once 'controllers/C_HewanTernak.php';
+require_once 'controllers/C_Reporting.php';
+require_once 'controllers/C_Recording.php';
 
-$Recording = new Recording();
-$result = $Recording->getRecordingPenjualan();
+$Recording = new C_Recording();
+$result = $Recording->getGrafikPenjualan();
 $data_penjualan = array();
 while ($row = $result->fetch_array()){
     $tanggal = $row['tanggal_penjualan'];
@@ -13,21 +13,19 @@ while ($row = $result->fetch_array()){
 
     $data_penjualan[] = array('tanggal' => $tanggal, 'total' => $total);
 }
-
-$Reporting = new Reporting();
-$array = $Reporting->getReporting();
-
-$Ternak = new Ternak();
-$row = $Ternak->jumlahData();
-$totalTernak = $row['total'];
-
-$Recording = new Recording();
 $row = $Recording->jumlahDataPenjualan();
 $totalPenjualan = $row['total'];
 
-$Recording = new Recording();
 $row = $Recording->jumlahDataProduksi();
 $totalProduksi = $row['total'];
+
+$Reporting = new C_Reporting();
+$array = $Reporting->getReporting();
+
+$Ternak = new C_DataHewanTernak();
+$row = $Ternak->jumlahData();
+$totalTernak = $row['total'];
+
 ?>
 
 <header>
@@ -120,7 +118,7 @@ $totalProduksi = $row['total'];
                                     ?>
                                     <tr><td></td></tr>
                                     <tr>
-                                        <td colspan="3" style="text-align: center; font-size: 1.3rem;"><h3>Tidak Ada Jadwal Hari Ini</h3></td>
+                                        <td colspan="3" style="text-align: center; font-size: 1.3rem;"><h3>Tidak Ada Aktifitas Hari Ini</h3></td>
                                     </tr>
                                     <?php
                                     }

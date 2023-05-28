@@ -1,6 +1,6 @@
 <?php
-require_once 'controllers/C_Reporting-Pemilik.php';
-$Reporting = new Reporting();
+require_once 'controllers/C_Reporting.php';
+$Reporting = new C_Reporting();
 $result = $Reporting->getReportingVitamin();
 ?>
 
@@ -20,7 +20,6 @@ $result = $Reporting->getReportingVitamin();
 <h2 class="dash-title">Reporting Pemberian Vitamin</h2>
             <div class="dash-cardsss">
                 <div class="card-singless">
-                    <a class="btn-add" href="?page=reportingvitamin&aksi=tambah">Tambah Reporting</a>
                     <div class="table-responsives">
                         <table id="example" class="cell-border hover">
                             <thead style="background-color:#9DF3C4;">

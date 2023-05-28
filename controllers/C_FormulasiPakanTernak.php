@@ -1,16 +1,13 @@
 <?php
-    // session_start(); 
-    require_once 'models/M_Formulasi-Karyawan.php';
+    require_once 'models/M_Formulasi.php';
 
-    class Formulasi {
-
+    class C_FormulasiPakanTernak {
 
         private $formulasiModel;
     
         public function __construct() {
-            $this->formulasiModel = new FormulasiModel();
+            $this->formulasiModel = new M_Formulasi();
         }
-    
     
         public function getFormulasi() {
             $result = $this->formulasiModel->Formulasi(); 

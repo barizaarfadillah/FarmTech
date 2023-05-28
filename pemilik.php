@@ -303,7 +303,7 @@
                 });
             } else {
                 swal({
-                    title: 'Sudah Premium',
+                    title: 'Anda Sudah Premium',
                     icon: 'warning',
                     button: 'Oke'
                 })

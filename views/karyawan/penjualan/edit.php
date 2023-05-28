@@ -1,6 +1,6 @@
 <?php
-require_once 'controllers/C_Recording-Karyawan.php';
-$Recording = new Recording();
+require_once 'controllers/C_Recording.php';
+$Recording = new C_Recording();
 $result = $Recording->getRecordingPenjualanbyId();
 $row = $result->fetch_assoc()
 ?>

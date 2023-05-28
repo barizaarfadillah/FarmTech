@@ -1,7 +1,7 @@
 <?php
-require_once 'controllers/C_Register.php';
+require_once 'controllers/C_Pemilik.php';
 
-$Register = new Register();
+$Register = new C_Register();
 
 
 mysqli_report (MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);

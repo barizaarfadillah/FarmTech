@@ -1,17 +1,17 @@
 <?php
     // session_start(); 
-    require_once 'models/M_Reporting-Karyawan.php';
+    require_once 'models/M_Reporting.php';
 
-    class Reporting {
+    class C_Reporting {
 
         private $ReportingPakanModel;
         private $ReportingPerahModel;
         private $ReportingVitaminModel;
     
         public function __construct() {
-            $this->ReportingPakanModel = new ReportingPakanModel();
-            $this->ReportingPerahModel = new ReportingPerahModel();
-            $this->ReportingVitaminModel = new ReportingVitaminModel();
+            $this->ReportingPakanModel = new M_ReportingPakan();
+            $this->ReportingPerahModel = new M_ReportingPerah();
+            $this->ReportingVitaminModel = new M_ReportingVitamin();
         }
     
         public function getReporting() {

@@ -1,19 +1,19 @@
 <?php
     // session_start(); 
-    require_once 'models/M_Recording-Karyawan.php';
+    require_once 'models/M_Recording.php';
 
-    class Recording {
+    class C_Recording {
 
         private $produksiModel;
         private $penjualanModel;
     
         public function __construct() {
-            $this->produksiModel = new ProduksiModel();
-            $this->penjualanModel = new PenjualanModel();
+            $this->produksiModel = new M_RecordingProduksi();
+            $this->penjualanModel = new M_RecordingPenjualan();
         }
 
         public function getStok(){
-            $result = $this->produksiModel->Stok(); 
+            $result = $this->produksiModel->stok(); 
             return $result;
         }
 
@@ -50,13 +50,18 @@
         }
     
         public function getRecordingProduksi() {
-            $result = $this->produksiModel->RecordingProduksi(); 
+            $result = $this->produksiModel->recordingProduksi(); 
+            return $result;
+        }
+    
+        public function getGrafikProduksi() {
+            $result = $this->produksiModel->recordingProduksiGrafik(); 
             return $result;
         }
 
         public function getRecordingProduksibyId() {
             $id= $_GET['id'];
-            $result = $this->produksiModel->RecordingProduksibyId($id); 
+            $result = $this->produksiModel->recordingProduksibyId($id); 
             return $result;
         }
 
@@ -185,13 +190,17 @@
         }
 
         public function getRecordingPenjualan() {
-            $result = $this->penjualanModel->RecordingPenjualan(); 
+            $result = $this->penjualanModel->recordingPenjualan(); 
+            return $result;
+        }
+        public function getGrafikPenjualan() {
+            $result = $this->penjualanModel->recordingPenjualanGrafik(); 
             return $result;
         }
 
         public function getRecordingPenjualanbyId() {
             $id= $_GET['id'];
-            $result = $this->penjualanModel->RecordingPenjualanbyId($id); 
+            $result = $this->penjualanModel->recordingPenjualanbyId($id); 
             return $result;
         }
 

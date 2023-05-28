@@ -1,7 +1,7 @@
 <?php
-require_once 'controllers/C_Recording-Pemilik.php';
-$Recording = new Recording();
-$result = $Recording->getRecordingProduksi();
+require_once 'controllers/C_Recording.php';
+$Recording = new C_Recording();
+$result = $Recording->getGrafikProduksi();
 $data_penjualan = array();
 while ($row = $result->fetch_array()){
     $tanggal = $row['tanggal_produksi'];
@@ -23,7 +23,7 @@ while ($row = $result->fetch_array()){
             </div>
         </header>
 <main>
-            <h2 class="dash-title">Data Produksi</h2>
+            <h2 class="dash-title">Grafik Produksi 30 Hari Terakhir</h2>
             <div class="dash-cardsss">
                 <div class="card-singless">
                     <a class="btn-add" href="?page=produksi">Lihat Tabel</a>

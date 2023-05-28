@@ -1,6 +1,6 @@
 <?php
-require_once 'controllers/C_Formulasi-Pemilik.php';
-$Formulasi = new Formulasi();
+require_once 'controllers/C_FormulasiPakanTernak.php';
+$Formulasi = new C_FormulasiPakanTernak();
 $result = $Formulasi->getFormulasi();
 ?>
 

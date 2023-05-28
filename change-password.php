@@ -1,7 +1,7 @@
 <?php
-require_once 'controllers/C_LupaPassword.php';
+require_once 'controllers/C_Pemilik.php';
 
-$Forgot = new Forgot();
+$Forgot = new C_NewPassword();
 
 
 

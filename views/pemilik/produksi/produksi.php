@@ -1,6 +1,6 @@
 <?php
-require_once 'controllers/C_Recording-Pemilik.php';
-$Recording = new Recording();
+require_once 'controllers/C_Recording.php';
+$Recording = new C_Recording();
 $result = $Recording->getRecordingProduksi();
 ?>
 

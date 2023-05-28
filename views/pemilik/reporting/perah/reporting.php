@@ -1,6 +1,6 @@
 <?php
-require_once 'controllers/C_Reporting-Pemilik.php';
-$Reporting = new Reporting();
+require_once 'controllers/C_Reporting.php';
+$Reporting = new C_Reporting();
 $result = $Reporting->getReportingPerah();
 ?>
 
@@ -20,7 +20,6 @@ $result = $Reporting->getReportingPerah();
 <h2 class="dash-title">Reporting Pemerahan Susu</h2>
             <div class="dash-cardsss">
                 <div class="card-singless">
-                    <a class="btn-add" href="?page=reportingperah&aksi=tambah">Tambah Reporting</a>
                     <div class="table-responsives">
                         <table id="example" class="cell-border hover">
                             <thead style="background-color:#9DF3C4;">

@@ -58,5 +58,5 @@ $tanggal = $objDateTime->format("Y-m-d");
 </main>
 <?php
 if(isset($_POST["bayar"])) {
-    $Pembayaran->addPembayaran();?>
+    $Pembayaran->bayar();?>
 <?php }?>

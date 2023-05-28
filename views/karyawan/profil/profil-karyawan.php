@@ -1,6 +1,6 @@
 <?php
-require_once 'controllers/C_Profil-Karyawan.php';
-$Profil = new Profil();
+require_once 'controllers/C_Karyawan.php';
+$Profil = new C_ProfileKaryawan();
 $data = $Profil->getKaryawan();
 $_SESSION['id_karyawan'] = $data['id'];
 ?>

@@ -1,7 +1,7 @@
 <?php
-require_once 'controllers/C_LupaPassword-Karyawan.php';
+require_once 'controllers/C_Karyawan.php';
 
-$Forgot = new Forgot();
+$Forgot = new C_NewPassword();
 
 
 

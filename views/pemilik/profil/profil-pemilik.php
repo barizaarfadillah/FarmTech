@@ -1,6 +1,6 @@
 <?php
-require_once 'controllers/C_Profil-Pemilik.php';
-$Profil = new Profil();
+require_once 'controllers/C_Pemilik.php';
+$Profil = new C_ProfilePemilik();
 $data = $Profil->getPemilik();
 $_SESSION['id_pemilik'] = $data['id'];
 ?>

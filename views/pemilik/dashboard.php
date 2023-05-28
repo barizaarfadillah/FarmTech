@@ -1,11 +1,11 @@
 <?php
-require_once 'controllers/C_Karyawan-Pemilik.php';
-require_once 'controllers/C_Ternak-Pemilik.php';
-require_once 'controllers/C_Reporting-Pemilik.php';
-require_once 'controllers/C_Recording-Pemilik.php';
+require_once 'controllers/C_Karyawan.php';
+require_once 'controllers/C_HewanTernak.php';
+require_once 'controllers/C_Reporting.php';
+require_once 'controllers/C_Recording.php';
 
-$Recording = new Recording();
-$result = $Recording->getRecordingPenjualan();
+$Recording = new C_Recording();
+$result = $Recording->getGrafikPenjualan();
 $data_penjualan = array();
 while ($row = $result->fetch_array()){
     $tanggal = $row['tanggal_penjualan'];
@@ -14,23 +14,22 @@ while ($row = $result->fetch_array()){
     $data_penjualan[] = array('tanggal' => $tanggal, 'total' => $total);
 }
 
-$Recording = new Recording();
 $row = $Recording->jumlahDataProduksi();
 $totalProduksi = $row['total'];
 
-$Karyawan = new Karyawan();
-$row = $Karyawan->jumlahData();
-$totalKaryawan = $row['total'];
-
-$Ternak = new Ternak();
-$row = $Ternak->jumlahData();
-$totalTernak = $row['total'];
-
-$Recording = new Recording();
 $row = $Recording->jumlahDataPenjualan();
 $totalPenjualan = $row['total'];
 
-$Reporting = new Reporting();
+$Karyawan = new C_Karyawan();
+$row = $Karyawan->jumlahData();
+$totalKaryawan = $row['total'];
+
+$Ternak = new C_DataHewanTernak();
+$row = $Ternak->jumlahData();
+$totalTernak = $row['total'];
+
+
+$Reporting = new C_Reporting();
 $array = $Reporting->getReporting();
 
 ?>
@@ -116,7 +115,7 @@ $array = $Reporting->getReporting();
                         </div>
                     </div>
                     <div class="activity-card">
-                        <h3>Jadwal Hari Ini</h3>
+                        <h3>Aktifitas Hari Ini</h3>
                         <div class="table-responsive">
                             <table>
                                 <thead>
@@ -141,7 +140,7 @@ $array = $Reporting->getReporting();
                                     ?>
                                     <tr><td></td></tr>
                                     <tr>
-                                        <td colspan="3" style="text-align: center; font-size: 1.3rem;"><h3>Tidak Ada Jadwal Hari Ini</h3></td>
+                                        <td colspan="3" style="text-align: center; font-size: 1.3rem;"><h3>Tidak Ada Aktifitas Hari Ini</h3></td>
                                     </tr>
                                     <?php
                                     }

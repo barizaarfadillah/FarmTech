@@ -1,6 +1,6 @@
 <?php
-require_once 'controllers/C_Ternak-Karyawan.php';
-$Ternak = new Ternak();
+require_once 'controllers/C_HewanTernak.php';
+$Ternak = new C_DataHewanTernak();
 $result = $Ternak->getDataTernakbyId();
 $row = $result->fetch_assoc()
 ?>
@@ -39,9 +39,8 @@ $row = $result->fetch_assoc()
                                     <label for="">Status</label></br>
                                     <select name="status" id="status">
                                         <option value="<?php echo $row['status'] ;?>"><?php echo $row['status'] ;?></option>
-                                        <option value="sehat">Sehat</option>
-                                        <option value="sakit">Sakit</option>
-                                        <option value="mati">Mati</option>
+                                        <option value="Sehat">Sehat</option>
+                                        <option value="Sakit">Sakit</option>
                                     </select>
                                 </div>
                                 <div class="edit-profile">

@@ -1,7 +1,7 @@
 <?php
-require_once 'controllers/C_Login-Karyawan.php';
+require_once 'controllers/C_Karyawan.php';
 
-$Login = new Login();
+$Login = new C_Login();
 
 
 
