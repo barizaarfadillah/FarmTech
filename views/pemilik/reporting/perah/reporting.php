@@ -29,7 +29,6 @@ $result = $Reporting->getReportingPerah();
                                     <th style="width:17%; font-size: 1rem;">Hasil Produksi (liter)</th>
                                     <th style="width:17%; font-size: 1rem;">Jam</th>
                                     <th style="width:17%; font-size: 1rem;">Tanggal</th>
-                                    <th style="width:15%; font-size: 1rem;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody style="background-color:#D7FBE8; font-weight:500;">
@@ -45,10 +44,6 @@ $result = $Reporting->getReportingPerah();
                                     <td style="font-size: .9rem;"><?php echo $row['hasil_perah'] ;?></td>
                                     <td style="font-size: .9rem;"><?php echo $row['jam'] ;?></td>
                                     <td style="font-size: .9rem;"><?php echo $row['tanggal'] ;?></td>
-                                    <td style="text-align: center;display:flex;justify-content: center;align-items: center;">
-                                        <a class="btn-add" href="?page=reportingperah&aksi=edit&id=<?php echo $row['id'] ;?>" style="width:65px; margin:0.5rem;">Edit</a>
-                                        <a id="btn-delete" class="btn-delete" style="width:65px; margin:0.5rem;" href="?page=reportingperah&aksi=hapus&id=<?php echo $row['id'] ?>">Hapus</a>
-                                    </td>
                                 </tr>
                                 <?php
                                  }}
