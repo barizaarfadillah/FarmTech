@@ -62,7 +62,7 @@ $result = $Recording->getStok();
         var link = $(this).attr('href');
 
         swal({
-                    title: "Menghapus data?",
+                    title: "Menghapus Data?",
                     icon: "warning",
                     buttons: {
                         confirm: {

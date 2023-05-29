@@ -61,7 +61,7 @@ class C_Register {
         $errors = array();
 
         if(empty($nama)||empty($namapeternakan)||empty($email)||empty($password)||empty($cpassword)){
-            $errors['error'] = "Data wajib diisi";
+            $errors['error'] = "Data Harus Diisi";
         }
         
         return $errors;
@@ -83,7 +83,7 @@ class C_Register {
         $errors = array();
 
         if ($this->pemilikModel->cekEmailTerdaftar($email)){
-            $errors['error'] = "Email sudah terdaftar";
+            $errors['error'] = "Email Sudah Terdaftar";
         }
         
         return $errors;
@@ -91,7 +91,7 @@ class C_Register {
 }
 
 class C_Login {
-    private $pemilikModel;
+private $pemilikModel;
 
     public function __construct() {
         $this->pemilikModel = new M_Pemilik();
@@ -144,7 +144,7 @@ class C_Login {
         $errors = array();
 
         if(empty($email)||empty($password)){
-            $errors['error'] = "Data harus diisi";
+            $errors['error'] = "Data Harus Diisi";
         } 
         
         return $errors;
@@ -166,7 +166,7 @@ class C_Login {
         $errors = array();
 
         if ($this->pemilikModel->cekEmailTerdaftar($email) == false){
-            $errors['error'] = "Akun tidak terdaftar";
+            $errors['error'] = "Akun Tidak Terdaftar";
         }
         
         return $errors;
@@ -254,7 +254,7 @@ class C_ProfilePemilik {
             }).then((value) => {
                 if (value) {
                     swal({
-                        title: "Data tersimpan",
+                        title: "Data Tersimpan",
                         icon: "success",
                         button: "Oke",
                     }).then(() => {
@@ -272,7 +272,7 @@ class C_ProfilePemilik {
         $errors = array();
 
         if(empty($nama)||empty($peternakan)||empty($alamat)||empty($password)){
-            $errors['error'] = "Data harus diisi";
+            $errors['error'] = "Data Harus Diisi";
         }
         
         return $errors;
@@ -326,7 +326,7 @@ class C_LupaPassword {
         $errors = array();
 
         if(empty($email)){
-            $errors['error'] = "Data harus diisi";
+            $errors['error'] = "Data Harus Diisi";
         } 
         
         return $errors;
@@ -337,7 +337,7 @@ class C_LupaPassword {
         $errors = array();
 
         if ($this->pemilikModel->cekEmailTerdaftar($email) == false){
-            $errors['error'] = "Email tidak valid";
+            $errors['error'] = "Email Tidak Valid";
         }
 
         return $errors;
@@ -377,7 +377,7 @@ class C_NewPassword {
             echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                 echo "<script>
                 swal({
-                    title: 'Reset Password Berhasil',
+                    title: 'Password Telah Terganti',
                     icon: 'success',
                     button: 'Oke',
                 }).then(() => {
@@ -392,7 +392,7 @@ class C_NewPassword {
         $errors = array();
 
         if(empty($password)||empty($cpassword)){
-            $errors['error'] = "Data harus diisi";
+            $errors['error'] = "Data Harus Diisi";
         } 
         
         return $errors;
@@ -403,7 +403,7 @@ class C_NewPassword {
         $errors = array();
 
         if($password !== $cpassword){
-            $errors['error'] = "Password tidak sama";
+            $errors['error'] = "Password Tidak Sama";
         } 
         
         return $errors;

@@ -48,7 +48,7 @@
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({
-                            title: 'Data berhasil ditambah',
+                            title: 'Data Berhasil Ditambahkan',
                             icon: 'success',
                             button: 'Oke',
                         }).then(() => {
@@ -103,7 +103,7 @@
                 }).then((value) => {
                     if (value) {
                         swal({
-                            title: "Data tersimpan",
+                            title: "Data Tersimpan",
                             icon: "success",
                             button: "Oke",
                         }).then(() => {
@@ -120,7 +120,7 @@
             $errors = array();
     
             if(empty($jenis)||empty($tanggal)||empty($status)){
-                $errors['error'] = "Data wajib diisi";
+                $errors['error'] = "Data Harus Diisi";
             }
             
             return $errors;
@@ -133,7 +133,7 @@
             echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({
-                            title: 'Data berhasil dihapus',
+                            title: 'Data Berhasil Dihapus',
                             icon: 'success',
                             button: 'Oke',
                         }).then(() => {

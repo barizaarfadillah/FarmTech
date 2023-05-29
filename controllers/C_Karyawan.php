@@ -56,7 +56,7 @@
             $errors = array();
     
             if(empty($email)||empty($password)){
-                $errors['error'] = "Data harus diisi";
+                $errors['error'] = "Data Harus Diisi";
             } 
             
             return $errors;
@@ -167,7 +167,7 @@
                 }).then((value) => {
                     if (value) {
                         swal({
-                            title: "Data tersimpan",
+                            title: "Data Tersimpan",
                             icon: "success",
                             button: "Oke",
                         }).then(() => {
@@ -185,7 +185,7 @@
             $errors = array();
     
             if(empty($nama)||empty($alamat)||empty($no_hp)||empty($password)){
-                $errors['error'] = "Data harus diisi";
+                $errors['error'] = "Data Harus Diisi";
             }
             
             return $errors;
@@ -239,7 +239,7 @@
             $errors = array();
     
             if(empty($email)){
-                $errors['error'] = "Data harus diisi";
+                $errors['error'] = "Data Harus Diisi";
             } 
             
             return $errors;
@@ -250,7 +250,7 @@
             $errors = array();
     
             if ($this->karyawanModel->cekEmailTerdaftar($email) == false){
-                $errors['error'] = "Email tidak valid";
+                $errors['error'] = "Email Tidak Valid";
             }
     
             return $errors;
@@ -290,7 +290,7 @@
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                     swal({
-                        title: 'Reset Password Berhasil',
+                        title: 'Password Telah Terganti',
                         icon: 'success',
                         button: 'Oke',
                     }).then(() => {
@@ -305,7 +305,7 @@
             $errors = array();
     
             if(empty($password)||empty($cpassword)){
-                $errors['error'] = "Data harus diisi";
+                $errors['error'] = "Data Harus Diisi";
             } 
             
             return $errors;
@@ -316,7 +316,7 @@
             $errors = array();
     
             if($password !== $cpassword){
-                $errors['error'] = "Password tidak sama";
+                $errors['error'] = "Password Tidak Sama";
             } 
             
             return $errors;
@@ -366,7 +366,7 @@
                 echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({
-                            title: 'Data berhasil ditambahkan',
+                            title: 'Data Berhasil Ditambahkan',
                             icon: 'success',
                             button: 'Oke',
                         }).then(() => {
@@ -382,9 +382,9 @@
             $errors = array();
     
             if(empty($email)||empty($password)||empty($cpassword)){
-                $errors['error'] = "Data harus diisi";
+                $errors['error'] = "Data Harus Diisi";
             } elseif ($password != $cpassword) {
-                $errors['error'] = "Password tidak sama";
+                $errors['error'] = "Password Tidak Sama";
             }
             
             return $errors;
@@ -399,7 +399,7 @@
             echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>";
                     echo "<script>
                         swal({
-                            title: 'Data berhasil dihapus',
+                            title: 'Data Berhasil Dihapus',
                             icon: 'success',
                             button: 'Oke',
                         }).then(() => {

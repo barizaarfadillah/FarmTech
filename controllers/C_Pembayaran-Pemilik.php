@@ -75,7 +75,7 @@
             $errors = array();
     
             if(empty($id)||empty($tanggal)||empty($metode)||empty($rekening)){
-                $errors['error'] = "Data harus diisi";
+                $errors['error'] = "Data Harus Diisi";
             }
             
             return $errors;
